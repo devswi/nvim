@@ -40,10 +40,7 @@ M.init = function()
     opt.splitright = true
 
     -- Time in milliseconds to wait for a key code sequence to complete
-    opt.timeoutlen = 200
-    opt.ttimeoutlen = 0
-    -- no waiting for key combination
-    opt.timeout = false
+    opt.timeoutlen = 100
 
     -- remember where to recover cursor
     opt.viewoptions = 'cursor,folds,slash,unix'

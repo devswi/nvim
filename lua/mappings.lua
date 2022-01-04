@@ -124,7 +124,6 @@ end
 
 M.init = function()
     local global = vim.g
-
     -- set leader key as <space>
     global.mapleader = " "
 

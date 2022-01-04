@@ -51,16 +51,16 @@ return packer.startup(function()
     use "wbthomason/packer.nvim"
 
     -- color scheme
-    use { 
-        "shaunsingh/nord.nvim", 
-        config = function() 
+    use {
+        "shaunsingh/nord.nvim",
+        config = function()
             require("colors")
         end,
-    } 
+    }
 
     -- bufferline
     use {
-        "akinsho/bufferline.nvim", 
+        "akinsho/bufferline.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
             require("config.bufferline").setup()
@@ -106,8 +106,8 @@ return packer.startup(function()
 
     -- auto tag
     use { 'windwp/nvim-ts-autotag' }
-    use { 
-        'windwp/nvim-autopairs', 
+    use {
+        'windwp/nvim-autopairs',
         config = function()
             require("config.autopairs").setup()
         end
