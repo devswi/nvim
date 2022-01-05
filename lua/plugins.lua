@@ -85,6 +85,17 @@ return packer.startup(function()
         end
     }
 
+    -- telescope
+    -- for fuzzy finding
+    use {
+        "nvim-telescope/telescope.nvim",
+        requires = { {'nvim-lua/plenary.nvim'} },
+        config = function()
+            local telescope = require "config/telescope"
+            telescope.setup()
+        end
+    }
+
     -- Nvim-Tree
     use {
         "kyazdani42/nvim-tree.lua",
