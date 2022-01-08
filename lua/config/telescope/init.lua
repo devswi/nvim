@@ -59,6 +59,9 @@ M.setup = function()
             },
         }
     } 
+
+    local mappings = require "config.telescope.mappings"
+    mappings.setup()
 end
 
 return M

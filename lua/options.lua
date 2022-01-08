@@ -3,10 +3,11 @@ local M = {}
 M.init = function()
     local opt = vim.opt
 
-    opt.encoding = 'utf-8'
+    opt.encoding = "utf-8"
 
     -- enable line number and relative line number
     opt.number = true
+    opt.numberwidth = 2
     opt.relativenumber = true
 
     -- line behind cursor
@@ -40,7 +41,8 @@ M.init = function()
     opt.splitright = true
 
     -- Time in milliseconds to wait for a key code sequence to complete
-    opt.timeoutlen = 100
+    opt.timeoutlen = 400
+    opt.updatetime = 250
 
     -- remember where to recover cursor
     opt.viewoptions = 'cursor,folds,slash,unix'
@@ -77,7 +79,6 @@ M.init = function()
     opt.ttyfast = true
     opt.lazyredraw = true
     opt.visualbell = true
-    opt.updatetime = 100
     opt.virtualedit = 'block'
     opt.lazyredraw = true
     opt.signcolumn = "yes:1"

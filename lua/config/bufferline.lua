@@ -5,8 +5,8 @@ M.setup = function()
 
     keymappings.load({
         normal_mode = {
-            ["<S-l>"] = ":BufferLineCycleNext<CR>",
-            ["<S-H>"] = ":BufferLineCyclePrev<CR>",
+            ["<TAB>"] = ":BufferLineCycleNext<CR>",
+            ["<S-TAB>"] = ":BufferLineCyclePrev<CR>",
             ["<C-x>"] = ":BufferLinePickClose<CR>",
         }
     })

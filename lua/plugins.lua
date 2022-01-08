@@ -110,6 +110,7 @@ return packer.startup(function()
     -- which-key
     use {
         "folke/which-key.nvim",
+        disable = true,
         config = function()
             require("config.which-key").setup()
         end
