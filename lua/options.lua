@@ -12,7 +12,7 @@ M.init = function()
 
     -- line behind cursor
     opt.cursorline = true
-
+    
     -- [[
     -- TAB SETTING
     --
@@ -21,6 +21,7 @@ M.init = function()
     opt.tabstop = 4
     opt.shiftwidth = 4
     opt.softtabstop = 4
+    opt.smartindent = true
 
     -- Copy indent from current line when starting a new line
     opt.autoindent = true

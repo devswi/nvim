@@ -58,10 +58,15 @@ return packer.startup(function()
         end,
     }
 
+    -- web devicons
+    use {
+        "kyazdani42/nvim-web-devicons",
+    }
+
     -- bufferline
     use {
         "akinsho/bufferline.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
+        after = "nvim-web-devicons",
         config = function()
             require("config.bufferline").setup()
         end
@@ -69,10 +74,10 @@ return packer.startup(function()
 
     -- statusline
     use {
-        "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        "feline-nvim/feline.nvim",
+        after = "nvim-web-devicons",
         config = function()
-            require("config.statusline").setup()
+            require("config.statusline")
         end
     }
 
@@ -107,9 +112,23 @@ return packer.startup(function()
         end
     }
 
+    -- LSP
+    use {
+        "neovim/nvim-lspconfig", event = "BufRead"
+    }
+
+    use {
+        "williamboman/nvim-lsp-installer",
+        config = function()
+            require("lsp")
+        end,
+        after = { "nvim-lspconfig" }
+    }
+
     -- which-key
     use {
         "folke/which-key.nvim",
+        -- disable which-key plugin
         disable = true,
         config = function()
             require("config.which-key").setup()
