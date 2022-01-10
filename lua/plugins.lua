@@ -48,6 +48,8 @@ packer.init {
 return packer.startup(function(use)
     use "wbthomason/packer.nvim"
 
+    use "nvim-lua/plenary.nvim"
+
     -- color scheme
     use {
         "shaunsingh/nord.nvim",
@@ -68,7 +70,7 @@ return packer.startup(function(use)
         "akinsho/bufferline.nvim",
         after = "nvim-web-devicons",
         config = function()
-            require("config.bufferline").setup()
+            require('config.bufferline')
         end
     }
 
@@ -90,11 +92,17 @@ return packer.startup(function(use)
         end
     }
 
+    -- gitsigns
+    use {}
+
     -- telescope
     -- for fuzzy finding
     use {
         "nvim-telescope/telescope.nvim",
-        requires = { {'nvim-lua/plenary.nvim'} },
+        requires = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-lua/popup.nvim'},
+        },
         config = function()
             local telescope = require "config/telescope"
             telescope.setup()
@@ -131,7 +139,7 @@ return packer.startup(function(use)
         -- disable which-key plugin
         disable = true,
         config = function()
-            require("config.which-key").setup()
+            require('config.which-key').setup()
         end
     }
 
@@ -146,6 +154,22 @@ return packer.startup(function(use)
 
     -- highlight brackets
     use { 'p00f/nvim-ts-rainbow' }
+
+    -- colorizer
+    use {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("config.colorizer")
+        end
+    }
+
+    -- highlighting indent
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("config.blankline")
+        end
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then

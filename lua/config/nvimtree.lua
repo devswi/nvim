@@ -19,7 +19,7 @@ function M.global_settings()
         git = 1,
         folders = 1,
         files = 1,
-        folder_arrows = 1,
+        folder_arrows = 0,
         lsp = 1,
     }
 
@@ -61,7 +61,6 @@ end
 
 M.setup = function()
     M.global_settings()
-
     M.set_mappings()
 
     require("nvim-tree").setup {
@@ -88,8 +87,8 @@ M.setup = function()
         git = {
             ignore = false,
         },
-        disgnostics = {
-            enable = true,
+        diagnostics = {
+            enable = false,
             icons = {
                 hint = "",
                 info = "",

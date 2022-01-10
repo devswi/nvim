@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-    local wk = require 'which-key'
+    local wk = require('which-key')
 
     local mappings = {
         q = { ":q<cr>", "Quit" },
