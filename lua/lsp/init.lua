@@ -1,5 +1,5 @@
 if not pcall(require, "lspconfig") or not pcall(require, "nvim-lsp-installer") then
-  return
+    return
 end
 
 -- Setup icons & handler helper functions

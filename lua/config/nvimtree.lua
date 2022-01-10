@@ -1,12 +1,12 @@
 local M = {}
 
-function M.global_settings() 
+function M.global_settings()
     local g = vim.g
 
     g.nvim_tree_add_trailing = 0
     g.nvim_tree_git_hl = 0
     g.nvim_tree_highlight_opened_files = 0
-    g.nvim_tree_indent_markers = 1
+    g.nvim_tree_indent_markers = 1 -- set indent markers to 0, if small arrow needed
     g.nvim_tree_quit_on_open = 0 -- close tree when file's opened
     g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 
@@ -16,9 +16,11 @@ function M.global_settings()
     }
 
     g.nvim_tree_show_icons = {
+        git = 1,
         folders = 1,
         files = 1,
-        git = 0,
+        folder_arrows = 1,
+        lsp = 1,
     }
 
     g.nvim_tree_icons = {
@@ -34,6 +36,8 @@ function M.global_settings()
             untracked = "★",
         },
         folder = {
+            arrow_open = "",
+            arrow_close = "",
             default = "",
             empty = "",
             empty_open = "",
@@ -42,7 +46,6 @@ function M.global_settings()
             symlink_open = "",
         },
     }
-
 end
 
 function M.set_mappings()
@@ -77,14 +80,23 @@ M.setup = function()
             update_cwd = false,
         },
         view = {
-            allow_resize = true,
+            allow_resize = false,
             side = "left",
-            width = 25,
+            width = 30,
             hide_root_folder = true,
         },
         git = {
             ignore = false,
         },
+        disgnostics = {
+            enable = true,
+            icons = {
+                hint = "",
+                info = "",
+                warning = "",
+                error = "",
+            }
+        }
     }
 end
 

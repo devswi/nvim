@@ -12,7 +12,7 @@ M.init = function()
 
     -- line behind cursor
     opt.cursorline = true
-    
+
     -- [[
     -- TAB SETTING
     --

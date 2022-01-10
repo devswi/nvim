@@ -85,7 +85,7 @@ if vim.fn.has "mac" == 1 then
     keymappings.normal_mode["<A-Right>"] = keymappings.normal_mode["<C-Right>"]
 end
 
-function M.set_keymaps(mode, key, val) 
+function M.set_keymaps(mode, key, val)
     local opt = generic_opts[mode] or generic_opts_any
     if type(val) == "table" then
         opt = val[2]
@@ -114,7 +114,7 @@ function M.load(keymaps)
 end
 
 -- Load the default keymappings
-function M.load_defaults() 
+function M.load_defaults()
     M.load(M.get_defaults())
 end
 

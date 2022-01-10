@@ -53,7 +53,7 @@ if vim.diagnostic then
             spacing = 4,
             source = 'always',
             severity = {
-            min = vim.diagnostic.severity.HINT,
+                min = vim.diagnostic.severity.HINT,
             },
             -- format = function(diagnostic)
             -- if diagnostic.severity == vim.diagnostic.severity.ERROR then

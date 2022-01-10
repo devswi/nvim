@@ -4,8 +4,8 @@
 
 local M = {}
 
-M.setup = function() 
-    local ok, telescope = pcall(require, "telescope")  
+M.setup = function()
+    local ok, telescope = pcall(require, "telescope")
     if not ok then return end
 
     telescope.setup {
@@ -58,7 +58,7 @@ M.setup = function()
                 -- the default case_mode is "smart_case"
             },
         }
-    } 
+    }
 
     local mappings = require "config.telescope.mappings"
     mappings.setup()

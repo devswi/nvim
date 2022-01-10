@@ -45,16 +45,16 @@ packer.init {
 }
 
 -- Install plugins
-return packer.startup(function()
-    local use = use
-
+return packer.startup(function(use)
     use "wbthomason/packer.nvim"
 
     -- color scheme
     use {
         "shaunsingh/nord.nvim",
+        disable = true,
         config = function()
-            require("colors")
+            local colors = require("colors")
+            colors.set("nord")
         end,
     }
 
@@ -74,7 +74,7 @@ return packer.startup(function()
 
     -- statusline
     use {
-        "feline-nvim/feline.nvim",
+        "nvim-lualine/lualine.nvim",
         after = "nvim-web-devicons",
         config = function()
             require("config.statusline")
