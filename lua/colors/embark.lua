@@ -212,4 +212,252 @@ hl.lsp = {
     LspReferenceRead = { fg = hl.c.fg, gui = 'underline', cterm = 'underline' },
 }
 
+-- For other languages
+hl.others = {
+    -- CSS
+    cssAttrComma = { fg = hl.c.purple },
+    cssAttributeSelector = { fg = hl.c.green },
+    cssBraces = { fg = hl.c.white },
+    cssClassName = { fg = hl.c.dark_yellow },
+    cssClassNameDot = { fg = hl.c.dark_yellow },
+    cssDefinition = { fg = hl.c.purple },
+    cssFontAttr = { fg = hl.c.dark_yellow },
+    cssFontDescriptor = { fg = hl.c.purple },
+    cssFunctionName = { fg = hl.c.blue },
+    cssIdentifier = { fg = hl.c.blue },
+    cssImportant = { fg = hl.c.purple },
+    cssInclude = { fg = hl.c.white },
+    cssIncludeKeyword = { fg = hl.c.purple },
+    cssMediaType = { fg = hl.c.dark_yellow },
+    cssProp = { fg = hl.c.white },
+    cssPseudoClassId = { fg = hl.c.dark_yellow },
+    cssSelectorOp = { fg = hl.c.purple },
+    cssSelectorOp2 = { fg = hl.c.purple },
+    cssTagName = { fg = hl.c.red },
+
+    -- Go
+    goDeclaration = { fg = hl.c.purple },
+    goBuiltins = { fg = hl.c.cyan },
+    goFunctionCall = { fg = hl.c.blue },
+    goVarDefs = { fg = hl.c.red },
+    goVarAssign = { fg = hl.c.red },
+    goVar = { fg = hl.c.purple },
+    goConst = { fg = hl.c.purple },
+    goType = { fg = hl.c.yellow },
+    goTypeName = { fg = hl.c.yellow },
+    goDeclType = { fg = hl.c.cyan },
+    goTypeDecl = { fg = hl.c.purple },
+
+    -- HTML (keep consistent with Markdown, below)
+    htmlArg = { fg = hl.c.dark_yellow },
+    htmlBold = { fg = hl.c.dark_yellow, gui = 'bold', cterm = 'bold' },
+    htmlEndTag = { fg = hl.c.white },
+    htmlH1 = { fg = hl.c.red },
+    htmlH2 = { fg = hl.c.red },
+    htmlH3 = { fg = hl.c.red },
+    htmlH4 = { fg = hl.c.red },
+    htmlH5 = { fg = hl.c.red },
+    htmlH6 = { fg = hl.c.red },
+    htmlItalic = { fg = hl.c.purple, gui = 'italic', cterm = 'italic' },
+    htmlLink = { fg = hl.c.dark_cyan, gui = 'underline', cterm = 'underline' },
+    htmlSpecialChar = { fg = hl.c.dark_yellow },
+    htmlSpecialTagName = { fg = hl.c.red },
+    htmlTag = { fg = hl.c.white },
+    htmlTagN = { fg = hl.c.red },
+    htmlTagName = { fg = hl.c.red },
+    htmlTitle = { fg = hl.c.white },
+
+    -- JavaScript
+    javaScriptBraces = { fg = hl.c.white },
+    javaScriptFunction = { fg = hl.c.purple },
+    javaScriptIdentifier = { fg = hl.c.purple },
+    javaScriptNull = { fg = hl.c.dark_yellow },
+    javaScriptNumber = { fg = hl.c.dark_yellow },
+    javaScriptRequire = { fg = hl.c.cyan },
+    javaScriptReserved = { fg = hl.c.purple },
+    jsArrowFunction = { fg = hl.c.purple },
+    jsClassKeyword = { fg = hl.c.purple },
+    jsClassMethodType = { fg = hl.c.purple },
+    jsDocParam = { fg = hl.c.blue },
+    jsDocTags = { fg = hl.c.purple },
+    jsExport = { fg = hl.c.purple },
+    jsExportDefault = { fg = hl.c.purple },
+    jsExtendsKeyword = { fg = hl.c.purple },
+    jsFrom = { fg = hl.c.purple },
+    jsFuncCall = { fg = hl.c.blue },
+    jsFunction = { fg = hl.c.purple },
+    jsGenerator = { fg = hl.c.yellow },
+    jsGlobalObjects = { fg = hl.c.yellow },
+    jsImport = { fg = hl.c.purple },
+    jsModuleAs = { fg = hl.c.purple },
+    jsModuleWords = { fg = hl.c.purple },
+    jsModules = { fg = hl.c.purple },
+    jsNull = { fg = hl.c.dark_yellow },
+    jsOperator = { fg = hl.c.purple },
+    jsStorageClass = { fg = hl.c.purple },
+    jsSuper = { fg = hl.c.red },
+    jsTemplateBraces = { fg = hl.c.dark_red },
+    jsTemplateVar = { fg = hl.c.green },
+    jsThis = { fg = hl.c.red },
+    jsUndefined = { fg = hl.c.dark_yellow },
+
+    -- JSON
+    jsonCommentError = { fg = hl.c.white },
+    jsonKeyword = { fg = hl.c.red },
+    jsonBoolean = { fg = hl.c.dark_yellow },
+    jsonNumber = { fg = hl.c.dark_yellow },
+    jsonQuote = { fg = hl.c.white },
+    jsonMissingCommaError = { fg = hl.c.red, gui = 'reverse' },
+    jsonNoQuotesError = { fg = hl.c.red, gui = 'reverse' },
+    jsonNumError = { fg = hl.c.red, gui = 'reverse' },
+    jsonString = { fg = hl.c.green },
+    jsonStringSQError = { fg = hl.c.red, gui = 'reverse' },
+    jsonSemicolonError = { fg = hl.c.red, gui = 'reverse' },
+
+    -- LESS
+    lessVariable = { fg = hl.c.purple },
+    lessAmpersandChar = { fg = hl.cwhite },
+    lessClass = { fg = hl.c.dark_yellow },
+
+    -- Markdown (keep consistent with HTML, above)
+    markdownBlockquote = { fg = hl.c.comment_grey },
+    markdownBold = { fg = hl.c.dark_yellow, gui = 'bold', cterm = 'bold' },
+    markdownCode = { fg = hl.c.green },
+    markdownCodeBlock = { fg = hl.c.green },
+    markdownCodeDelimiter = { fg = hl.c.green },
+    markdownH1 = { fg = hl.c.red },
+    markdownH2 = { fg = hl.c.red },
+    markdownH3 = { fg = hl.c.red },
+    markdownH4 = { fg = hl.c.red },
+    markdownH5 = { fg = hl.c.red },
+    markdownH6 = { fg = hl.c.red },
+    markdownHeadingDelimiter = { fg = hl.c.red },
+    markdownHeadingRule = { fg = hl.c.comment_grey },
+    markdownId = { fg = hl.c.purple },
+    markdownIdDeclaration = { fg = hl.c.blue },
+    markdownIdDelimiter = { fg = hl.c.purple },
+    markdownItalic = { fg = hl.c.purple, gui = 'italic', cterm = 'italic' },
+    markdownLinkDelimiter = { fg = hl.c.purple },
+    markdownLinkText = { fg = hl.c.dark_blue },
+    markdownListMarker = { fg = hl.c.red },
+    markdownOrderedListMarker = { fg = hl.c.red },
+    markdownRule = { fg = hl.c.comment_grey },
+    markdownUrl = { fg = hl.c.dark_cyan, gui = 'underline', cterm = 'underline' },
+
+    -- Ruby
+    rubyBlockParameter = { fg = hl.c.red },
+    rubyBlockParameterList = { fg = hl.c.red },
+    rubyClass = { fg = hl.c.purple },
+    rubyConstant = { fg = hl.c.yellow },
+    rubyControl = { fg = hl.c.purple },
+    rubyEscape = { fg = hl.c.red },
+    rubyFunction = { fg = hl.c.blue },
+    rubyGlobalVariable = { fg = hl.c.red },
+    rubyInclude = { fg = hl.c.blue },
+    rubyIncluderubyGlobalVariable = { fg = hl.c.red },
+    rubyInstanceVariable = { fg = hl.c.red },
+    rubyInterpolation = { fg = hl.c.cyan },
+    rubyInterpolationDelimiter = { fg = hl.c.red },
+    rubyRegexp = { fg = hl.c.cyan },
+    rubyRegexpDelimiter = { fg = hl.c.cyan },
+    rubyStringDelimiter = { fg = hl.c.green },
+    rubySymbol = { fg = hl.c.cyan },
+
+    -- TypeScript
+    typescriptReserved =  { fg = hl.c.purple },
+    typescriptEndColons = { fg = hl.c.white },
+    typescriptBraces = { fg = hl.c.white },
+
+    -- easymotion/vim-easymotion
+    EasyMotionTarget = { fg = hl.c.red, gui = 'bold', cterm = 'bold' },
+    EasyMotionTarget2First = { fg = hl.c.yellow, gui = 'bold', cterm = 'bold' },
+    EasyMotionTarget2Second = { fg = hl.c.dark_yellow, gui = 'bold', cterm = 'bold' },
+    EasyMotionShade = { fg = hl.c.comment_grey },
+
+    -- mhinz/vim-signify
+    SignifySignAdd = { fg = hl.c.green },
+    SignifySignChange = { fg = hl.c.yellow },
+    SignifySignDelete = { fg = hl.c.red },
+
+    -- neomake/neomake
+    NeomakeWarningSign = { fg = hl.c.yellow },
+    NeomakeErrorSign = { fg = hl.c.red },
+    NeomakeInfoSign = { fg = hl.c.blue },
+
+    -- plasticboy/vim-markdown (keep consistent with Markdown, above)
+    mkdDelimiter = { fg = hl.c.purple },
+    mkdHeading = { fg = hl.c.red },
+    mkdLink = { fg = hl.c.blue },
+    mkdURL = { fg = hl.c.cyan, gui = 'underline', cterm = 'underline' },
+
+    -- tpope/vim-fugitive
+    diffAdded = { fg = hl.c.green },
+    diffRemoved = { fg = hl.c.red },
+    diffFile = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
+    diffFileId = { fg = hl.c.blue, gui = 'bold,reverse', cterm = 'bold,reverse' },
+    diffNewFile = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
+    diffOldFile = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
+    diffIndexLine = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
+    diffLine = { fg = hl.c.purple },
+    diffNoEOL = { fg = hl.c.purple },
+    diffSubname = { fg = hl.c.white },
+
+    -- Git Highlighting
+    gitcommitComment = { fg = hl.c.comment_grey },
+    gitcommitUnmerged = { fg = hl.c.green },
+    gitcommitOnBranch = { },
+    gitcommitBranch = { fg = hl.c.purple },
+    gitcommitDiscardedType = { fg = hl.c.red },
+    gitcommitSelectedType = { fg = hl.c.green },
+    gitcommitHeader = { },
+    gitcommitUntrackedFile = { fg = hl.c.cyan },
+    gitcommitDiscardedFile = { fg = hl.c.red },
+    gitcommitSelectedFile = { fg = hl.c.green },
+    gitcommitUnmergedFile = { fg = hl.c.yellow },
+    gitcommitFile = { },
+    gitcommitSummary = { fg = hl.c.white },
+    gitcommitOverflow = { fg = hl.c.red },
+
+    -- Nvim-tree support
+    NvimTreeFolderIcon = { fg = hl.c.purple },
+    NvimTreeFolderName = { fg = hl.c.blue },
+    NvimTreeRootFolder = { fg = hl.c.green },
+}
+
+hl.after = function()
+    -- airblade/vim-gitgutter
+    vim.cmd('hi link GitGutterAdd    SignifySignAdd')
+    vim.cmd('hi link GitGutterChange SignifySignChange')
+    vim.cmd('hi link GitGutterDelete SignifySignDelete')
+
+    vim.cmd('hi link gitcommitNoBranch gitcommitBranch')
+    vim.cmd('hi link gitcommitUntracked gitcommitComment')
+    vim.cmd('hi link gitcommitDiscarded gitcommitComment')
+    vim.cmd('hi link gitcommitSelected gitcommitComment')
+    vim.cmd('hi link gitcommitDiscardedArrow gitcommitDiscardedFile')
+    vim.cmd('hi link gitcommitSelectedArrow gitcommitSelectedFile')
+    vim.cmd('hi link gitcommitUnmergedArrow gitcommitUnmergedFile')
+
+    -- Neovim terminal colors
+    vim.g.terminal_color_0  = hl.c.black.gui
+    vim.g.terminal_color_1  = hl.c.red.gui
+    vim.g.terminal_color_2  = hl.c.green.gui
+    vim.g.terminal_color_3  = hl.c.yellow.gui
+    vim.g.terminal_color_4  = hl.c.blue.gui
+    vim.g.terminal_color_5  = hl.c.purple.gui
+    vim.g.terminal_color_6  = hl.c.cyan.gui
+    vim.g.terminal_color_7  = hl.c.white.gui
+    vim.g.terminal_color_8  = hl.c.visual_grey.gui
+    vim.g.terminal_color_9  = hl.c.dark_red.gui
+    vim.g.terminal_color_10 = hl.c.dark_green.gui
+    vim.g.terminal_color_11 = hl.c.dark_yellow.gui
+    vim.g.terminal_color_12 = hl.c.dark_blue.gui
+    vim.g.terminal_color_13 = hl.c.dark_purple.gui
+    vim.g.terminal_color_14 = hl.c.dark_cyan.gui
+    vim.g.terminal_color_15 = hl.c.comment_grey.gui
+    vim.g.terminal_color_background = vim.g.terminal_color_0
+    vim.g.terminal_color_foreground = vim.g.terminal_color_7
+
+end
+
 return hl

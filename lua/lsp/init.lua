@@ -23,16 +23,16 @@ local lua_settings = {
       path = vim.split(package.path, ';'),
     },
     diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = {
-        'vim',
-        'root',         -- awesomeWM
-        'awesome',      -- awesomeWM
-        'screen',       -- awesomeWM
-        'client',       -- awesomeWM
-        'clienteys',   -- awesomeWM
-        'clientbuttons',-- awesomeWM
-      },
+        -- Get the language server to recognize the `vim` global
+        globals = {
+            'vim',
+            'root',         -- awesomeWM
+            'awesome',      -- awesomeWM
+            'screen',       -- awesomeWM
+            'client',       -- awesomeWM
+            'clienteys',   -- awesomeWM
+            'clientbuttons',-- awesomeWM
+        },
     },
     workspace = {
       -- Make the server aware of Neovim runtime files

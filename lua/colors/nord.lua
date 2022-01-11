@@ -1,32 +1,54 @@
-local o = vim.g.embark_color_overrides or {}
+NORD = {
+    nord0_gui = '#2E3440',
+    nord1_gui = '#3B4252',
+    nord2_gui = '#434C5E',
+    nord3_gui = '#4C566A',
+    nord3_gui_bright = '#616E88',
+    nord4_gui = '#D8DEE9',
+    nord5_gui = '#E5E9F0',
+    nord6_gui = '#ECEFF4',
+    nord7_gui = '#8FBCBB',
+    nord8_gui = '#88C0D0',
+    nord9_gui = '#81A1C1',
+    nord10_gui = '#5E81AC',
+    nord11_gui = '#BF616A',
+    nord12_gui = '#D08770',
+    nord13_gui = '#EBCB8B',
+    nord14_gui = '#A3BE8C',
+    nord15_gui = '#B48EAD',
+    none = 'NONE',
+    sidebar = '#2E3440',
+    float = '#2E3440',
+    cursorlinefg = '#3B4252',
+}
 
 local hl = {}
 
 hl.c = {
-    bg = o.bg or { gui = '#323F4E', cterm = '233', cterm16 = 'NONE' },
-    fg = o.fg or { gui = '#cbe3e7', cterm = '253', cterm16 = '7' },
-    red = o.red or { gui = '#F48FB1', cterm = '204', cterm16 = '1' },
-    dark_red = o.dark_red or { gui = '#F02E6E', cterm = '203', cterm16 = '9' },
-    green = o.green or { gui = '#A1EFD3', cterm = '120', cterm16 = '2' },
-    dark_green = o.green or { gui = '#62d196', cterm = '119', cterm16 = '10' },
-    yellow = o.yellow or { gui = '#ffe6b3', cterm = '228', cterm16 = '3' },
-    dark_yellow = o.dark_yellow or { gui = '#F2B482', cterm = '215', cterm16 = '11' },
-    blue = o.blue or { gui = '#91ddff', cterm = '159', cterm16 = '4' },
-    dark_blue = o.dark_blue or { gui = '#65b2ff', cterm = '75', cterm16 = '12' },
-    purple = o.puple or { gui = '#d4bfff', cterm = '141', cterm16 = '5' },
-    dark_purple = o.dark_purple or { gui = '#a37acc', cterm = '135', cterm16 = '13' },
-    cyan = o.cyan or { gui = '#87DFEB', cterm = '122', cterm16 = '6' },
-    dark_cyan = o.dark_cyan or { gui = '#63f2f1', cterm = '121', cterm16 = '14' },
-    white = o.white or { gui = '#E4E4E4', cterm = '145', cterm16 = '7' },
-    black = o.black or { gui = '#100E23', cterm = '232', cterm16 = '0' },
-    visual_black = o.visual_black or { gui = 'NONE', cterm = 'NONE', cterm16 = '0'  },
-    comment_grey = o.comment_grey or { gui = '#8A889D', cterm = '252', cterm16 = '15' },
-    gutter_fg_grey = o.gutter_fg_grey or { gui = '#656A7c', cterm = '238', cterm16 = '15' },
-    cursor_grey = o.cursor_grey or { gui = '#100E23', cterm = '236', cterm16 = '8' },
-    visual_grey = o.visual_grey or { gui = '#56687E', cterm = '237', cterm16 = '15' },
-    menu_grey = o.menu_grey or { gui = '#56687E', cterm = '237', cterm16 = '8' },
-    special_grey = o.special_grey or { gui = '#656A7c', cterm = '238',  cterm16 = '15' },
-    vertsplit = o.vertsplit or { gui = '#181A1F', cterm = '59', cterm16 = '15' },
+    bg = { gui = NORD.nord0_gui, cterm = '233', cterm16 = 'NONE' },
+    fg = { gui = NORD.nord4_gui, cterm = '253', cterm16 = '7' },
+    red = { gui = '#F48FB1', cterm = '204', cterm16 = '1' },
+    dark_red = { gui = '#F02E6E', cterm = '203', cterm16 = '9' },
+    green = { gui = '#A1EFD3', cterm = '120', cterm16 = '2' },
+    dark_green = { gui = '#62d196', cterm = '119', cterm16 = '10' },
+    yellow = { gui = '#ffe6b3', cterm = '228', cterm16 = '3' },
+    dark_yellow = { gui = '#F2B482', cterm = '215', cterm16 = '11' },
+    blue = { gui = '#91ddff', cterm = '159', cterm16 = '4' },
+    dark_blue = { gui = '#65b2ff', cterm = '75', cterm16 = '12' },
+    purple = { gui = '#d4bfff', cterm = '141', cterm16 = '5' },
+    dark_purple = { gui = '#a37acc', cterm = '135', cterm16 = '13' },
+    cyan = { gui = '#87DFEB', cterm = '122', cterm16 = '6' },
+    dark_cyan = { gui = '#63f2f1', cterm = '121', cterm16 = '14' },
+    white = { gui = '#E4E4E4', cterm = '145', cterm16 = '7' },
+    black = { gui = '#100E23', cterm = '232', cterm16 = '0' },
+    visual_black = { gui = 'NONE', cterm = 'NONE', cterm16 = '0'  },
+    comment_grey = { gui = '#8A889D', cterm = '252', cterm16 = '15' },
+    gutter_fg_grey = { gui = '#656A7c', cterm = '238', cterm16 = '15' },
+    cursor_grey = { gui = '#100E23', cterm = '236', cterm16 = '8' },
+    visual_grey = { gui = '#56687E', cterm = '237', cterm16 = '15' },
+    menu_grey = { gui = '#56687E', cterm = '237', cterm16 = '8' },
+    special_grey = { gui = '#D8DEE9', cterm = '238',  cterm16 = '15' },
+    vertsplit = { gui = '#434C5E', cterm = '59', cterm16 = '15' },
 }
 
 hl.common = {
@@ -47,7 +69,7 @@ hl.common = {
     VertSplit = { fg = hl.c.vertsplit },
     Folded = { fg = hl.c.comment_grey },
     FoldColumn = { },
-    SignColumn = { },
+    SignColumn = { fg = hl.c.fg, bg = hl.c.bg },
     Search = { fg = hl.c.black, bg = hl.c.dark_yellow },
     IncSearch = { fg = hl.c.yellow, bg = hl.c.comment_grey },
     LineNr = { fg = hl.c.gutter_fg_grey },
@@ -63,12 +85,10 @@ hl.common = {
     Question = { fg = hl.c.red },
     QuickFixLine = { fg = hl.c.black, bg = hl.c.yellow },
     SpecialKey = { fg = hl.c.special_grey },
-    -- if vim.fn.has("gui_running") then
     SpellBad = { fg = hl.c.dark_red,   gui = 'underline', cterm = 'underline' },
     SpellCap = { fg = hl.c.green,      gui = 'underline', cterm = 'underline' },
     SpellLocal = { fg = hl.c.dark_green, gui = 'underline', cterm = 'underline' },
     SpellRare = { fg = hl.c.red,        gui = 'underline', cterm = 'underline' },
-    -- end
     StatusLine = { fg = hl.c.fg, bg = hl.c.cursor_grey },
     StatusLineNC = { fg = hl.c.comment_grey },
     StatusLineTerm = { fg = hl.c.fg, bg = hl.c.cursor_grey },
@@ -211,5 +231,12 @@ hl.lsp = {
     LspReferenceWrite = { fg = hl.c.fg, gui = 'underline', cterm = 'underline' },
     LspReferenceRead = { fg = hl.c.fg, gui = 'underline', cterm = 'underline' },
 }
+
+hl.others = {
+
+}
+
+hl.after = function()
+end
 
 return hl

@@ -21,9 +21,13 @@ M.init = function()
     opt.tabstop = 4
     opt.shiftwidth = 4
     opt.softtabstop = 4
+    opt.shiftround = true
     opt.smartindent = true
+    opt.smarttab = true
+
 
     -- Copy indent from current line when starting a new line
+    --
     opt.autoindent = true
 
     -- A List is an ordered sequence of items.
