@@ -52,7 +52,7 @@ return packer.startup(function(use)
 
     -- color scheme
     use {
-        "shaunsingh/nord.nvim",
+        "shaunsingh/hl.c.nvim",
         disable = true,
         config = function()
             local colors = require("colors")

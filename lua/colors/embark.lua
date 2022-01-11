@@ -3,31 +3,53 @@ local o = vim.g.embark_color_overrides or {}
 local hl = {}
 
 hl.c = {
-    bg = o.bg or { gui = '#323F4E', cterm = '233', cterm16 = 'NONE' },
-    fg = o.fg or { gui = '#cbe3e7', cterm = '253', cterm16 = '7' },
-    red = o.red or { gui = '#F48FB1', cterm = '204', cterm16 = '1' },
-    dark_red = o.dark_red or { gui = '#F02E6E', cterm = '203', cterm16 = '9' },
-    green = o.green or { gui = '#A1EFD3', cterm = '120', cterm16 = '2' },
-    dark_green = o.green or { gui = '#62d196', cterm = '119', cterm16 = '10' },
-    yellow = o.yellow or { gui = '#ffe6b3', cterm = '228', cterm16 = '3' },
-    dark_yellow = o.dark_yellow or { gui = '#F2B482', cterm = '215', cterm16 = '11' },
-    blue = o.blue or { gui = '#91ddff', cterm = '159', cterm16 = '4' },
-    dark_blue = o.dark_blue or { gui = '#65b2ff', cterm = '75', cterm16 = '12' },
-    purple = o.puple or { gui = '#d4bfff', cterm = '141', cterm16 = '5' },
-    dark_purple = o.dark_purple or { gui = '#a37acc', cterm = '135', cterm16 = '13' },
-    cyan = o.cyan or { gui = '#87DFEB', cterm = '122', cterm16 = '6' },
-    dark_cyan = o.dark_cyan or { gui = '#63f2f1', cterm = '121', cterm16 = '14' },
-    white = o.white or { gui = '#E4E4E4', cterm = '145', cterm16 = '7' },
-    black = o.black or { gui = '#100E23', cterm = '232', cterm16 = '0' },
-    visual_black = o.visual_black or { gui = 'NONE', cterm = 'NONE', cterm16 = '0'  },
-    comment_grey = o.comment_grey or { gui = '#8A889D', cterm = '252', cterm16 = '15' },
-    gutter_fg_grey = o.gutter_fg_grey or { gui = '#656A7c', cterm = '238', cterm16 = '15' },
-    cursor_grey = o.cursor_grey or { gui = '#100E23', cterm = '236', cterm16 = '8' },
-    visual_grey = o.visual_grey or { gui = '#56687E', cterm = '237', cterm16 = '15' },
-    menu_grey = o.menu_grey or { gui = '#56687E', cterm = '237', cterm16 = '8' },
-    special_grey = o.special_grey or { gui = '#656A7c', cterm = '238',  cterm16 = '15' },
-    vertsplit = o.vertsplit or { gui = '#181A1F', cterm = '59', cterm16 = '15' },
+    bg = '#323F4E',
+    fg = '#cbe3e7',
+    red = '#F48FB1',
+    dark_red = '#F02E6E',
+    green = '#A1EFD3',
+    dark_green = '#62d196',
+    yellow = '#ffe6b3',
+    dark_yellow = '#F2B482',
+    blue = '#91ddff',
+    dark_blue = '#65b2ff',
+    purple = '#d4bfff',
+    dark_purple = '#a37acc',
+    cyan = '#87DFEB',
+    dark_cyan = '#63f2f1',
+    white = '#E4E4E4',
+    black = '#100E23',
+    visual_black = 'NONE',
+    comment_grey = '#8A889D',
+    gutter_fg_grey = '#656A7c',
+    cursor_grey = '#100E23',
+    visual_grey = '#56687E',
+    menu_grey = '#56687E',
+    special_grey = '#656A7c',
+    vertsplit = '#181A1F',
 }
+
+hl.before = function()
+    -- 256-color terminal colors
+    vim.g.terminal_ansi_colors = {
+        hl.c.special_grey,
+        hl.c.red,
+        hl.c.green,
+        hl.c.yellow,
+        hl.c.blue,
+        hl.c.purple,
+        hl.c.cyan,
+        hl.c.white,
+        hl.c.visual_grey,
+        hl.c.dark_red,
+        hl.c.dark_green,
+        hl.c.dark_yellow,
+        hl.c.dark_blue,
+        hl.c.dark_purple,
+        hl.c.dark_cyan,
+        hl.c.comment_grey,
+    }
+end
 
 hl.common = {
     Normal = { fg = hl.c.fg, bg = hl.c.bg },
@@ -40,8 +62,8 @@ hl.common = {
     Directory = { fg = hl.c.purple },
     DiffAdd = { fg = hl.c.bg, bg = hl.c.dark_green },
     DiffDelete = { fg = hl.c.bg, bg = hl.c.red  },
-    DiffChange = { fg = hl.c.yellow, gui = 'underline', cterm = 'underline' },
-    DiffText = { fg = hl.c.bg, bg = hl.c.dark_yellow, gui = 'bold' },
+    DiffChange = { fg = hl.c.yellow, style = 'underline' },
+    DiffText = { fg = hl.c.bg, bg = hl.c.dark_yellow, style = 'bold' },
     EndOfBuffer = { fg = hl.c.gutter_fg_grey },
     ErrorMsg = { fg = hl.c.dark_red },
     VertSplit = { fg = hl.c.vertsplit },
@@ -51,23 +73,23 @@ hl.common = {
     Search = { fg = hl.c.black, bg = hl.c.dark_yellow },
     IncSearch = { fg = hl.c.yellow, bg = hl.c.comment_grey },
     LineNr = { fg = hl.c.gutter_fg_grey },
-    CursorLineNr = { fg = hl.c.blue, bg = hl.c.black, gui = 'bold' },
-    MatchParen = { fg = hl.c.purple, bg = hl.c.black, gui = 'underline,bold', cterm = 'underline,bold' },
-    ModeMsg = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
-    MoreMsg = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
+    CursorLineNr = { fg = hl.c.blue, bg = hl.c.black, style = 'bold' },
+    MatchParen = { fg = hl.c.purple, bg = hl.c.black, style = 'underline,bold' },
+    ModeMsg = { fg = hl.c.white, style = 'bold' },
+    MoreMsg = { fg = hl.c.white, style = 'bold' },
     NonText = { fg = hl.c.special_grey },
     Pmenu = { bg = hl.c.menu_grey },
     PmenuSel = { fg = hl.c.black, bg = hl.c.dark_blue },
     PmenuSbar = { bg = hl.c.special_grey },
     PmenuThumb = { bg = hl.c.fg },
     Question = { fg = hl.c.red },
-    QuickFixLine = { fg = hl.c.black, bg = hl.c.yellow },
+    QuickFixLine = { fg = hl.c.blellow },
     SpecialKey = { fg = hl.c.special_grey },
     -- if vim.fn.has("gui_running") then
-    SpellBad = { fg = hl.c.dark_red,   gui = 'underline', cterm = 'underline' },
-    SpellCap = { fg = hl.c.green,      gui = 'underline', cterm = 'underline' },
-    SpellLocal = { fg = hl.c.dark_green, gui = 'underline', cterm = 'underline' },
-    SpellRare = { fg = hl.c.red,        gui = 'underline', cterm = 'underline' },
+    SpellBad = { fg = hl.c.dark_red,   style = 'underline' },
+    SpellCap = { fg = hl.c.green,      style = 'underline' },
+    SpellLocal = { fg = hl.c.dark_green, style = 'underline' },
+    SpellRare = { fg = hl.c.red,        style = 'underline' },
     -- end
     StatusLine = { fg = hl.c.fg, bg = hl.c.cursor_grey },
     StatusLineNC = { fg = hl.c.comment_grey },
@@ -75,7 +97,7 @@ hl.common = {
     StatusLineTermNC = { fg = hl.c.comment_grey },
     TabLine = { fg = hl.c.comment_grey, bg = hl.c.black },
     TabLineFill = { },
-    TabLineSel = { fg = hl.c.black, bg = hl.c.dark_blue, gui = 'bold', cterm = 'bold' },
+    TabLineSel = { fg = hl.c.black, bg = hl.c.dark_blue, style = 'bold' },
     Terminal = { fg = hl.c.fg, bg = hl.c.black },
     Title = { fg = hl.c.dark_blue },
     Visual = { fg = hl.c.visual_black, bg = hl.c.visual_grey },
@@ -83,10 +105,10 @@ hl.common = {
     WarningMsg = { fg = hl.c.yellow },
     WildMenu = { fg = hl.c.black, bg = hl.c.blue },
     FloatBorder = { fg = hl.c.comment_grey },
-    Underlined = { fg = hl.c.dark_cyan, gui = 'underline', cterm = 'underline' },
+    Underlined = { fg = hl.c.dark_cyan, style = 'underline' },
     Ignore = { },
-    Error = { fg = hl.c.dark_red, bg = hl.c.black, gui = 'bold', cterm = 'bold' },
-    Todo = { fg = hl.c.dark_yellow, bg = hl.c.bg, gui = 'bold', cterm = 'bold' },
+    Error = { fg = hl.c.dark_red, bg = hl.c.black, style = 'bold' },
+    Todo = { fg = hl.c.dark_yellow, bg = hl.c.bg, style = 'bold' },
     Debug = { fg = hl.c.yellow },
     debugPC = { bg = hl.cspecial_grey },
     debugBreakpoint = { fg = hl.c.black, bg = hl.c.red },
@@ -121,7 +143,7 @@ hl.syntax = {
     SpecialChar = { fg = hl.c.cyan },
     Tag = { fg = hl.c.cyan },
     Delimiter = { fg = hl.c.cyan },
-    Comment = { fg = hl.c.comment_grey, gui = 'italic', cterm = 'italic' },
+    Comment = { fg = hl.c.comment_grey, style = 'italic' },
     SpecialComment = { fg = hl.c.comment_grey },
 }
 
@@ -131,7 +153,7 @@ hl.ts = {
     TSAttribute = { fg = hl.c.cyan },
     TSBoolean = { fg = hl.c.dark_yellow },
     TSCharacter = { fg = hl.c.yellow },
-    TSComment = { fg = hl.c.comment_grey, gui = 'italic', cterm = 'italic' },
+    TSComment = { fg = hl.c.comment_grey, style = 'italic' },
     TSConditional = { fg = hl.c.red },
     TSConstant = { fg = hl.c.yellow },
     TSConstBuiltin = { fg = hl.c.green },
@@ -250,7 +272,7 @@ hl.others = {
 
     -- HTML (keep consistent with Markdown, below)
     htmlArg = { fg = hl.c.dark_yellow },
-    htmlBold = { fg = hl.c.dark_yellow, gui = 'bold', cterm = 'bold' },
+    htmlBold = { fg = hl.c.dark_yellow, style = 'bold', cterm = 'bold' },
     htmlEndTag = { fg = hl.c.white },
     htmlH1 = { fg = hl.c.red },
     htmlH2 = { fg = hl.c.red },
@@ -258,8 +280,8 @@ hl.others = {
     htmlH4 = { fg = hl.c.red },
     htmlH5 = { fg = hl.c.red },
     htmlH6 = { fg = hl.c.red },
-    htmlItalic = { fg = hl.c.purple, gui = 'italic', cterm = 'italic' },
-    htmlLink = { fg = hl.c.dark_cyan, gui = 'underline', cterm = 'underline' },
+    htmlItalic = { fg = hl.c.purple, style = 'italic', cterm = 'italic' },
+    htmlLink = { fg = hl.c.dark_cyan, style = 'underline', cterm = 'underline' },
     htmlSpecialChar = { fg = hl.c.dark_yellow },
     htmlSpecialTagName = { fg = hl.c.red },
     htmlTag = { fg = hl.c.white },
@@ -307,12 +329,12 @@ hl.others = {
     jsonBoolean = { fg = hl.c.dark_yellow },
     jsonNumber = { fg = hl.c.dark_yellow },
     jsonQuote = { fg = hl.c.white },
-    jsonMissingCommaError = { fg = hl.c.red, gui = 'reverse' },
-    jsonNoQuotesError = { fg = hl.c.red, gui = 'reverse' },
-    jsonNumError = { fg = hl.c.red, gui = 'reverse' },
+    jsonMissingCommaError = { fg = hl.c.red, style = 'reverse' },
+    jsonNoQuotesError = { fg = hl.c.red, style = 'reverse' },
+    jsonNumError = { fg = hl.c.red, style = 'reverse' },
     jsonString = { fg = hl.c.green },
-    jsonStringSQError = { fg = hl.c.red, gui = 'reverse' },
-    jsonSemicolonError = { fg = hl.c.red, gui = 'reverse' },
+    jsonStringSQError = { fg = hl.c.red, style = 'reverse' },
+    jsonSemicolonError = { fg = hl.c.red, style = 'reverse' },
 
     -- LESS
     lessVariable = { fg = hl.c.purple },
@@ -321,7 +343,7 @@ hl.others = {
 
     -- Markdown (keep consistent with HTML, above)
     markdownBlockquote = { fg = hl.c.comment_grey },
-    markdownBold = { fg = hl.c.dark_yellow, gui = 'bold', cterm = 'bold' },
+    markdownBold = { fg = hl.c.dark_yellow, style = 'bold', cterm = 'bold' },
     markdownCode = { fg = hl.c.green },
     markdownCodeBlock = { fg = hl.c.green },
     markdownCodeDelimiter = { fg = hl.c.green },
@@ -336,13 +358,13 @@ hl.others = {
     markdownId = { fg = hl.c.purple },
     markdownIdDeclaration = { fg = hl.c.blue },
     markdownIdDelimiter = { fg = hl.c.purple },
-    markdownItalic = { fg = hl.c.purple, gui = 'italic', cterm = 'italic' },
+    markdownItalic = { fg = hl.c.purple, style = 'italic', cterm = 'italic' },
     markdownLinkDelimiter = { fg = hl.c.purple },
     markdownLinkText = { fg = hl.c.dark_blue },
     markdownListMarker = { fg = hl.c.red },
     markdownOrderedListMarker = { fg = hl.c.red },
     markdownRule = { fg = hl.c.comment_grey },
-    markdownUrl = { fg = hl.c.dark_cyan, gui = 'underline', cterm = 'underline' },
+    markdownUrl = { fg = hl.c.dark_cyan, style = 'underline', cterm = 'underline' },
 
     -- Ruby
     rubyBlockParameter = { fg = hl.c.red },
@@ -369,9 +391,9 @@ hl.others = {
     typescriptBraces = { fg = hl.c.white },
 
     -- easymotion/vim-easymotion
-    EasyMotionTarget = { fg = hl.c.red, gui = 'bold', cterm = 'bold' },
-    EasyMotionTarget2First = { fg = hl.c.yellow, gui = 'bold', cterm = 'bold' },
-    EasyMotionTarget2Second = { fg = hl.c.dark_yellow, gui = 'bold', cterm = 'bold' },
+    EasyMotionTarget = { fg = hl.c.red, style = 'bold', cterm = 'bold' },
+    EasyMotionTarget2First = { fg = hl.c.yellow, style = 'bold', cterm = 'bold' },
+    EasyMotionTarget2Second = { fg = hl.c.dark_yellow, style = 'bold', cterm = 'bold' },
     EasyMotionShade = { fg = hl.c.comment_grey },
 
     -- mhinz/vim-signify
@@ -388,16 +410,16 @@ hl.others = {
     mkdDelimiter = { fg = hl.c.purple },
     mkdHeading = { fg = hl.c.red },
     mkdLink = { fg = hl.c.blue },
-    mkdURL = { fg = hl.c.cyan, gui = 'underline', cterm = 'underline' },
+    mkdURL = { fg = hl.c.cyan, style = 'underline', cterm = 'underline' },
 
     -- tpope/vim-fugitive
     diffAdded = { fg = hl.c.green },
     diffRemoved = { fg = hl.c.red },
-    diffFile = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
-    diffFileId = { fg = hl.c.blue, gui = 'bold,reverse', cterm = 'bold,reverse' },
-    diffNewFile = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
-    diffOldFile = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
-    diffIndexLine = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
+    diffFile = { fg = hl.c.white, style = 'bold', cterm = 'bold' },
+    diffFileId = { fg = hl.c.blue, style = 'bold,reverse', cterm = 'bold,reverse' },
+    diffNewFile = { fg = hl.c.white, style = 'bold', cterm = 'bold' },
+    diffOldFile = { fg = hl.c.white, style = 'bold', cterm = 'bold' },
+    diffIndexLine = { fg = hl.c.white, style = 'bold', cterm = 'bold' },
     diffLine = { fg = hl.c.purple },
     diffNoEOL = { fg = hl.c.purple },
     diffSubname = { fg = hl.c.white },
@@ -439,22 +461,22 @@ hl.after = function()
     vim.cmd('hi link gitcommitUnmergedArrow gitcommitUnmergedFile')
 
     -- Neovim terminal colors
-    vim.g.terminal_color_0  = hl.c.black.gui
-    vim.g.terminal_color_1  = hl.c.red.gui
-    vim.g.terminal_color_2  = hl.c.green.gui
-    vim.g.terminal_color_3  = hl.c.yellow.gui
-    vim.g.terminal_color_4  = hl.c.blue.gui
-    vim.g.terminal_color_5  = hl.c.purple.gui
-    vim.g.terminal_color_6  = hl.c.cyan.gui
-    vim.g.terminal_color_7  = hl.c.white.gui
-    vim.g.terminal_color_8  = hl.c.visual_grey.gui
-    vim.g.terminal_color_9  = hl.c.dark_red.gui
-    vim.g.terminal_color_10 = hl.c.dark_green.gui
-    vim.g.terminal_color_11 = hl.c.dark_yellow.gui
-    vim.g.terminal_color_12 = hl.c.dark_blue.gui
-    vim.g.terminal_color_13 = hl.c.dark_purple.gui
-    vim.g.terminal_color_14 = hl.c.dark_cyan.gui
-    vim.g.terminal_color_15 = hl.c.comment_grey.gui
+    vim.g.terminal_color_0  = hl.c.black
+    vim.g.terminal_color_1  = hl.c.red
+    vim.g.terminal_color_2  = hl.c.green
+    vim.g.terminal_color_3  = hl.c.yellow
+    vim.g.terminal_color_4  = hl.c.blue
+    vim.g.terminal_color_5  = hl.c.purple
+    vim.g.terminal_color_6  = hl.c.cyan
+    vim.g.terminal_color_7  = hl.c.white
+    vim.g.terminal_color_8  = hl.c.visual_grey
+    vim.g.terminal_color_9  = hl.c.dark_red
+    vim.g.terminal_color_10 = hl.c.dark_green
+    vim.g.terminal_color_11 = hl.c.dark_yellow
+    vim.g.terminal_color_12 = hl.c.dark_blue
+    vim.g.terminal_color_13 = hl.c.dark_purple
+    vim.g.terminal_color_14 = hl.c.dark_cyan
+    vim.g.terminal_color_15 = hl.c.comment_grey
     vim.g.terminal_color_background = vim.g.terminal_color_0
     vim.g.terminal_color_foreground = vim.g.terminal_color_7
 

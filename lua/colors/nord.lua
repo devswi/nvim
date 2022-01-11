@@ -1,235 +1,260 @@
-NORD = {
-    nord0_gui = '#2E3440',
-    nord1_gui = '#3B4252',
-    nord2_gui = '#434C5E',
-    nord3_gui = '#4C566A',
-    nord3_gui_bright = '#616E88',
-    nord4_gui = '#D8DEE9',
-    nord5_gui = '#E5E9F0',
-    nord6_gui = '#ECEFF4',
-    nord7_gui = '#8FBCBB',
-    nord8_gui = '#88C0D0',
-    nord9_gui = '#81A1C1',
-    nord10_gui = '#5E81AC',
-    nord11_gui = '#BF616A',
-    nord12_gui = '#D08770',
-    nord13_gui = '#EBCB8B',
-    nord14_gui = '#A3BE8C',
-    nord15_gui = '#B48EAD',
+local hl = {}
+
+hl.c = {
+    nord0 = '#2E3440',
+    nord1 = '#3B4252',
+    nord2 = '#434C5E',
+    nord3 = '#4C566A',
+    nord3_bright = '#616E88',
+    nord4 = '#D8DEE9',
+    nord5 = '#E5E9F0',
+    nord6 = '#ECEFF4',
+    nord7 = '#8FBCBB',
+    nord8 = '#88C0D0',
+    nord9 = '#81A1C1',
+    nord10 = '#5E81AC',
+    nord11 = '#BF616A',
+    nord12 = '#D08770',
+    nord13 = '#EBCB8B',
+    nord14 = '#A3BE8C',
+    nord15 = '#B48EAD',
     none = 'NONE',
     sidebar = '#2E3440',
     float = '#2E3440',
     cursorlinefg = '#3B4252',
 }
 
-local hl = {}
-
-hl.c = {
-    bg = { gui = NORD.nord0_gui, cterm = '233', cterm16 = 'NONE' },
-    fg = { gui = NORD.nord4_gui, cterm = '253', cterm16 = '7' },
-    red = { gui = '#F48FB1', cterm = '204', cterm16 = '1' },
-    dark_red = { gui = '#F02E6E', cterm = '203', cterm16 = '9' },
-    green = { gui = '#A1EFD3', cterm = '120', cterm16 = '2' },
-    dark_green = { gui = '#62d196', cterm = '119', cterm16 = '10' },
-    yellow = { gui = '#ffe6b3', cterm = '228', cterm16 = '3' },
-    dark_yellow = { gui = '#F2B482', cterm = '215', cterm16 = '11' },
-    blue = { gui = '#91ddff', cterm = '159', cterm16 = '4' },
-    dark_blue = { gui = '#65b2ff', cterm = '75', cterm16 = '12' },
-    purple = { gui = '#d4bfff', cterm = '141', cterm16 = '5' },
-    dark_purple = { gui = '#a37acc', cterm = '135', cterm16 = '13' },
-    cyan = { gui = '#87DFEB', cterm = '122', cterm16 = '6' },
-    dark_cyan = { gui = '#63f2f1', cterm = '121', cterm16 = '14' },
-    white = { gui = '#E4E4E4', cterm = '145', cterm16 = '7' },
-    black = { gui = '#100E23', cterm = '232', cterm16 = '0' },
-    visual_black = { gui = 'NONE', cterm = 'NONE', cterm16 = '0'  },
-    comment_grey = { gui = '#8A889D', cterm = '252', cterm16 = '15' },
-    gutter_fg_grey = { gui = '#656A7c', cterm = '238', cterm16 = '15' },
-    cursor_grey = { gui = '#100E23', cterm = '236', cterm16 = '8' },
-    visual_grey = { gui = '#56687E', cterm = '237', cterm16 = '15' },
-    menu_grey = { gui = '#56687E', cterm = '237', cterm16 = '8' },
-    special_grey = { gui = '#D8DEE9', cterm = '238',  cterm16 = '15' },
-    vertsplit = { gui = '#434C5E', cterm = '59', cterm16 = '15' },
-}
-
 hl.common = {
-    Normal = { fg = hl.c.fg, bg = hl.c.bg },
-    Conceal = { },
-    Cursor = { fg = hl.c.special_grey, bg = hl.c.blue },
-    CursorIM = { },
-    CursorLine = { bg = hl.c.cursor_grey },
-    CursorColumn = { bg = hl.c.cursor_grey },
-    ColorColumn = { bg = hl.c.cursor_grey },
-    Directory = { fg = hl.c.purple },
-    DiffAdd = { fg = hl.c.bg, bg = hl.c.dark_green },
-    DiffDelete = { fg = hl.c.bg, bg = hl.c.red  },
-    DiffChange = { fg = hl.c.yellow, gui = 'underline', cterm = 'underline' },
-    DiffText = { fg = hl.c.bg, bg = hl.c.dark_yellow, gui = 'bold' },
-    EndOfBuffer = { fg = hl.c.gutter_fg_grey },
-    ErrorMsg = { fg = hl.c.dark_red },
-    VertSplit = { fg = hl.c.vertsplit },
-    Folded = { fg = hl.c.comment_grey },
-    FoldColumn = { },
-    SignColumn = { fg = hl.c.fg, bg = hl.c.bg },
-    Search = { fg = hl.c.black, bg = hl.c.dark_yellow },
-    IncSearch = { fg = hl.c.yellow, bg = hl.c.comment_grey },
-    LineNr = { fg = hl.c.gutter_fg_grey },
-    CursorLineNr = { fg = hl.c.blue, bg = hl.c.black, gui = 'bold' },
-    MatchParen = { fg = hl.c.purple, bg = hl.c.black, gui = 'underline,bold', cterm = 'underline,bold' },
-    ModeMsg = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
-    MoreMsg = { fg = hl.c.white, gui = 'bold', cterm = 'bold' },
-    NonText = { fg = hl.c.special_grey },
-    Pmenu = { bg = hl.c.menu_grey },
-    PmenuSel = { fg = hl.c.black, bg = hl.c.dark_blue },
-    PmenuSbar = { bg = hl.c.special_grey },
-    PmenuThumb = { bg = hl.c.fg },
-    Question = { fg = hl.c.red },
-    QuickFixLine = { fg = hl.c.black, bg = hl.c.yellow },
-    SpecialKey = { fg = hl.c.special_grey },
-    SpellBad = { fg = hl.c.dark_red,   gui = 'underline', cterm = 'underline' },
-    SpellCap = { fg = hl.c.green,      gui = 'underline', cterm = 'underline' },
-    SpellLocal = { fg = hl.c.dark_green, gui = 'underline', cterm = 'underline' },
-    SpellRare = { fg = hl.c.red,        gui = 'underline', cterm = 'underline' },
-    StatusLine = { fg = hl.c.fg, bg = hl.c.cursor_grey },
-    StatusLineNC = { fg = hl.c.comment_grey },
-    StatusLineTerm = { fg = hl.c.fg, bg = hl.c.cursor_grey },
-    StatusLineTermNC = { fg = hl.c.comment_grey },
-    TabLine = { fg = hl.c.comment_grey, bg = hl.c.black },
-    TabLineFill = { },
-    TabLineSel = { fg = hl.c.black, bg = hl.c.dark_blue, gui = 'bold', cterm = 'bold' },
-    Terminal = { fg = hl.c.fg, bg = hl.c.black },
-    Title = { fg = hl.c.dark_blue },
-    Visual = { fg = hl.c.visual_black, bg = hl.c.visual_grey },
-    VisualNOS = { bg = hl.c.visual_grey },
-    WarningMsg = { fg = hl.c.yellow },
-    WildMenu = { fg = hl.c.black, bg = hl.c.blue },
-    FloatBorder = { fg = hl.c.comment_grey },
-    Underlined = { fg = hl.c.dark_cyan, gui = 'underline', cterm = 'underline' },
-    Ignore = { },
-    Error = { fg = hl.c.dark_red, bg = hl.c.black, gui = 'bold', cterm = 'bold' },
-    Todo = { fg = hl.c.dark_yellow, bg = hl.c.bg, gui = 'bold', cterm = 'bold' },
-    Debug = { fg = hl.c.yellow },
-    debugPC = { bg = hl.cspecial_grey },
-    debugBreakpoint = { fg = hl.c.black, bg = hl.c.red },
+    NormalFloat =      { fg = hl.c.nord4, bg = hl.c.float }, -- normal text and background color
+    FloatBorder =      { fg = hl.c.nord4, bg = hl.c.float }, -- normal text and background color
+    ColorColumn =      { fg = hl.c.none, bg = hl.c.nord1 }, --  used for the columns set with 'colorcolumn'
+    Conceal =          { fg = hl.c.nord1 }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Cursor =           { fg = hl.c.nord4, bg = hl.c.none, style = 'reverse' }, -- the character under the cursor
+    CursorIM =         { fg = hl.c.nord5, bg = hl.c.none, style = 'reverse' }, -- like Cursor, but used when in IME mode
+    Directory =        { fg = hl.c.nord7, bg = hl.c.none }, -- directory names (and other special names in listings)
+    DiffAdd =          { fg = hl.c.nord14, bg = hl.c.none, style = 'reverse' }, -- diff mode: Added line
+    DiffChange =       { fg = hl.c.nord13, bg = hl.c.none, style = 'reverse' }, --  diff mode: Changed line
+    DiffDelete =       { fg = hl.c.nord11, bg = hl.c.none, style = 'reverse' }, -- diff mode: Deleted line
+    DiffText =         { fg = hl.c.nord15, bg = hl.c.none, style = 'reverse' }, -- diff mode: Changed text within a changed line
+    EndOfBuffer =      { fg = hl.c.nord1 },
+    ErrorMsg =         { fg = hl.c.none },
+    Folded =           { fg = hl.c.nord3_bright, bg = hl.c.none, style = 'italic' },
+    FoldColumn =       { fg = hl.c.nord7 },
+    IncSearch =        { fg = hl.c.nord6, bg = hl.c.nord10 },
+    LineNr =           { fg = hl.c.nord3_bright },
+    CursorLineNr =     { fg = hl.c.nord4 },
+    MatchParen =       { fg = hl.c.nord15, bg = hl.c.none, style = 'bold' },
+    ModeMsg =          { fg = hl.c.nord4 },
+    MoreMsg =          { fg = hl.c.nord4 },
+    NonText =          { fg = hl.c.nord1 },
+    Pmenu =            { fg = hl.c.nord4, bg = hl.c.nord2 },
+    PmenuSel =         { fg = hl.c.nord4, bg = hl.c.nord10 },
+    PmenuSbar =        { fg = hl.c.nord4, bg = hl.c.nord2 },
+    PmenuThumb =       { fg = hl.c.nord4, bg = hl.c.nord4 },
+    Question =         { fg = hl.c.nord14 },
+    QuickFixLine =     { fg = hl.c.nord4, bg = hl.c.none, style = 'reverse' },
+    qfLineNr =         { fg = hl.c.nord4, bg = hl.c.none, style = 'reverse' },
+    Search =           { fg = hl.c.nord10, bg = hl.c.nord6, style = 'reverse' },
+    SignColumn =       { fg = hl.c.nord4, bg = hl.c.nord0 },
+    SpecialKey =       { fg = hl.c.nord9 },
+    SpellBad =         { fg = hl.c.nord11, bg = hl.c.none, style = 'italic,undercurl' },
+    SpellCap =         { fg = hl.c.nord7, bg = hl.c.none, style = 'italic,undercurl' },
+    SpellLocal =       { fg = hl.c.nord8, bg = hl.c.none, style = 'italic,undercurl' },
+    SpellRare =        { fg = hl.c.nord9, bg = hl.c.none, style = 'italic,undercurl' },
+    StatusLine =       { fg = hl.c.nord4, bg = hl.c.nord2 },
+    StatusLineNC =     { fg = hl.c.nord4, bg = hl.c.nord1 },
+    StatusLineTerm =   { fg = hl.c.nord4, bg = hl.c.nord2 },
+    StatusLineTermNC = { fg = hl.c.nord4, bg = hl.c.nord1 },
+    TabLineFill =      { fg = hl.c.nord4, bg = hl.c.none },
+    TablineSel =       { fg = hl.c.nord1, bg = hl.c.nord9 },
+    Tabline =          { fg = hl.c.nord4, bg = hl.c.nord1 },
+    Title =            { fg = hl.c.nord14, bg = hl.c.none, style = 'bold' },
+    Visual =           { fg = hl.c.none, bg = hl.c.nord2 },
+    VisualNOS = { fg = hl.c.none, bg = hl.c.nord2 },
+    VertSplit = { fg = hl.c.nord0 },
+    WarningMsg = { fg = hl.c.nord15 },
+    WildMenu = { fg = hl.c.nord12, bg = hl.c.none, style = 'bold' },
+    CursorColumn = { fg = hl.c.none, bg = hl.c.cursorlinefg },
+    CursorLine = { fg = hl.c.none, bg = hl.c.cursorlinefg },
+    ToolbarLine = { fg = hl.c.nord4, bg = hl.c.nord1 },
+    ToolbarButton = { fg = hl.c.nord4, bg = hl.c.none, style = 'bold' },
+    Normal = { fg = hl.c.nord4, bg = hl.c.nord0 },
+    NormalMode ={ fg = hl.c.nord4, bg = hl.c.none, style = 'reverse' },
+    InsertMode = { fg = hl.c.nord14, bg = hl.c.none, style = 'reverse' },
+    ReplacelMode = { fg = hl.c.nord11, bg = hl.c.none, style = 'reverse' },
+    VisualMode = { fg = hl.c.nord9, bg = hl.c.none, style = 'reverse' },
+    CommandMode = { fg = hl.c.nord4, bg = hl.c.none, style = 'reverse' },
+    Warnings = { fg = hl.c.nord15 },
+
+    healthError = { fg = hl.c.nord11 },
+    healthSuccess = { fg = hl.c.nord14 },
+    healthWarning = { fg = hl.c.nord15 },
+
+    -- dashboard
+    DashboardShortCut = { fg = hl.c.nord7 },
+    DashboardHeader = { fg = hl.c.nord9 },
+    DashboardCenter = { fg = hl.c.nord8 },
+    DashboardFooter = { fg = hl.c.nord14, style = "italic" },
+
+    -- BufferLine
+    BufferLineIndicatorSelected = { fg = hl.c.nord0 },
+    BufferLineFill = { bg = hl.c.nord0 },
 }
 
 hl.syntax = {
-    Constant = { fg = hl.c.yellow },
-    String = { fg = hl.c.yellow },
-    Character = { fg = hl.c.yellow },
-    Number = { fg = hl.c.dark_yellow },
-    Boolean = { fg = hl.c.dark_yellow },
-    Float = { fg = hl.c.dark_yellow },
-    Identifier = { fg = hl.c.purple },
-    Function = { fg = hl.c.red },
-    Keyword = { fg = hl.c.red },
-    Statement = { fg = hl.c.red },
-    Conditional = { fg = hl.c.red },
-    Label = { fg = hl.c.dark_blue },
-    Operator = { fg = hl.c.dark_cyan },
-    Repeat = { fg = hl.c.dark_cyan },
-    Exception = { fg = hl.c.dark_blue },
-    PreProc = { fg = hl.c.green },
-    Include = { fg = hl.c.green },
-    Define = { fg = hl.c.green },
-    Macro = { fg = hl.c.green },
-    PreCondit = { fg = hl.c.green },
-    Type = { fg = hl.c.blue },
-    StorageClass = { fg = hl.c.blue },
-    Structure = { fg = hl.c.blue },
-    Typedef = { fg = hl.c.blue },
-    Special = { fg = hl.c.cyan },
-    SpecialChar = { fg = hl.c.cyan },
-    Tag = { fg = hl.c.cyan },
-    Delimiter = { fg = hl.c.cyan },
-    Comment = { fg = hl.c.comment_grey, gui = 'italic', cterm = 'italic' },
-    SpecialComment = { fg = hl.c.comment_grey },
+    Type = { fg = hl.c.nord9 }, -- int, long, char, etc.
+    StorageClass = { fg = hl.c.nord9 }, -- static, register, volatile, etc.
+    Structure = { fg = hl.c.nord9 }, -- struct, union, enum, etc.
+    Constant = { fg = hl.c.nord4 }, -- any constant
+    Character = { fg = hl.c.nord14 }, -- any character constant: 'c', '\n'
+    Number = { fg = hl.c.nord15 }, -- a number constant: 5
+    Boolean = { fg = hl.c.nord9 }, -- a boolean constant: TRUE, false
+    Float = { fg = hl.c.nord15 }, -- a floating point constant: 2.3e10
+    Statement = { fg = hl.c.nord9 }, -- any statement
+    Label = { fg = hl.c.nord9 }, -- case, default, etc.
+    Operator = { fg = hl.c.nord9 }, -- sizeof", "+", "*", etc.
+    Exception = { fg = hl.c.nord9 }, -- try, catch, throw
+    PreProc = { fg = hl.c.nord9 }, -- generic Preprocessor
+    Include = { fg = hl.c.nord9 }, -- preprocessor #include
+    Define = { fg = hl.c.nord9 }, -- preprocessor #define
+    Macro = { fg = hl.c.nord9 }, -- same as Define
+    Typedef = { fg = hl.c.nord9 }, -- A typedef
+    PreCondit = { fg = hl.c.nord13 }, -- preprocessor #if, #else, #endif, etc.
+    Special = { fg = hl.c.nord4 }, -- any special symbol
+    SpecialChar = { fg = hl.c.nord13 }, -- special character in a constant
+    Tag = { fg = hl.c.nord4 }, -- you can use CTRL-] on this
+    Delimiter = { fg = hl.c.nord6 }, -- character that needs attention like , or .
+    SpecialComment = { fg = hl.c.nord8 }, -- special things inside a comment
+    Debug = { fg = hl.c.nord11 }, -- debugging statements
+    Underlined = { fg = hl.c.nord14, bg = hl.c.none, style = 'underline' }, -- text that stands out, HTML links
+    Ignore = { fg = hl.c.nord1 }, -- left blank, hidden
+    Error = { fg = hl.c.nord11, bg = hl.c.none, style = 'bold,underline' }, -- any erroneous construct
+    Todo = { fg = hl.c.nord13, bg = hl.c.none, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Conceal =        { fg = hl.c.none, bg = hl.c.nord0 },
+
+    htmlLink = { fg = hl.c.nord14, style = "underline" },
+    htmlH1 = { fg = hl.c.nord8, style = "bold" },
+    htmlH2 = { fg = hl.c.nord11, style = "bold" },
+    htmlH3 = { fg = hl.c.nord14, style = "bold" },
+    htmlH4 = { fg = hl.c.nord15, style = "bold" },
+    htmlH5 = { fg = hl.c.nord9, style = "bold" },
+    markdownH1 = { fg = hl.c.nord8, style = "bold" },
+    markdownH2 = { fg = hl.c.nord11, style = "bold" },
+    markdownH3 = { fg = hl.c.nord14, style = "bold" },
+    markdownH1Delimiter = { fg = hl.c.nord8 },
+    markdownH2Delimiter = { fg = hl.c.nord11 },
+    markdownH3Delimiter = { fg = hl.c.nord14 },
+
+    Conditional = { fg = hl.c.nord9, bg = hl.c.none, style = 'italic' }, -- italic if, then, else, endif, switch, etc.
+    Keyword = { fg = hl.c.nord9, bg = hl.c.none, style = 'italic' }, -- italic for, do, while, etc.
+    Repeat  = { fg = hl.c.nord9, bg = hl.c.none, style = 'italic' }, -- italic any other keyword
+    Comment = { fg = hl.c.nord3_bright, bg = hl.c.none, style = 'italic' }, -- italic comments
+    Function = { fg = hl.c.nord8, bg = hl.c.none, style = 'italic' }, -- italic funtion names
+    Identifier = { fg = hl.c.nord9, bg = hl.c.none, style = 'italic' }, -- any variable name
+    String = { fg = hl.c.nord14, bg = hl.c.none, style= 'italic' }, -- any string
 }
 
 -- TS highlights
 hl.ts = {
-    TSAnnotation = { fg = hl.c.fg },
-    TSAttribute = { fg = hl.c.cyan },
-    TSBoolean = { fg = hl.c.dark_yellow },
-    TSCharacter = { fg = hl.c.yellow },
-    TSComment = { fg = hl.c.comment_grey, gui = 'italic', cterm = 'italic' },
-    TSConditional = { fg = hl.c.red },
-    TSConstant = { fg = hl.c.yellow },
-    TSConstBuiltin = { fg = hl.c.green },
-    TSConstMacro = { fg = hl.c.green },
-    TSConstructor = { fg = hl.c.dark_blue },
-    TSError = { fg = hl.c.red },
-    TSException = { fg = hl.c.purple },
-    TSField = { fg = hl.c.purple },
-    TSFloat = { fg = hl.c.dark_yellow },
-    TSFunction = { fg = hl.c.red },
-    TSFuncBuiltin = { fg = hl.c.cyan },
-    TSFuncMacro = { fg = hl.c.green },
-    TSInclude = { fg = hl.c.green },
-    TSKeyword = { fg = hl.c.red },
-    TSKeywordFunction = { fg = hl.c.red },
-    TSKeywordOperator = { fg = hl.c.dark_cyan },
-    TSLabel = { fg = hl.c.blue },
-    TSMethod = { fg = hl.c.red },
-    TSNamespace = { fg = hl.c.fg },
-    TSNone = { fg = hl.c.fg },
-    TSNumber = { fg = hl.c.dark_yellow },
-    TSOperator = { fg = hl.c.dark_cyan },
-    TSParameter = { fg = hl.c.purple },
-    TSParameterReference = { fg = hl.c.purple },
-    TSProperty = { fg = hl.c.purple },
-    TSPunctDelimiter = { fg = hl.c.dark_cyan },
-    TSPunctBracket = { fg = hl.c.cyan },
-    TSPunctSpecial = { fg = hl.c.cyan },
-    TSRepeat = { fg = hl.c.dark_cyan },
-    TSString = { fg = hl.c.yellow },
-    TSStringRegex = { fg = hl.c.cyan },
-    TSStringEscape = { fg = hl.c.cyan },
-    TSSymbol = { fg = hl.c.cyan },
-    TSTag = { fg = hl.c.dark_red },
-    TSTagDelimiter = { fg = hl.c.comment_grey },
-    TSText = { fg = hl.c.fg },
-    TSStrong = { fg = hl.c.fg },
-    TSEmphasis = { fg = hl.c.fg },
-    TSUnderline = { fg = hl.c.fg },
-    TSStrike = { fg = hl.c.fg },
-    TSTitle = { fg = hl.c.fg },
-    TSLiteral = { fg = hl.c.green },
-    TSURI = { fg = hl.c.yellow },
-    TSMath = { fg = hl.c.fg },
-    TSTextReference = { fg = hl.c.fg },
-    TSEnviroment = { fg = hl.c.fg },
-    TSEnviromentName = { fg = hl.c.fg },
-    TSNote = { fg = hl.c.fg },
-    TSWarning = { fg = hl.c.fg },
-    TSDanger = { fg = hl.c.fg },
-    TSType = { fg = hl.c.blue },
-    TSTypeBuiltin = { fg = hl.c.dark_blue },
-    TSVariable = { fg = hl.c.fg },
-    TSVariableBuiltin = { fg = hl.c.cyan }
+    TSAnnotation =        { fg = hl.c.nord12 },    -- For C++/Dart attributes, annotations thatcan be attached to the code to denote some kind of meta information.
+    TSCharacter=          { fg = hl.c.nord14 },    -- For characters.
+    TSConstructor =       { fg = hl.c.nord9 }, -- For constructor calls and definitions: `=                                                                          { }` in Lua, and Java constructors.
+    TSConstant =          { fg = hl.c.nord13 },    -- For constants
+    TSFloat =             { fg = hl.c.nord15 },    -- For floats
+    TSNumber =            { fg = hl.c.nord15 },    -- For all number
+    TSString =            { fg = hl.c.nord14 },    -- For strings.
+
+    TSAttribute =         { fg = hl.c.nord15 },    -- (unstable) TODO: docs
+    TSBoolean=            { fg = hl.c.nord9 },    -- For booleans.
+    TSConstBuiltin =      { fg = hl.c.nord7 },    -- For constant that are built in the language: `nil` in Lua.
+    TSConstMacro =        { fg = hl.c.nord7 },    -- For constants that are defined by macros: `NULL` in C.
+    TSError =             { fg = hl.c.nord11 },    -- For syntax/parser errors.
+    TSException =         { fg = hl.c.nord15 },    -- For exception related keywords.
+    TSField =             { fg = hl.c.nord4 }, -- For fields.
+    TSFuncMacro =         { fg = hl.c.nord7 },    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+    TSInclude =           { fg = hl.c.nord9 },    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+    TSLabel =             { fg = hl.c.nord15 }, -- For labels: `label:` in C and `:label:` in Lua.
+    TSNamespace =         { fg = hl.c.nord4},    -- For identifiers referring to modules and namespaces.
+    TSOperator =          { fg = hl.c.nord9 }, -- For any operator: `+`, but also `->` and `*` in C.
+    TSParameter =         { fg = hl.c.nord10 }, -- For parameters of a function.
+    TSParameterReference= { fg = hl.c.nord10 },    -- For references to parameters of a function.
+    TSProperty =          { fg = hl.c.nord10 }, -- Same as `TSField`.
+    TSPunctDelimiter =    { fg = hl.c.nord8 }, -- For delimiters ie: `.`
+    TSPunctBracket =      { fg = hl.c.nord8 }, -- For brackets and parens.
+    TSPunctSpecial =      { fg = hl.c.nord8 }, -- For special punctutation that does not fall in the catagories before.
+    TSStringRegex =       { fg = hl.c.nord7 }, -- For regexes.
+    TSStringEscape =      { fg = hl.c.nord15 }, -- For escape characters within a string.
+    TSSymbol =            { fg = hl.c.nord15 },    -- For identifiers referring to symbols or atoms.
+    TSType =              { fg = hl.c.nord9 },    -- For types.
+    TSTypeBuiltin =       { fg = hl.c.nord9 },    -- For builtin types.
+    TSTag =               { fg = hl.c.nord4 },    -- Tags like html tag names.
+    TSTagDelimiter =      { fg = hl.c.nord15 },    -- Tag delimiter like `<` `>` `/`
+    TSText =              { fg = hl.c.nord4 },    -- For strings considenord11 text in a markup language.
+    TSTextReference =     { fg = hl.c.nord15 }, -- FIXME
+    TSEmphasis =          { fg = hl.c.nord10 },    -- For text to be represented with emphasis.
+    TSUnderline =         { fg = hl.c.nord4, bg = hl.c.none, style = 'underline' },    -- For text to be represented with an underline.
+    TSTitle =             { fg = hl.c.nord10, bg = hl.c.none, style = 'bold' },    -- Text that is part of a title.
+    TSLiteral =           { fg = hl.c.nord4 },    -- Literal text.
+    TSURI =               { fg = hl.c.nord14 },    -- Any URI like a link or email.        TSAnnotation =
+    TSComment=          { fg = hl.c.nord3_bright },
+    TSConditional =     { fg = hl.c.nord9 },
+    TSKeyword =         { fg = hl.c.nord9 }, -- For keywords that don't fall in previous categories.
+    TSRepeat =          { fg = hl.c.nord9 },    -- For keywords related to loops.
+    TSKeywordFunction = { fg = hl.c.nord8 },
+    TSFunction =        { fg = hl.c.nord8 },    -- For fuction (calls and definitions).
+    TSMethod =          { fg = hl.c.nord7 },    -- For method calls and definitions.
+    TSFuncBuiltin =     { fg = hl.c.nord8 },
+    TSVariable =        { fg = hl.c.nord4 }, -- Any variable name that does not have another highlight.
+    TSVariableBuiltin = { fg = hl.c.nord4 },
 }
 
+local time
 -- LSP colors
 hl.lsp = {
-    LspCxxHlGroupEnumConstant = { fg = hl.c.dark_yellow },
-    LspCxxHlGroupMemberVariable = { fg = hl.c.dark_yellow },
-    LspCxxHlGroupNamespace = { fg = hl.c.blue },
-    LspCxxHlSkippedRegion = { fg = hl.c.comment_grey },
-    LspCxxHlSkippedRegionBeginEnd = { fg = hl.c.red },
-    LspDiagnosticsDefaultError = { fg = hl.c.red },
-    LspDiagnosticsDefaultWarning = { fg = hl.c.yellow },
-    LspDiagnosticsDefaultInformation = { fg = hl.c.blue },
-    LspDiagnosticsDefaultHint = { fg = hl.c.purple },
-    LspDiagnosticsSignError = { fg = hl.c.red },
-    LspDiagnosticsSignWarning = { fg = hl.c.yellow },
-    LspDiagnosticsSignInformation = { fg = hl.c.blue },
-    LspDiagnosticsSignHint = { fg = hl.c.purple },
-    LspDiagnosticsUnderlineError = { fg = hl.c.red, gui = 'underline', cterm = 'underline' },
-    LspDiagnosticsUnderlineWarning = { fg = hl.c.yellow, gui = 'underline', cterm = 'underline' },
-    LspDiagnosticsUnderlineInformation = { fg = hl.c.blue, gui = 'underline', cterm = 'underline' },
-    LspDiagnosticsUnderlineHint = { fg = hl.c.purple, gui = 'underline', cterm = 'underline' },
-    LspReferenceText = { fg = hl.c.fg, gui = 'underline', cterm = 'underline' },
-    LspReferenceWrite = { fg = hl.c.fg, gui = 'underline', cterm = 'underline' },
-    LspReferenceRead = { fg = hl.c.fg, gui = 'underline', cterm = 'underline' },
+    LspDiagnosticsDefaultError =           { fg = hl.c.nord11 }, -- used for "Error" diagnostic virtual text
+    LspDiagnosticsSignError =              { fg = hl.c.nord11 }, -- used for "Error" diagnostic signs in sign column
+    LspDiagnosticsFloatingError =          { fg = hl.c.nord11 }, -- used for "Error" diagnostic messages in the diagnostics float
+    LspDiagnosticsVirtualTextError =       { fg = hl.c.nord11 }, -- Virtual text "Error"
+    LspDiagnosticsUnderlineError =         { style = 'undercurl', sp = hl.c.nord11 }, -- used to underline "Error" diagnostics.
+    LspDiagnosticsDefaultWarning =         { fg = hl.c.nord15 }, -- used for "Warning" diagnostic signs in sign column
+    LspDiagnosticsSignWarning =            { fg = hl.c.nord15 }, -- used for "Warning" diagnostic signs in sign column
+    LspDiagnosticsFloatingWarning =        { fg = hl.c.nord15 }, -- used for "Warning" diagnostic messages in the diagnostics float
+    LspDiagnosticsVirtualTextWarning =     { fg = hl.c.nord15 }, -- Virtual text "Warning"
+    LspDiagnosticsUnderlineWarning =       { style = 'undercurl', sp = hl.c.nord15 }, -- used to underline "Warning" diagnostics.
+    LspDiagnosticsDefaultInformation =     { fg = hl.c.nord10 }, -- used for "Information" diagnostic virtual text
+    LspDiagnosticsSignInformation =        { fg = hl.c.nord10 },  -- used for "Information" diagnostic signs in sign column
+    LspDiagnosticsFloatingInformation =    { fg = hl.c.nord10 }, -- used for "Information" diagnostic messages in the diagnostics float
+    LspDiagnosticsVirtualTextInformation = { fg = hl.c.nord10 }, -- Virtual text "Information"
+    LspDiagnosticsUnderlineInformation =   { style = 'undercurl', sp = hl.c.nord10 }, -- used to underline "Information" diagnostics.
+    LspDiagnosticsDefaultHint =            { fg = hl.c.nord9 },  -- used for "Hint" diagnostic virtual text
+    LspDiagnosticsSignHint =               { fg = hl.c.nord9 }, -- used for "Hint" diagnostic signs in sign column
+    LspDiagnosticsFloatingHint =           { fg = hl.c.nord9 }, -- used for "Hint" diagnostic messages in the diagnostics float
+    LspDiagnosticsVirtualTextHint =        { fg = hl.c.nord9 }, -- Virtual text "Hint"
+    LspDiagnosticsUnderlineHint =          { style = 'undercurl', sp = hl.c.nord10 }, -- used to underline "Hint" diagnostics.
+    LspReferenceText =                     { fg = hl.c.nord4, bg = hl.c.nord1 }, -- used for highlighting "text" references
+    LspReferenceRead =                     { fg = hl.c.nord4, bg = hl.c.nord1 }, -- used for highlighting "read" references
+    LspReferenceWrite =                    { fg = hl.c.nord4, bg = hl.c.nord1 }, -- used for highlighting "write" references
+
+    DiagnosticError            = { link = "LspDiagnosticsDefaultError" },
+    DiagnosticWarn             = { link = "LspDiagnosticsDefaultWarning" },
+    DiagnosticInfo             = { link = "LspDiagnosticsDefaultInformation" },
+    DiagnosticHint             = { link = "LspDiagnosticsDefaultHint" },
+    DiagnosticVirtualTextWarn  = { link = "LspDiagnosticsVirtualTextWarning" },
+    DiagnosticUnderlineWarn    = { link = "LspDiagnosticsUnderlineWarning" },
+    DiagnosticFloatingWarn     = { link = "LspDiagnosticsFloatingWarning" },
+    DiagnosticSignWarn         = { link = "LspDiagnosticsSignWarning" },
+    DiagnosticVirtualTextError = { link = "LspDiagnosticsVirtualTextError" },
+    DiagnosticUnderlineError   = { link = "LspDiagnosticsUnderlineError" },
+    DiagnosticFloatingError    = { link = "LspDiagnosticsFloatingError" },
+    DiagnosticSignError        = { link = "LspDiagnosticsSignError" },
+    DiagnosticVirtualTextInfo  = { link = "LspDiagnosticsVirtualTextInformation" },
+    DiagnosticUnderlineInfo    = { link = "LspDiagnosticsUnderlineInformation" },
+    DiagnosticFloatingInfo     = { link = "LspDiagnosticsFloatingInformation" },
+    DiagnosticSignInfo         = { link = "LspDiagnosticsSignInformation" },
+    DiagnosticVirtualTextHint  = { link = "LspDiagnosticsVirtualTextHint" },
+    DiagnosticUnderlineHint    = { link = "LspDiagnosticsUnderlineHint" },
+    DiagnosticFloatingHint     = { link = "LspDiagnosticsFloatingHint" },
+    DiagnosticSignHint         = { link = "LspDiagnosticsSignHint" },
 }
 
 hl.others = {
@@ -237,6 +262,22 @@ hl.others = {
 }
 
 hl.after = function()
+    vim.g.terminal_color_0 = hl.c.nord1
+    vim.g.terminal_color_1 = hl.c.nord11
+    vim.g.terminal_color_2 = hl.c.nord14
+    vim.g.terminal_color_3 = hl.c.nord13
+    vim.g.terminal_color_4 = hl.c.nord9
+    vim.g.terminal_color_5 = hl.c.nord15
+    vim.g.terminal_color_6 = hl.c.nord8
+    vim.g.terminal_color_7 = hl.c.nord5
+    vim.g.terminal_color_8 = hl.c.nord3
+    vim.g.terminal_color_9 = hl.c.nord11
+    vim.g.terminal_color_10 = hl.c.nord14
+    vim.g.terminal_color_11 = hl.c.nord13
+    vim.g.terminal_color_12 = hl.c.nord9
+    vim.g.terminal_color_13 = hl.c.nord15
+    vim.g.terminal_color_14 = hl.c.nord7
+    vim.g.terminal_color_15 = hl.c.nord6
 end
 
 return hl
