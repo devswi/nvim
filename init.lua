@@ -7,8 +7,9 @@ end
 
 -- Themes
 -- embark
--- nord
-local theme = "nord"
+-- tokyonight
+-- vscode
+local theme = "tokyonight"
 local colors = require("colors")
 colors.set(theme)
 

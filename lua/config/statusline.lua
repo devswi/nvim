@@ -16,7 +16,7 @@ local import_hls = {
     ['Keyword']     = 'fg',
     ['DiffAdd']     = 'bg',
     ['DiffDelete']  = 'bg',
-    ['DiffChange']  = 'fg',
+    ['DiffChange']  = 'bg',
     ['DiffText']    = 'bg',
     ['IncSearch']   = 'fg',
     ['ErrorMsg']    = 'fg',
@@ -81,7 +81,7 @@ local lsp_tbl = {
 -- local ts_utils = require("nvim-treesitter.ts_utils")
 -- local ts_parsers = require("nvim-treesitter.parsers")
 -- local ts_queries = require("nvim-treesitter.query")
-local treesitter = {
+_ = {
     function()
         local node = require("nvim-treesitter.ts_utils").get_node_at_cursor()
         return ("%d:%s [%d, %d] - [%d, %d]")
@@ -97,7 +97,7 @@ local treesitter = {
 
 statusline.setup({
     options = {
-        theme = 'nord',
+        theme = 'tokyonight',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {

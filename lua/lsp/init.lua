@@ -46,33 +46,33 @@ local lua_settings = {
 
 -- enables snippet support
 local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  if pcall(require, 'cmp_nvim_lsp') then
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-  end
-  return {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    if pcall(require, 'cmp_nvim_lsp') then
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    end
+    return {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
 end
 
 -- manually installed LSP servers
 local servers = { 'ccls', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
-  require("lspconfig")[lsp].setup(make_config())
+    require("lspconfig")[lsp].setup(make_config())
 end
 
 local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.settings {
-  ui = {
-    icons = {
-      server_installed = "✓",
-      server_pending = "➜",
-      server_uninstalled = "✗"
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
     }
-  }
 }
 
 lsp_installer.on_server_ready(function(server)

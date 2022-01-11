@@ -1,5 +1,3 @@
-local o = vim.g.embark_color_overrides or {}
-
 local hl = {}
 
 hl.c = {
@@ -22,7 +20,7 @@ hl.c = {
     visual_black = 'NONE',
     comment_grey = '#8A889D',
     gutter_fg_grey = '#656A7c',
-    cursor_grey = '#100E23',
+    cursor_grey = '#3B4252',
     visual_grey = '#56687E',
     menu_grey = '#56687E',
     special_grey = '#656A7c',
@@ -73,7 +71,7 @@ hl.common = {
     Search = { fg = hl.c.black, bg = hl.c.dark_yellow },
     IncSearch = { fg = hl.c.yellow, bg = hl.c.comment_grey },
     LineNr = { fg = hl.c.gutter_fg_grey },
-    CursorLineNr = { fg = hl.c.blue, bg = hl.c.black, style = 'bold' },
+    CursorLineNr = { fg = hl.c.blue, bg = hl.c.cursor_grey, style = 'bold' },
     MatchParen = { fg = hl.c.purple, bg = hl.c.black, style = 'underline,bold' },
     ModeMsg = { fg = hl.c.white, style = 'bold' },
     MoreMsg = { fg = hl.c.white, style = 'bold' },
@@ -110,7 +108,7 @@ hl.common = {
     Error = { fg = hl.c.dark_red, bg = hl.c.black, style = 'bold' },
     Todo = { fg = hl.c.dark_yellow, bg = hl.c.bg, style = 'bold' },
     Debug = { fg = hl.c.yellow },
-    debugPC = { bg = hl.cspecial_grey },
+    debugPC = { bg = hl.c.special_grey },
     debugBreakpoint = { fg = hl.c.black, bg = hl.c.red },
 }
 

@@ -1,21 +1,18 @@
 local M = {}
 
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
-
--- The old LSP diagnostics prior to:
--- https://github.com/neovim/neovim/commit/064411ea7ff825aed3d4e01207914ed61d7ee79d
--- local _is_legacy = not vim.tbl_isempty(vim.fn.sign_getdefined('LspDiagnosticsSignInformation'))
-
 local signs = {
-    ["Hint"]   = { icon = '', hl = 'Identifier' },
-    ["Info"]   = { icon = '', hl = 'Special' },
-    ["Warn"]   = { icon = '', hl = 'DiffChange' },
-    ["Error"]  = { icon = '', hl = 'ErrorMsg' },
-    -- ["Hint"]   = '',
+    ["Hint"]   = { icon = '', hl = 'DiagnosticHint' },
+    ["Info"]   = { icon = '', hl = 'DiagnosticInfo' },
+    ["Warn"]   = { icon = '', hl = 'DiagnosticWarn' },
+    ["Error"]  = { icon = '', hl = 'DiagnosticError' },
     -- ["Info"]   = '',
     -- ["Info"]   = '',
     -- ["Warn"]   = '',
     -- ["Error"]  = '',
+    -- 
+    -- 
+    -- 
+    -- 
 }
 
 local sign_prefix = 'DiagnosticSign'
@@ -25,16 +22,16 @@ if not vim.diagnostic then
     -- LspDiagnosticsSign does not have "Info", "Warn"
     -- instead has "Information", "Warning"
     local function tbl_swap(t, old, new)
-    t[new] = t[old]
-    t[old] = nil
+        t[new] = t[old]
+        t[old] = nil
     end
     tbl_swap(signs, "Warn", "Warning")
     tbl_swap(signs, "Info", "Information")
 else
     -- virtual text highlights only relevant in non-legacy
     for severity, t in pairs(signs) do
-    local hl = 'DiagnosticVirtualText' .. severity
-    vim.cmd(('hi link %s %s'):format(hl, t.hl))
+        local hl = 'DiagnosticVirtualText' .. severity
+        vim.cmd(('hi link %s %s'):format(hl, t.hl))
     end
 end
 
@@ -50,6 +47,7 @@ if vim.diagnostic then
         underline = true,
         update_in_insert = false,
         virtual_text = {
+            prefix = '●',
             spacing = 4,
             source = 'always',
             severity = {

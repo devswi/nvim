@@ -52,12 +52,20 @@ return packer.startup(function(use)
 
     -- color scheme
     use {
-        "shaunsingh/hl.c.nvim",
+        "shaunsingh/nord.nvim",
         disable = true,
         config = function()
             local colors = require("colors")
-            colors.set("nord")
+             colors.set("nord")
         end,
+    }
+
+    use {
+        "folke/tokyonight.nvim",
+    }
+
+    use {
+        "Mofiqul/vscode.nvim"
     }
 
     -- web devicons
