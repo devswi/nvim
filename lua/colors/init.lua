@@ -20,6 +20,7 @@ M.set_colorscheme = function(hl, theme)
 
     vim.cmd('set t_Co=256')
     vim.o.background = 'dark'
+    vim.g.colors_name = "lua-" .. theme
 
     local colors = hl.c
     local bg = colors.bg or colors.black
