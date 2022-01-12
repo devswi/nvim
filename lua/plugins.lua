@@ -179,6 +179,13 @@ return packer.startup(function(use)
         end
     }
 
+    -- luasnips + cmp
+
+    use {
+        "rafamadriz/friendly-snippets",
+        event = "InsertEnter",
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then
         require('packer').sync()
