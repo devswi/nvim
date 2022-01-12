@@ -5,6 +5,9 @@ for _, module_name in ipairs({'mappings', 'options', 'commands'}) do
     require(module_name).init()
 end
 
+-- load plugins
+require "plugins"
+
 -- Themes
 -- embark
 -- tokyonight
@@ -12,7 +15,4 @@ end
 local theme = "tokyonight"
 local colors = require("colors")
 colors.set(theme)
-
--- load plugins
-require "plugins"
 
