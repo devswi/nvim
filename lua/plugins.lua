@@ -49,28 +49,31 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim"
 
     use "nvim-lua/plenary.nvim"
-
     -- color scheme
-    use {
-        "shaunsingh/nord.nvim",
-        disable = true,
-        config = function()
-            local colors = require("colors")
-             colors.set("nord")
-        end,
-    }
-
-    use {
-        "folke/tokyonight.nvim",
-    }
-
-    use {
-        "Mofiqul/vscode.nvim"
-    }
+    use "folke/tokyonight.nvim"
+    use "Mofiqul/vscode.nvim"
 
     -- web devicons
+    use "kyazdani42/nvim-web-devicons"
+
+   -- Add git related info in the signs columns and popups
     use {
-        "kyazdani42/nvim-web-devicons",
+        'lewis6991/gitsigns.nvim',
+        requires = { "nvim-lua/plenary.nvim" },
+        config = "require('config.gitsigns')",
+        after = "plenary.nvim",
+    }
+
+    use {
+        'sindrets/diffview.nvim',
+        disable = true,
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'kyazdani42/nvim-web-devicons',
+        },
+        config = "require('config.diffview')",
+        -- cmd = {'DiffviewOpen'},
+        opt = true
     }
 
     -- bufferline
@@ -99,9 +102,6 @@ return packer.startup(function(use)
             require("config.treesitter").setup()
         end
     }
-
-    -- gitsigns
-    use {}
 
     -- telescope
     -- for fuzzy finding
@@ -179,14 +179,36 @@ return packer.startup(function(use)
         end
     }
 
-    -- luasnips + cmp
-
+    -- Comment
     use {
-        "rafamadriz/friendly-snippets",
-        event = "InsertEnter",
+        "numToStr/Comment.nvim",
+        config = function()
+            require("config.comment")
+        end,
+        keys = { 'gcc', 'gc', 'gl' },
     }
 
-    -- Automatically set up your configuration after cloning packer.nvim
+    -- luasnips + cmp
+    use {
+        'L3MON4D3/LuaSnip',
+        config = 'require("config.luasnip")',
+        event = 'InsertEnter' 
+    }
+
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+            { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+            { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+        },
+        config = "require('config.cmp')",
+        -- event = "InsertEnter", }
+        after = 'LuaSnip',
+    }    -- Automatically set up your configuration after cloning packer.nvim
+
     if packer_bootstrap then
         require('packer').sync()
     end
