@@ -18,9 +18,13 @@ local import_hls = {
     ['DiffDelete']  = 'bg',
     ['DiffChange']  = 'bg',
     ['DiffText']    = 'bg',
-    ['IncSearch']   = 'fg',
+    ['IncSearch']   = 'bg',
     ['ErrorMsg']    = 'fg',
     ['WildMenu']    = 'bg',
+    ['DiagnosticHint'] = 'fg',
+    ['DiagnosticInfo'] = 'fg',
+    ['DiagnosticWarn'] = 'fg',
+    ['DiagnosticError'] = 'fg',
 }
 
 local colors = {
@@ -31,6 +35,11 @@ local colors = {
 for hl, col in pairs(import_hls) do
     colors[hl] = col_from_hl(col, { hl,  }, '#000000')
 end
+
+local tokyonightColors = require("tokyonight.colors")
+colors['DiffAdd'] = tokyonightColors.green2
+colors['DiffDelete'] = tokyonightColors.red1
+colors['DiffChange'] = tokyonightColors.blue7
 
 local filename = {
     {
@@ -94,7 +103,6 @@ _ = {
     color = { fg = colors.bg, bg = colors.Special },
 }
 
-
 statusline.setup({
     options = {
         theme = 'tokyonight',
@@ -137,19 +145,26 @@ statusline.setup({
                 sources = { 'nvim_diagnostic' },
                 symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
                 diagnostics_color = {
-                    error = { fg = colors.ErrorMsg },
-                    warn  = { fg = colors.DiffChange },
-                    info  = { fg = colors.WildMenu },
-                    hint  = { fg = colors.Identifier },
+                    error = { fg = colors.DiagnosticError },
+                    warn  = { fg = colors.DiagnosticWarn },
+                    info  = { fg = colors.DiagnosticInfo },
+                    hint  = { fg = colors.DiagnosticHint },
                 },
                 -- color = { bg = colors.String },
             },
             lsp_tbl
         },
         lualine_y = {
-            { 'fileformat' },
+            {
+                'fileformat',
+                symbols = {
+                    unix = "", -- 
+                    dos = "",
+                    mac = "",
+                }
+            },
             { 'encoding' },
-            -- char under cursor in hex
+            -- char under cursor in he
             { '%B', fmt = function(str) return '0x'..str end }
         },
         lualine_z = {{'progress'},{'location'}},
