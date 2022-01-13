@@ -57,12 +57,6 @@ local function make_config()
     }
 end
 
--- manually installed LSP servers
-local servers = { 'ccls', 'rust_analyzer' }
-for _, lsp in ipairs(servers) do
-    require("lspconfig")[lsp].setup(make_config())
-end
-
 local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.settings {
@@ -80,6 +74,9 @@ lsp_installer.on_server_ready(function(server)
 
     if server.name == "sumneko_lua" then
       opts.settings = lua_settings
+    end
+
+    if server.name == "solargraph" then
     end
 
     -- This setup() function is exactly the same as

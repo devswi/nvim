@@ -111,14 +111,3 @@ cmp.setup {
         ghost_text = true,
     },
 }
-
-
-
---[[ remap({ "i", "s" }, "<C-c>", function()
-  -- NOTE: <C-c> clears 'cmp.core.view:get_selected_entry()'
-  -- so never actually call 'cmp.abort()'
-  abort_logic('<C-c>',
-    function()
-      vim.cmd("stopinsert")
-    end)
-end) --]]

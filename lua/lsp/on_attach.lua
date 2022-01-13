@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
     -- neovim PR #16057
     -- https://github.com/neovim/neovim/pull/16057
     if not vim.diagnostic then
-    local winopts = "{ popup_opts =  { border = 'rounded' } }"
+        local winopts = "{ popup_opts =  { border = 'rounded' } }"
         map(bufnr, 'n', '[d', ('<cmd>lua vim.lsp.diagnostic.goto_prev(%s)<CR>'):format(winopts), opts)
         map(bufnr, 'n', ']d', ('<cmd>lua vim.lsp.diagnostic.goto_next(%s)<CR>'):format(winopts), opts)
         map(bufnr, 'n', '<leader>lc', '<cmd>lua vim.lsp.diagnostic.clear(0)<CR>', opts)

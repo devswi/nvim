@@ -110,6 +110,10 @@ return packer.startup(function(use)
         requires = {
             {'nvim-lua/plenary.nvim'},
             {'nvim-lua/popup.nvim'},
+            {
+                "nvim-telescope/telescope-fzf-native.nvim", -- better algorithm
+                run = "make",
+            },
         },
         config = function()
             local telescope = require "config/telescope"
@@ -192,7 +196,7 @@ return packer.startup(function(use)
     use {
         'L3MON4D3/LuaSnip',
         config = 'require("config.luasnip")',
-        event = 'InsertEnter' 
+        event = 'InsertEnter'
     }
 
     use {
