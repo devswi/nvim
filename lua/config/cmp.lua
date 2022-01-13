@@ -108,7 +108,7 @@ cmp.setup {
     -- just for testing with nvim native completion menu
     experimental = {
         native_menu = false,
-        ghost_text = true,
+        ghost_text = false,
     },
 }
 

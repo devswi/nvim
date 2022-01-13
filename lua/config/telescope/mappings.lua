@@ -15,8 +15,6 @@ M.setup = function()
             ["<leader>fo"] = ":Telescope oldfiles <CR>",
         }
     })
-
-
 end
 
 return M
