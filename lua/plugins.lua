@@ -192,11 +192,18 @@ return packer.startup(function(use)
         keys = { 'gcc', 'gc', 'gl' },
     }
 
+    use {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        ft = {
+            "typescript", "typescriptreact"
+        }
+    }
+
     -- luasnips + cmp
     use {
         'L3MON4D3/LuaSnip',
         config = 'require("config.luasnip")',
-        event = 'InsertEnter'
+        event = "InsertEnter",
     }
 
     use {
@@ -206,12 +213,15 @@ return packer.startup(function(use)
             { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
             { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
             { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+            { 'rafamadriz/friendly-snippets', after = 'nvim-cmp' },
             { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+
         },
         config = "require('config.cmp')",
-        -- event = "InsertEnter", }
         after = 'LuaSnip',
-    }    -- Automatically set up your configuration after cloning packer.nvim
+    }
+
+    -- Automatically set up your configuration after cloning packer.nvim
 
     if packer_bootstrap then
         require('packer').sync()

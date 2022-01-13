@@ -29,10 +29,10 @@ cmp.setup {
 
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
         { name = 'luasnip' },
         { name = 'path' },
-        { name = 'buffer' },
+        { name = 'nvim_lua' },
+        { name = 'buffer', keyword_length = 3 },
     },
 
     mapping = {
@@ -111,3 +111,4 @@ cmp.setup {
         ghost_text = true,
     },
 }
+

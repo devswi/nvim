@@ -13,6 +13,10 @@ M.setup = function()
         autotag = {
             enable = true,
         },
+        context_commentstring = {
+            enable = true,
+            enable_autocmd = false,
+        },
         rainbow = {
             enable = true,
             extended_mode = false,
