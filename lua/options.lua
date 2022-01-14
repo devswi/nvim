@@ -25,7 +25,6 @@ M.init = function()
     opt.smartindent = true
     opt.smarttab = true
 
-
     -- Copy indent from current line when starting a new line
     --
     opt.autoindent = true

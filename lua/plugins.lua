@@ -217,7 +217,6 @@ return packer.startup(function(use)
         after = 'LuaSnip',
     }
 
-
     use {
         "saadparwaiz1/cmp_luasnip",
         after = "LuaSnip",
