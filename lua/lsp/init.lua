@@ -77,6 +77,10 @@ lsp_installer.on_server_ready(function(server)
     end
 
     if server.name == "solargraph" then
+        local config = require("lsp.language.ruby")
+        for _, value in pairs(config) do
+            table.insert(opts, value)
+        end
     end
 
     -- This setup() function is exactly the same as
@@ -84,3 +88,4 @@ lsp_installer.on_server_ready(function(server)
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
+
