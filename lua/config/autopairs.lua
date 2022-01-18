@@ -1,5 +1,6 @@
 local M = {}
 
+-- set up
 M.setup = function()
     local autopairs = require 'nvim-autopairs'
 

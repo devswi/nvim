@@ -11,7 +11,6 @@ M.set = function(theme)
         else
             M.set_colorscheme(colors, theme)
         end
-        print('11')
     else
         vim.cmd("colorscheme " .. theme)
     end

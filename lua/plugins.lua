@@ -218,6 +218,14 @@ return packer.startup(function(use)
     }
 
     use {
+        'jose-elias-alvarez/null-ls.nvim',
+        disable = true,
+        config = "require('lsp.null-ls')",
+        require = { "nvim-lua/plenary.nvim" },
+        after = 'LuaSnip'
+    }
+
+    use {
         "saadparwaiz1/cmp_luasnip",
         after = "LuaSnip",
     }

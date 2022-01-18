@@ -1,5 +1,6 @@
 local M = {}
 
+-- italic
 M.config = {
     filetypes = { "ruby" },
     flags = {
