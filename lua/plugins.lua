@@ -202,7 +202,6 @@ return packer.startup(function(use)
     -- luasnips + cmp
     use {
         "rafamadriz/friendly-snippets",
-        event = "InsertEnter",
     }
 
     use {
@@ -219,7 +218,7 @@ return packer.startup(function(use)
 
     use {
         'jose-elias-alvarez/null-ls.nvim',
-        -- disable = true,
+        disable = true,
         config = "require('lsp.null-ls')",
         require = { "nvim-lua/plenary.nvim" },
         after = 'LuaSnip'
