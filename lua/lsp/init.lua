@@ -73,13 +73,21 @@ lsp_installer.on_server_ready(function(server)
     local opts = make_config()
 
     if server.name == "sumneko_lua" then
-      opts.settings = lua_settings
+        opts.settings = lua_settings
     end
 
     if server.name == "solargraph" then
         local config = require("lsp.language.ruby")
         for _, value in pairs(config) do
             table.insert(opts, value)
+        end
+    end
+
+    if server.name == "tsserver" then
+        opts.on_attach = function(client, bufnr)
+            -- Disable tsserver formatting as prettier/eslint does that.
+            client.resolved_capabilities.document_formatting = false
+            opts.on_attach(client, bufnr)
         end
     end
 
