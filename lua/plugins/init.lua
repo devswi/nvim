@@ -1,6 +1,7 @@
 local fn = vim.fn
 
 local install_path = fn.stdpath "data" .. "/site/pack/pakcer/start/packer.nvim"
+local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system {
         "git",
@@ -13,14 +14,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     print "Installing packer close and reopen Neovim..."
     vim.cmd [[packadd packer.nvim]]
 end
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup end
-]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -48,21 +41,9 @@ packer.init {
 return packer.startup(function(use)
     use "wbthomason/packer.nvim"
 
-    use "nvim-lua/plenary.nvim"
-    -- color scheme
-    use "folke/tokyonight.nvim"
-    use "Mofiqul/vscode.nvim"
-
-    -- web devicons
-    use "kyazdani42/nvim-web-devicons"
-
-   -- Add git related info in the signs columns and popups
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = { "nvim-lua/plenary.nvim" },
-        config = "require('config.gitsigns')",
-        after = "plenary.nvim",
-    }
+    -- load plugins for ui
+    local ui = require("plugins.ui")
+    ui.install_plugins(use)
 
     use {
         'sindrets/diffview.nvim',
@@ -75,25 +56,7 @@ return packer.startup(function(use)
         -- cmd = {'DiffviewOpen'},
         opt = true
     }
-
-    -- bufferline
-    use {
-        "akinsho/bufferline.nvim",
-        after = "nvim-web-devicons",
-        config = function()
-            require('config.bufferline')
-        end
-    }
-
-    -- statusline
-    use {
-        "nvim-lualine/lualine.nvim",
-        after = "nvim-web-devicons",
-        config = function()
-            require("config.statusline")
-        end
-    }
-
+    --
     -- Treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
@@ -121,16 +84,6 @@ return packer.startup(function(use)
         end
     }
 
-    -- Nvim-Tree
-    use {
-        "kyazdani42/nvim-tree.lua",
-        requires = {
-            "kyazdani42/nvim-web-devicons",
-        },
-        config = function()
-            require("config.nvimtree").setup()
-        end
-    }
 
     -- LSP
     use {
@@ -175,13 +128,6 @@ return packer.startup(function(use)
         end
     }
 
-    -- highlighting indent
-    use {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("config.blankline")
-        end
-    }
 
     -- Comment
     use {
