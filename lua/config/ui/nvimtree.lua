@@ -65,7 +65,10 @@ M.setup = function()
 
     require("nvim-tree").setup {
         filters = {
-            dotfiles = false,
+            dotfiles = true,
+            custom = {
+                ".DS_Store",
+            }
         },
         disable_netrw = true,
         hijack_netrw = true,
@@ -85,7 +88,7 @@ M.setup = function()
             hide_root_folder = true,
         },
         git = {
-            ignore = false,
+            ignore = true,
         },
         diagnostics = {
             enable = false,
@@ -95,7 +98,7 @@ M.setup = function()
                 warning = "",
                 error = "",
             }
-        }
+        },
     }
 end
 

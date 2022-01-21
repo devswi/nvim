@@ -138,11 +138,9 @@ statusline.setup({
         },
         lualine_c = filename,
         lualine_x = {
-            -- uncomment to see TS info
-            -- treesitter,
             {
                 'diagnostics',
-                sources = { 'nvim_diagnostic' },
+                sources = { "coc" },
                 symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
                 diagnostics_color = {
                     error = { fg = colors.DiagnosticError },
@@ -178,3 +176,4 @@ statusline.setup({
         lualine_z = {},
     },
 })
+

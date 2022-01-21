@@ -1,3 +1,6 @@
+vim.api.nvim_command("set foldmethod=expr")
+vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
+
 local treesitter = require "nvim-treesitter.configs"
 
 treesitter.setup {
@@ -16,7 +19,38 @@ treesitter.setup {
     },
     rainbow = {
         enable = true,
-        extended_mode = false,
+        extended_mode = true,
         max_file_lines = nil,
+    },
+    textobjects = {
+        select = {
+            enable = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["if"] = "@class.inner",
+            },
+        },
+        move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+                ["]["] = "@function.outer",
+                ["]m"] = "@class.outer",
+            },
+            goto_next_end = {
+                ["]]"] = "@function.outer",
+                ["]M"] = "@class.outer"
+            },
+            goto_previous_start = {
+                ["[["] = "@function.outer",
+                ["[m"] = "@class.outer"
+            },
+            goto_previous_end = {
+                ["[]"] = "@function.outer",
+                ["[M"] = "@class.outer"
+            }
+        },
     },
 }

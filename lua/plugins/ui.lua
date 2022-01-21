@@ -23,10 +23,12 @@ M.install_plugins = function(use)
     -- lualine
     use {
         "nvim-lualine/lualine.nvim",
-        require = "nvim-web-devicons",
+        require = {
+            { "nvim-web-devicons" },
+        },
         config = function()
             require("config.ui.statusline")
-        end
+        end,
     }
 
     -- dashboard

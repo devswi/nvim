@@ -8,6 +8,13 @@ local packer = nil
 local Packer = {}
 Packer.__index = Packer
 
+local plugins_modules = {
+    "editor",
+    "ui",
+    "tools",
+    "completion"
+}
+
 function Packer:load_packer()
     if not packer then
         api.nvim_command("packadd packer.nvim")
@@ -30,7 +37,7 @@ function Packer:load_packer()
         opt = true
     }
 
-    for _, module_name in ipairs({ "ui", "tools", "editor" }) do
+    for _, module_name in ipairs(plugins_modules) do
         local m = require("plugins." .. module_name)
         m.install_plugins(use)
     end
