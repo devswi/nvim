@@ -15,6 +15,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+    augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    augroup end
+]]
+
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -41,9 +49,11 @@ packer.init {
 return packer.startup(function(use)
     use "wbthomason/packer.nvim"
 
-    -- load plugins for ui
-    local ui = require("plugins.ui")
-    ui.install_plugins(use)
+    -- load plugins
+    for _, module_name in ipairs({ 'ui', 'tools' }) do
+        local m = require("plugins." .. module_name)
+        m.install_plugins(use)
+    end
 
     use {
         'sindrets/diffview.nvim',
@@ -66,25 +76,6 @@ return packer.startup(function(use)
         end
     }
 
-    -- telescope
-    -- for fuzzy finding
-    use {
-        "nvim-telescope/telescope.nvim",
-        requires = {
-            {'nvim-lua/plenary.nvim'},
-            {'nvim-lua/popup.nvim'},
-            {
-                "nvim-telescope/telescope-fzf-native.nvim", -- better algorithm
-                run = "make",
-            },
-        },
-        config = function()
-            local telescope = require "config/telescope"
-            telescope.setup()
-        end
-    }
-
-
     -- LSP
     use {
         "neovim/nvim-lspconfig", event = "BufRead"
@@ -96,16 +87,6 @@ return packer.startup(function(use)
             require("lsp")
         end,
         after = { "nvim-lspconfig" }
-    }
-
-    -- which-key
-    use {
-        "folke/which-key.nvim",
-        -- disable which-key plugin
-        disable = true,
-        config = function()
-            require('config.which-key').setup()
-        end
     }
 
     -- auto tag
