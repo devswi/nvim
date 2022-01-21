@@ -48,7 +48,7 @@ end
 local plugins = require "plugins"
 
 prepare()
-disable_distribution_plugins()
+-- disable_distribution_plugins()
 
 plugins.ensure_plugins()
 

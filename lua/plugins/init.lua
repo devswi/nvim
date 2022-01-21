@@ -30,7 +30,7 @@ function Packer:load_packer()
         opt = true
     }
 
-    for _, module_name in ipairs({ "ui", "tools" }) do
+    for _, module_name in ipairs({ "ui", "tools", "editor" }) do
         local m = require("plugins." .. module_name)
         m.install_plugins(use)
     end
