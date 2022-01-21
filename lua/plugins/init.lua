@@ -1,184 +1,116 @@
-local fn = vim.fn
+local _, uv, api = vim.fn, vim.loop, vim.api
+local data_dir = require("global").data_dir
+local packer_compiled = data_dir .. "packer_compiled.vim"
+local compile_to_lua = data_dir .. "lua/_compiled.lua"
+local bak_compiled = data_dir .. "lua/bak_compiled.lua"
+local packer = nil
 
-local install_path = fn.stdpath "data" .. "/site/pack/pakcer/start/packer.nvim"
-local packer_bootstrap
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system {
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
+local Packer = {}
+Packer.__index = Packer
+
+function Packer:load_packer()
+    if not packer then
+        api.nvim_command("packadd packer.nvim")
+        packer = require("packer")
+    end
+    packer.init({
+        compile_path = packer_compiled,
+        git = {clone_timeout = 120},
+        disable_commands = true,
+        display = {
+            open_fn = function()
+                return require("packer.util").float({ border = "single" })
+            end
+        }
+    })
+    packer.reset()
+    local use = packer.use
+    use {
+        "wbthomason/packer.nvim",
+        opt = true
     }
-    print "Installing packer close and reopen Neovim..."
-    vim.cmd [[packadd packer.nvim]]
-end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-    augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup end
-]]
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-    return
-end
-
--- Have packer use a popup window
-packer.init {
-    git = {
-        clone_timeout = 300,
-        subcommands = {
-            fetch = "fetch --no-tags --no-recurse-submodules --update-shallow --progress"
-        },
-    },
-    max_jobs = 50,
-    display = {
-        open_fn = function()
-            return require("packer.util").float { border = "rounded" }
-        end,
-    },
-}
-
--- Install plugins
-return packer.startup(function(use)
-    use "wbthomason/packer.nvim"
-
-    -- load plugins
-    for _, module_name in ipairs({ 'ui', 'tools' }) do
+    for _, module_name in ipairs({ "ui", "tools" }) do
         local m = require("plugins." .. module_name)
         m.install_plugins(use)
     end
+end
 
-    use {
-        'sindrets/diffview.nvim',
-        disable = true,
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'kyazdani42/nvim-web-devicons',
-        },
-        config = "require('config.diffview')",
-        -- cmd = {'DiffviewOpen'},
-        opt = true
-    }
-    --
-    -- Treesitter
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        config = function()
-            require("config.treesitter").setup()
-        end
-    }
-
-    -- LSP
-    use {
-        "neovim/nvim-lspconfig", event = "BufRead"
-    }
-
-    use {
-        "williamboman/nvim-lsp-installer",
-        config = function()
-            require("lsp")
-        end,
-        after = { "nvim-lspconfig" }
-    }
-
-    -- auto tag
-    use { 'windwp/nvim-ts-autotag' }
-    use {
-        'windwp/nvim-autopairs',
-        config = function()
-            require("config.autopairs").setup()
-        end
-    }
-
-    -- highlight brackets
-    use { 'p00f/nvim-ts-rainbow' }
-
-    -- colorizer
-    use {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("config.colorizer")
-        end
-    }
-
-
-    -- Comment
-    use {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("config.comment")
-        end,
-        keys = { 'gcc', 'gc', 'gl' },
-    }
-
-    use {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        ft = {
-            "typescript", "typescriptreact"
-        }
-    }
-
-    -- luasnips + cmp
-    use {
-        "rafamadriz/friendly-snippets",
-    }
-
-    use {
-        'L3MON4D3/LuaSnip',
-        wants = "friendly-snippets",
-        after = "friendly-snippets",
-        config = 'require("config.luasnip")',
-    }
-    use {
-        'hrsh7th/nvim-cmp',
-        config = "require('config.cmp')",
-        after = 'LuaSnip',
-    }
-
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        disable = true,
-        config = "require('lsp.null-ls')",
-        require = { "nvim-lua/plenary.nvim" },
-        after = 'LuaSnip'
-    }
-
-    use {
-        "saadparwaiz1/cmp_luasnip",
-        after = "LuaSnip",
-    }
-
-    use {
-        "hrsh7th/cmp-nvim-lua",
-        after = "cmp_luasnip",
-    }
-
-    use {
-        "hrsh7th/cmp-nvim-lsp",
-        after = "cmp-nvim-lua",
-    }
-
-    use {
-        "hrsh7th/cmp-buffer",
-        after = "cmp-nvim-lsp",
-    }
-
-    use {
-        "hrsh7th/cmp-path",
-        after = "cmp-buffer",
-    }
-
-    -- Automatically set up your configuration after cloning packer.nvim
-
-    if packer_bootstrap then
-        require('packer').sync()
+function Packer:init_ensure_plugins()
+    local packer_dir = data_dir .. "pack/packer/opt/packer.nvim"
+    local state = uv.fs_stat(packer_dir)
+    if not state then
+        local cmd = "!git clone https://github.com/wbthomason/packer.nvim " .. packer_dir
+        api.nvim_command(cmd)
+        uv.fs_mkdir(data_dir .. "lua", 511, function() assert("make compile path dir faield") end)
+        self:load_packer()
+        packer.install()
     end
-end)
+end
+
+local plugins = setmetatable({}, {
+    __index = function(_, key)
+        if not packer then Packer:load_packer() end
+        return packer[key]
+    end
+})
+
+function plugins.ensure_plugins() Packer:init_ensure_plugins() end
+
+function plugins.convert_compile_file()
+    local lines = {}
+    local lnum = 1
+    lines[#lines + 1] = "vim.cmd [[packadd packer.nvim]]\n"
+
+    for line in io.lines(packer_compiled) do
+        lnum = lnum + 1
+        if lnum > 15 then
+            lines[#lines + 1] = line .. "\n"
+            if line == "END" then break end
+        end
+    end
+    table.remove(lines, #lines)
+
+    if vim.fn.isdirectory(data_dir .. "lua") ~= 1 then
+        os.execute("mkdir -p " .. data_dir .. "lua")
+    end
+
+    if vim.fn.filereadable(compile_to_lua) == 1 then
+        os.rename(compile_to_lua, bak_compiled)
+    end
+
+    local file = io.open(compile_to_lua, "w")
+    for _, line in ipairs(lines) do file:write(line) end
+    file:close()
+
+    os.remove(packer_compiled)
+end
+
+function plugins.magic_compile()
+    plugins.compile()
+    plugins.convert_compile_file()
+end
+
+function plugins.auto_compile()
+    plugins.clean()
+    plugins.compile()
+    plugins.convert_compile_file()
+end
+
+function plugins.load_compile()
+    if vim.fn.filereadable(compile_to_lua) == 1 then
+        require("_compiled")
+    else
+        assert("Missing packer compile file Run PackerCompile Or PackerInstall to fix")
+    end
+    vim.cmd [[command! PackerCompile lua require('plugins').magic_compile()]]
+    vim.cmd [[command! PackerInstall lua require('plugins').install()]]
+    vim.cmd [[command! PackerUpdate lua require('plugins').update()]]
+    vim.cmd [[command! PackerSync lua require('plugins').sync()]]
+    vim.cmd [[command! PackerClean lua require('plugins').clean()]]
+    vim.cmd [[autocmd User PackerComplete lua require('plugins').magic_compile()]]
+    vim.cmd [[command! PackerStatus  lua require('packer').status()]]
+end
+
+return plugins
+
