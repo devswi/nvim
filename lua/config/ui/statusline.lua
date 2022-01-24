@@ -165,7 +165,10 @@ statusline.setup({
             -- char under cursor in he
             { '%B', fmt = function(str) return '0x'..str end }
         },
-        lualine_z = {{'progress'},{'location'}},
+        lualine_z = {
+            { 'progress' },
+            { 'location'},
+        },
     },
     inactive_sections = {
         lualine_a = {},

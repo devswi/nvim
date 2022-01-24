@@ -12,7 +12,6 @@ local plugins_modules = {
     "editor",
     "ui",
     "tools",
-    "completion"
 }
 
 function Packer:load_packer()
