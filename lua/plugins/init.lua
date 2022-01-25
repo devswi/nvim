@@ -12,6 +12,7 @@ local plugins_modules = {
     "editor",
     "ui",
     "tools",
+    "lsp",
 }
 
 function Packer:load_packer()
@@ -21,7 +22,7 @@ function Packer:load_packer()
     end
     packer.init({
         compile_path = packer_compiled,
-        git = {clone_timeout = 120},
+        git = { clone_timeout = 120 },
         disable_commands = true,
         display = {
             open_fn = function()

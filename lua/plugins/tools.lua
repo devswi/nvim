@@ -21,8 +21,6 @@ M.install_plugins = function(use)
     -- startuptime
     use {
         "dstein64/vim-startuptime",
-        opt = true,
-        cmd = "Startuptime"
     }
 
     -- which-key

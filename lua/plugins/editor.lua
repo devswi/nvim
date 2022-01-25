@@ -4,7 +4,6 @@ M.install_plugins = function(use)
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
-        after = "coc.nvim",
         config = function()
             require("config.editor.treesitter")
         end

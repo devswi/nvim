@@ -22,16 +22,16 @@ local on_attach = function(client, bufnr)
     -- map(bufnr, 'n', 'gR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     -- map(bufnr 'n', '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     -- use our own rename popup implementation
-    map(bufnr, 'n', 'gR', '<cmd>lua require("lsp.rename").rename()<CR>', opts)
-    map(bufnr, 'n', '<leader>lR', '<cmd>lua require("lsp.rename").rename()<CR>', opts)
+    map(bufnr, 'n', 'gR', '<cmd>lua require("config.lsp.rename").rename()<CR>', opts)
+    map(bufnr, 'n', '<leader>lR', '<cmd>lua require("config.lsp.rename").rename()<CR>', opts)
     map(bufnr, 'n', '<leader>K',  '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    map(bufnr, 'n', '<leader>k', '<cmd>lua require("lsp.handlers").peek_definition()<CR>', opts)
+    map(bufnr, 'n', '<leader>k', '<cmd>lua require("config.lsp.handlers").peek_definition()<CR>', opts)
 
     -- using fzf-lua instead
     --map(bufnr, 'n', '<leader>ls', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', opts)
     --map(bufnr, 'n', '<leader>lS', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
 
-    map(bufnr, 'n', '<leader>lt', "<cmd>lua require'lsp.diag'.virtual_text_toggle()<CR>", opts)
+    map(bufnr, 'n', '<leader>lt', "<cmd>lua require'config.lsp.diag'.virtual_text_toggle()<CR>", opts)
 
     -- neovim PR #16057
     -- https://github.com/neovim/neovim/pull/16057
@@ -75,8 +75,8 @@ local on_attach = function(client, bufnr)
     end
 
     if not vim.diagnostic then
-        require('lsp.diag').virtual_text_set()
-        require('lsp.diag').virtual_text_redraw()
+        require('config.lsp.diag').virtual_text_set()
+        require('config.lsp.diag').virtual_text_redraw()
     end
 
 end

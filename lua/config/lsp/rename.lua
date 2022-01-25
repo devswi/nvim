@@ -38,7 +38,7 @@ local function rename()
 
     api.nvim_buf_set_keymap(bufnr, 'i', '<esc>', '<CMD>stopinsert <BAR> q!<CR>', map_opts)
     api.nvim_buf_set_keymap(bufnr, 'i', '<C-c>', '<CMD>stopinsert <BAR> q!<CR>', map_opts)
-    api.nvim_buf_set_keymap( bufnr, 'i', '<CR>', "<CMD>stopinsert <BAR> lua require('lsp.rename')._rename()<CR>", map_opts)
+    api.nvim_buf_set_keymap( bufnr, 'i', '<CR>', "<CMD>stopinsert <BAR> lua require('config.lsp.rename')._rename()<CR>", map_opts)
 end
 
 -- see neovim #15504

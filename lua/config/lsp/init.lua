@@ -3,12 +3,12 @@ if not pcall(require, "lspconfig") or not pcall(require, "nvim-lsp-installer") t
 end
 
 -- Setup icons & handler helper functions
-require('lsp.diag')
-require('lsp.icons')
-require('lsp.handlers')
+require('config.lsp.diag')
+require('config.lsp.icons')
+require('config.lsp.handlers')
 
 -- default 'on_attach' function
-local on_attach = require('lsp.on_attach').on_attach
+local on_attach = require('config.lsp.on_attach').on_attach
 
 -- Enable borders for hover/signature help
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
@@ -77,7 +77,7 @@ lsp_installer.on_server_ready(function(server)
     end
 
     if server.name == "solargraph" then
-        local config = require("lsp.language.ruby")
+        local config = require("config.lsp.language.ruby")
         for _, value in pairs(config) do
             table.insert(opts, value)
         end

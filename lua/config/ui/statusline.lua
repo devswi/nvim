@@ -140,7 +140,7 @@ statusline.setup({
         lualine_x = {
             {
                 'diagnostics',
-                sources = { "coc" },
+                sources = { "nvim_diagnostic" },
                 symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
                 diagnostics_color = {
                     error = { fg = colors.DiagnosticError },
