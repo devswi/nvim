@@ -1,26 +1,3 @@
-local global = require("global")
-local vim = vim
-
-local prepare = function()
-    local data_dir = {
-        global.cache_dir .. "backup",
-        global.cache_dir .. "session",
-        global.cache_dir .. "swap",
-        global.cache_dir .. "tags",
-        global.cache_dir .. "undo",
-    }
-
-    if vim.fn.isdirectory(global.cache_dir) == 0 then
-    print('reset')
-        os.execute("mkdir -p " .. global.cache_dir)
-        for _, v in pairs(data_dir) do
-            if vim.fn.isdirectory(v) == 0 then
-                os.execute("mkdir -p " .. v)
-            end
-        end
-    end
-end
-
 local disable_distribution_plugins = function()
     vim.g.loaded_gzip = 1
     vim.g.loaded_tar = 1
@@ -43,14 +20,10 @@ local disable_distribution_plugins = function()
     vim.g.did_load_filetypes = 1
 end
 
-
--- load plugins
-local plugins = require "plugins"
-
-prepare()
 -- disable_distribution_plugins()
 
-plugins.ensure_plugins()
+-- load plugins
+require("plugins")
 
 -- load basic configuration
 -- options, mappings, commands
@@ -58,6 +31,4 @@ plugins.ensure_plugins()
 require("mappings").init()
 require("options")
 require("commands")
-
-plugins.load_compile()
 

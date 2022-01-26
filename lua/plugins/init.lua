@@ -1,123 +1,62 @@
-local _, uv, api = vim.fn, vim.loop, vim.api
-local data_dir = require("global").data_dir
-local packer_compiled = data_dir .. "packer_compiled.vim"
-local compile_to_lua = data_dir .. "lua/_compiled.lua"
-local bak_compiled = data_dir .. "lua/bak_compiled.lua"
-local packer = nil
+local fn, _ = vim.fn, vim.api.nvim_command
+local install_path = fn.stdpath "data" .. "/site/pack/pakcer/start/packer.nvim"
 
-local Packer = {}
-Packer.__index = Packer
+if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system {
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    }
+    print "Installing packer close and reopen Neovim..."
+    vim.cmd [[packadd packer.nvim]]
+end
 
-local plugins_modules = {
-    "editor",
-    "ui",
-    "tools",
-    "lsp",
+-- Autocompile
+vim.cmd [[
+autocmd BufWritePost init.lua PackerCompile
+]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+    return
+end
+
+-- Have packer use a popup window
+packer.init {
+    git = {
+        clone_timeout = 300,
+        subcommands = {
+            fetch = "fetch --no-tags --no-recurse-submodules --update-shallow --progress"
+        },
+    },
+    max_jobs = 50,
+    display = {
+        open_fn = function()
+            return require("packer.util").float { border = "rounded" }
+        end,
+    },
 }
 
-function Packer:load_packer()
-    if not packer then
-        api.nvim_command("packadd packer.nvim")
-        packer = require("packer")
-    end
-    packer.init({
-        compile_path = packer_compiled,
-        git = { clone_timeout = 120 },
-        disable_commands = true,
-        display = {
-            open_fn = function()
-                return require("packer.util").float({ border = "single" })
-            end
-        }
-    })
-    packer.reset()
-    local use = packer.use
+return packer.startup(function(use)
     use {
         "wbthomason/packer.nvim",
-        opt = true
     }
 
+    local plugins_modules = {
+        "editor",
+        "ui",
+        "tools",
+        "lsp",
+    }
+
+    -- install plugins
     for _, module_name in ipairs(plugins_modules) do
         local m = require("plugins." .. module_name)
         m.install_plugins(use)
     end
-end
-
-function Packer:init_ensure_plugins()
-    local packer_dir = data_dir .. "pack/packer/opt/packer.nvim"
-    local state = uv.fs_stat(packer_dir)
-    if not state then
-        local cmd = "!git clone https://github.com/wbthomason/packer.nvim " .. packer_dir
-        api.nvim_command(cmd)
-        uv.fs_mkdir(data_dir .. "lua", 511, function() assert("make compile path dir faield") end)
-        self:load_packer()
-        packer.install()
-    end
-end
-
-local plugins = setmetatable({}, {
-    __index = function(_, key)
-        if not packer then Packer:load_packer() end
-        return packer[key]
-    end
-})
-
-function plugins.ensure_plugins() Packer:init_ensure_plugins() end
-
-function plugins.convert_compile_file()
-    local lines = {}
-    local lnum = 1
-    lines[#lines + 1] = "vim.cmd [[packadd packer.nvim]]\n"
-
-    for line in io.lines(packer_compiled) do
-        lnum = lnum + 1
-        if lnum > 15 then
-            lines[#lines + 1] = line .. "\n"
-            if line == "END" then break end
-        end
-    end
-    table.remove(lines, #lines)
-
-    if vim.fn.isdirectory(data_dir .. "lua") ~= 1 then
-        os.execute("mkdir -p " .. data_dir .. "lua")
-    end
-
-    if vim.fn.filereadable(compile_to_lua) == 1 then
-        os.rename(compile_to_lua, bak_compiled)
-    end
-
-    local file = io.open(compile_to_lua, "w")
-    for _, line in ipairs(lines) do file:write(line) end
-    file:close()
-
-    os.remove(packer_compiled)
-end
-
-function plugins.magic_compile()
-    plugins.compile()
-    plugins.convert_compile_file()
-end
-
-function plugins.auto_compile()
-    plugins.clean()
-    plugins.compile()
-    plugins.convert_compile_file()
-end
-
-function plugins.load_compile()
-    if vim.fn.filereadable(compile_to_lua) == 1 then
-        require("_compiled")
-    else
-        assert("Missing packer compile file Run PackerCompile Or PackerInstall to fix")
-    end
-    vim.cmd [[command! PackerCompile lua require('plugins').magic_compile()]]
-    vim.cmd [[command! PackerInstall lua require('plugins').install()]]
-    vim.cmd [[command! PackerUpdate lua require('plugins').update()]]
-    vim.cmd [[command! PackerSync lua require('plugins').sync()]]
-    vim.cmd [[command! PackerClean lua require('plugins').clean()]]
-    vim.cmd [[autocmd User PackerComplete lua require('plugins').magic_compile()]]
-    vim.cmd [[command! PackerStatus  lua require('packer').status()]]
-end
-
-return plugins
+end)
 

@@ -14,36 +14,6 @@ local on_attach = require('config.lsp.on_attach').on_attach
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
--- Lua settings
-local lua_settings = {
-  Lua = {
-    runtime = {
-      -- LuaJIT in the case of Neovim
-      version = 'LuaJIT',
-      path = vim.split(package.path, ';'),
-    },
-    diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {
-            'vim',
-            'root',         -- awesomeWM
-            'awesome',      -- awesomeWM
-            'screen',       -- awesomeWM
-            'client',       -- awesomeWM
-            'clienteys',   -- awesomeWM
-            'clientbuttons',-- awesomeWM
-        },
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      library = {
-        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-      },
-    },
-  }
-}
-
 -- enables snippet support
 local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -54,8 +24,24 @@ local function make_config()
     return {
         on_attach = on_attach,
         capabilities = capabilities,
+        autostart = true,
+        debounce_text_changes = 150,
     }
 end
+
+local requested_servers = {
+    'efm',
+    'tsserver',
+    'gopls', -- go
+    'graphql',
+    'sumneko_lua',
+    'tailwindcss',
+    'jsonls',
+    'cssls',
+    'html',
+    'dockerfile',
+    'solargraph', -- ruby
+}
 
 local lsp_installer = require("nvim-lsp-installer")
 
@@ -64,35 +50,39 @@ lsp_installer.settings {
         icons = {
             server_installed = "✓",
             server_pending = "➜",
-            server_uninstalled = "✗"
+            server_uninstalled = "✗",
+        },
+        keymaps = {
+            -- Keymap to expand a server in the UI
+            toggle_server_expand = 'i',
+            -- Keymap to install a server
+            install_server = '<CR>',
+            -- Keymap to reinstall/update a server
+            update_server = 'u',
+            -- Keymap to uninstall a server
+            uninstall_server = 'x',
         }
     }
 }
 
+local lsp_installer_servers = require('nvim-lsp-installer.servers')
+for _, requested_server in pairs(requested_servers) do
+    local ok, server = lsp_installer_servers.get_server(requested_server)
+    if ok then
+        if not server:is_installed() then
+            server:install()
+        end
+    end
+end
+
 lsp_installer.on_server_ready(function(server)
     local opts = make_config()
 
-    if server.name == "sumneko_lua" then
-        opts.settings = lua_settings
+    if server.name == 'sumneko_lua' then
+        opts = vim.tbl_deep_extend('force', opts, require('config.lsp.language.sumneko_lua'))
+    elseif false then
     end
 
-    if server.name == "solargraph" then
-        local config = require("config.lsp.language.ruby")
-        for _, value in pairs(config) do
-            table.insert(opts, value)
-        end
-    end
-
-    if server.name == "tsserver" then
-        opts.on_attach = function(client, bufnr)
-            -- Disable tsserver formatting as prettier/eslint does that.
-            client.resolved_capabilities.document_formatting = false
-            opts.on_attach(client, bufnr)
-        end
-    end
-
-    -- This setup() function is exactly the same as
-    -- lspconfig's setup function (:help lspconfig-quickstart)
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
