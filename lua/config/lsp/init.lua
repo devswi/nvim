@@ -53,14 +53,11 @@ lsp_installer.settings {
             server_uninstalled = "✗",
         },
         keymaps = {
-            -- Keymap to expand a server in the UI
-            toggle_server_expand = 'i',
-            -- Keymap to install a server
-            install_server = '<CR>',
-            -- Keymap to reinstall/update a server
+            toggle_server_expand = '<CR>',
+            install_server = 'i',
             update_server = 'u',
-            -- Keymap to uninstall a server
-            uninstall_server = 'x',
+            update_all_servers = 'U',
+            uninstall_server = 'X',
         }
     }
 }
