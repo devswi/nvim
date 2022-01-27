@@ -25,7 +25,17 @@ local function make_config()
         on_attach = on_attach,
         capabilities = capabilities,
         autostart = true,
-        debounce_text_changes = 150,
+        flags = {
+            debounce_text_changes = 150,
+        },
+        root_dir = function(fname)
+            local util = require('lspconfig').util
+            return util.root_pattern('.git')(fname)
+                or util.root_pattern('tsconfig.base.json')(fname)
+                or util.root_pattern('package.json')(fname)
+                or util.root_pattern('.eslintrc.js')(fname)
+                or util.root_pattern('tsconfig.json')(fname)
+        end,
     }
 end
 
@@ -77,7 +87,10 @@ lsp_installer.on_server_ready(function(server)
 
     if server.name == 'sumneko_lua' then
         opts = vim.tbl_deep_extend('force', opts, require('config.lsp.language.sumneko_lua'))
-    elseif false then
+    --[[ elseif server.name == 'tsserver' then
+        opts = vim.tbl_deep_extend('force', opts, require('config.lsp.language.tsserver')) ]]
+    --[[ elseif server.name == 'efm' then
+        opts = vim.tbl_deep_extend('force', opts, require('config.lsp.language.efm')) ]]
     end
 
     server:setup(opts)

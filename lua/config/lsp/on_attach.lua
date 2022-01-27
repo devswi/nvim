@@ -9,7 +9,7 @@ local on_attach = function(client, bufnr)
         client.config.flags.debounce_text_changes  = 100
     end
 
-    local opts = { noremap=true, silent=true }
+    local opts = { noremap = true, silent = true }
 
     map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     map(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -65,6 +65,22 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_command [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
     end
 
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+        [[
+        hi LspReferenceRead cterm=bold ctermbg=red guibg=#414b6f
+        hi LspReferenceText cterm=bold ctermbg=red guibg=#414b6f
+        hi LspReferenceWrite cterm=bold ctermbg=red guibg=#414b6f
+        augroup lsp_document_highlight
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+        ]],
+        false
+        )
+    end
+
     -- Per buffer LSP indicators control
     if vim.b.lsp_virtual_text_enabled == nil then
         vim.b.lsp_virtual_text_enabled = true
@@ -78,6 +94,13 @@ local on_attach = function(client, bufnr)
         require('config.lsp.diag').virtual_text_set()
         require('config.lsp.diag').virtual_text_redraw()
     end
+
+    require('lsp_signature').on_attach({
+        bind = true,
+        handler_opts = {
+            border = 'single',
+        },
+    }, bufnr)
 
 end
 
