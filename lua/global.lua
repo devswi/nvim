@@ -11,6 +11,29 @@ function global:load_variables()
     local home = self.is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
 
     self.home = home
+
+    local servers = {
+        efm = {
+            format = true,
+        },
+        gopls = {
+            format = true,
+        },
+    }
+
+    self.lsp = {
+        format_on_save = true,
+        servers = servers,
+        can_client_format = function(client_name)
+            if servers[client_name] == true then
+                return true
+            end
+
+            if servers[client_name] then
+                return servers[client_name].format
+            end
+        end,
+    }
 end
 
 global:load_variables()
