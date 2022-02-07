@@ -33,6 +33,12 @@ print(ok)
 
 plugin/
 
+pack/**
+sessions/**
+.netrwhist
+plugin/
+lua/compiled.lua
+
 #!! ERROR: neovim is undefined. Use list command to see defined gitignore types !!#
 
 # End of https://www.toptal.com/developers/gitignore/api/neovim,macos

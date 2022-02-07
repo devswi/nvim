@@ -1,34 +1,23 @@
-local disable_distribution_plugins = function()
-    vim.g.loaded_gzip = 1
-    vim.g.loaded_tar = 1
-    vim.g.loaded_tarPlugin = 1
-    vim.g.loaded_zip = 1
-    vim.g.loaded_zipPlugin = 1
-    vim.g.loaded_getscript = 1
-    vim.g.loaded_getscriptPlugin = 1
-    vim.g.loaded_vimball = 1
-    vim.g.loaded_vimballPlugin = 1
-    vim.g.loaded_matchit = 1
-    vim.g.loaded_matchparen = 1
-    vim.g.loaded_2html_plugin = 1
-    vim.g.loaded_logiPat = 1
-    vim.g.loaded_rrhelper = 1
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-    vim.g.loaded_netrwSettings = 1
-    vim.g.loaded_netrwFileHandlers = 1
-    vim.g.did_load_filetypes = 1
+do
+    local ok, _ = pcall(require, 'impatient')
+
+    if not ok then
+        vim.notify('impatient.nvim not installed', vim.log.levels.WARN)
+    end
 end
 
--- disable_distribution_plugins()
+local mods = {
+    'compiled',
+    'core',
+}
 
--- load plugins
-require("plugins")
-
--- load basic configuration
--- options, mappings, commands
---
-require("mappings").init()
-require("options")
-require("commands")
-
+for _, mod in ipairs(mods) do
+    local ok, err = pcall(require, mod)
+    if mod == 'compiled' and not ok then
+        vim.notify('Run :PackerCompile!', vim.log.levels.WARN, {
+            title='neovim',
+        })
+    elseif not ok and not mod:find('config') then
+        error(('Error loading %s...\n\n%s'):format(mod, err))
+    end
+end
