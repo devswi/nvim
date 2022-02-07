@@ -9,6 +9,7 @@ end
 local mods = {
     'compiled',
     'core',
+    'theme',
 }
 
 for _, mod in ipairs(mods) do

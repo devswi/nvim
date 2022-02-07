@@ -7,6 +7,8 @@ end
 local packer = custom_packer.packer
 local use = packer.use
 
+local config = require('config')
+
 return packer.startup(function()
     use({
         'wbthomason/packer.nvim',
@@ -16,13 +18,23 @@ return packer.startup(function()
     })
 
     -- theme
-    -- tokyonight
+    require('theme.plugins').init(use)
+
     use({
-        'folke/tokyonight.nvim',
-        as = 'tokyonight',
+        'rcarriga/nvim-notify',
         config = function()
-            vim.g.tokyonight_sidebars = { 'qf' }
-            vim.cmd [[color tokyonight]]
+            require('plugins.notify')
         end,
+        after = config.theme,
     })
+
+    use {
+        'NTBBloodbath/galaxyline.nvim',
+        branch = 'main',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require('plugins.galaxyline')
+        end,
+        after = config.theme,
+    }
 end)
