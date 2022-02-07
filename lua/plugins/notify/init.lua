@@ -11,7 +11,7 @@ notify.setup({
         TRACE = icons.trace,
     },
     stages = 'slide',
-    background_colour = require('theme.colors').bg
+    background_colour = require('theme.colors').bg,
 })
 
 vim.notify = notify

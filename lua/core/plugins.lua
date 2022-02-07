@@ -36,5 +36,88 @@ return packer.startup(function()
             require('plugins.galaxyline')
         end,
         after = config.theme,
+        disable = true,
+    }
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require('plugins.statusline')
+        end,
+        after = config.theme,
+    }
+
+    -- file explorer
+    use {
+        'kyazdani42/nvim-tree.lua',
+        config = function()
+            require('plugins.nvimtree')
+        end,
+        opt = true,
+        cmd = {
+            'NvimTreeClipboard',
+            'NvimTreeClose',
+            'NvimTreeFindFile',
+            'NvimTreeOpen',
+            'NvimTreeRefresh',
+            'NvimTreeToggle',
+        }
+    }
+
+    -- git column signs
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        opt = true,
+        event = 'BufRead',
+        config = function()
+            require('plugins.gitsigns')
+        end,
+    }
+
+    -- lang/syntax stuff
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        requires = {
+          'windwp/nvim-ts-autotag',
+          'JoosepAlviste/nvim-ts-context-commentstring',
+          'nvim-treesitter/nvim-treesitter-refactor',
+        },
+        run = ':TSUpdate',
+        config = function()
+          require('plugins.treesitter')
+        end,
+    }
+
+    use {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        opt = true,
+        after = "nvim-treesitter",
+    }
+
+    -- highlight brackets
+    use {
+        "p00f/nvim-ts-rainbow",
+        opt = true,
+        after = "nvim-treesitter",
+        event = "BufRead",
+    }
+
+    -- colorizer
+    use {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require('plugins.colorizer')
+        end,
+    }
+
+    -- comments
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+          require('plugins.comments')
+        end,
+        event = 'BufWinEnter',
     }
 end)

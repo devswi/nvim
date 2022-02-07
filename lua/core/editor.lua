@@ -3,10 +3,10 @@ local opt = vim.opt
 local g = vim.g
 local indent = 4
 
-cmd([[
+cmd [[
     filetype plugin indent on
     autocmd BufWritePre * :%s/\s\+$//e
-]])
+]]
 
 g.mapleader = ' '
 
@@ -70,6 +70,8 @@ opt.redrawtime = 1500
 opt.timeoutlen = 250
 opt.ttimeoutlen = 10
 opt.updatetime = 100
+
+opt.cmdheight = 2
 
 -- theme
 opt.termguicolors = true
