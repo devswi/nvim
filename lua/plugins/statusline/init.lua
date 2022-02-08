@@ -8,6 +8,10 @@ local colors = require('theme.colors')
 local icons = require('theme.icons')
 local main_icon = icons.ghost
 
+local icons_with_trailing_space = function(icon)
+    return icon .. ' '
+end
+
 local filename = {
     {
         'filetype',
@@ -92,7 +96,12 @@ statusline.setup({
             {
                 'diagnostics',
                 sources = { "nvim_diagnostic" },
-                symbols = { error = icons.error, warn = icons.warn, info = icons.info, hint = icons.hint },
+                symbols = {
+                    error = icons_with_trailing_space(icons.error),
+                    warn = icons_with_trailing_space(icons.warn),
+                    info = icons_with_trailing_space(icons.info),
+                    hint = icons_with_trailing_space(icons.hint),
+                },
                 diagnostics_color = {
                     error = { fg = colors.DiagnosticError },
                     warn  = { fg = colors.DiagnosticWarn },

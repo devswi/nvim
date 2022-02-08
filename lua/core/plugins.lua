@@ -133,13 +133,24 @@ return packer.startup(function()
         event = "BufRead",
     }
 
+    -- todo highlights
+    use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+          require('plugins.todo_comments')
+        end,
+        opt = true,
+        event = 'BufWinEnter',
+      }
+
     -- tools
 
     -- startuptime
     use {
         "dstein64/vim-startuptime",
         opt = true,
-        cmd = "Startuptime"
+        cmd = "StartupTime",
     }
 
     -- telescope
@@ -160,4 +171,67 @@ return packer.startup(function()
         end,
         event = 'BufWinEnter',
     }
+
+    -- lsp
+    use({
+        'neovim/nvim-lspconfig',
+        config = function()
+          require('lsp')
+        end,
+        requires = {
+          { 'b0o/SchemaStore.nvim' },
+          { 'williamboman/nvim-lsp-installer' },
+          { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
+          {
+            'jose-elias-alvarez/null-ls.nvim',
+            config = function()
+              require('lsp.providers.null_ls')
+            end,
+            after = 'nvim-lspconfig',
+          },
+          {
+            'ray-x/lsp_signature.nvim',
+            config = function()
+              require('plugins.lspsignature')
+            end,
+            after = 'nvim-lspconfig',
+          },
+        },
+      })
+
+    -- autocompletion
+    use({
+        'hrsh7th/nvim-cmp',
+        config = function()
+          require('plugins.nvim_cmp')
+        end,
+        requires = {
+          {
+            'L3MON4D3/LuaSnip',
+            config = function()
+              require('plugins.luasnip_conf')
+            end,
+            requires = {
+              'rafamadriz/friendly-snippets',
+            },
+          },
+          { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+          { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+          { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+          { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+          { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+          {
+            'windwp/nvim-autopairs',
+            config = function()
+              require('plugins.auto_pairs')
+            end,
+            after = 'nvim-cmp',
+          },
+        },
+        event = 'InsertEnter',
+      })
+
+    if packer.first_install then
+        packer.sync()
+    end
 end)

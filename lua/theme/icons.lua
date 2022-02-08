@@ -21,6 +21,7 @@ local icons = {
     symlink = '',
     line_number = '',
     debug = ' ',
+    bug = ' ',
     flame = ' ',
     check = ' ',
     trace = '✎',
