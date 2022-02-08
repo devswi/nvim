@@ -24,7 +24,7 @@ local config = {
                 return true
             end
             if vim.tbl_contains(user_servers, client_name) and servers[client_name] then
-                return (servers[client_name].format == true)
+                return servers[client_name].format
             end
             return true
         end,
