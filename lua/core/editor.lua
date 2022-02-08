@@ -10,6 +10,9 @@ cmd [[
 
 g.mapleader = ' '
 
+-- theme
+opt.termguicolors = true
+
 -- misc
 opt.backspace = { 'eol', 'start', 'indent' }
 opt.clipboard = 'unnamedplus'
@@ -39,8 +42,6 @@ opt.lazyredraw = true
 opt.list = true
 opt.listchars = {
     tab = '❘-',
-    trail = '·',
-    lead = '·',
     extends = '»',
     precedes = '«',
     nbsp = '×',
@@ -72,6 +73,3 @@ opt.ttimeoutlen = 10
 opt.updatetime = 100
 
 opt.cmdheight = 2
-
--- theme
-opt.termguicolors = true

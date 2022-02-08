@@ -14,11 +14,10 @@ local mods = {
 
 for _, mod in ipairs(mods) do
     local ok, err = pcall(require, mod)
+
     if mod == 'compiled' and not ok then
-        vim.notify('Run :PackerCompile!', vim.log.levels.WARN, {
-            title='neovim',
-        })
-    elseif not ok and not mod:find('config') then
-        error(('Error loading %s...\n\n%s'):format(mod, err))
+        vim.notify('Run :PackerCompile!', 'warn')
+    elseif not ok then
+        vim.notify(('Error loading %s..\n\n%s'):format(mod, err), 'error')
     end
 end

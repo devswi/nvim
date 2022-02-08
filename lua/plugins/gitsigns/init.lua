@@ -1,5 +1,4 @@
 local config = require('config')
-local utils = require('utils')
 
 require('gitsigns').setup {
   signs = {
@@ -17,7 +16,7 @@ require('gitsigns').setup {
     -- Default keymap options
     noremap = true,
 
-    ['n ]c'] = { expr = rue, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'" },
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'" },
     ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'" },
 
     ['n <leader>hs'] = '<cmd>Gitsigns stage_hunk<CR>',

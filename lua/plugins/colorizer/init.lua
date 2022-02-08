@@ -5,9 +5,7 @@ if not present then
 end
 
 colorizer.setup(
-    {
-        "*";
-    },
+    {"*";},
     {
         RGB = true;
         RRGGBB = true;
@@ -16,7 +14,7 @@ colorizer.setup(
         rgb_fn = true;
         hsl_fn = true;
         css = true;
-        csss_fn = true;
+        css_fn = true;
         mode = 'background';
     }
 )

@@ -29,23 +29,23 @@ return packer.startup(function()
     })
 
     use {
-        'NTBBloodbath/galaxyline.nvim',
-        branch = 'main',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function()
-            require('plugins.galaxyline')
-        end,
-        after = config.theme,
-        disable = true,
-    }
-
-    use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function()
             require('plugins.statusline')
         end,
         after = config.theme,
+    }
+
+    -- bufferline
+    use {
+        "akinsho/bufferline.nvim",
+        require = { "nvim-web-devicons", opt = true },
+        opt = true,
+        event = "BufRead",
+        config = function()
+            require('plugins.buffer_line')
+        end
     }
 
     -- file explorer
@@ -110,6 +110,8 @@ return packer.startup(function()
         config = function()
             require('plugins.colorizer')
         end,
+        opt = true,
+        event = "BufRead",
     }
 
     -- comments
@@ -117,6 +119,44 @@ return packer.startup(function()
         'numToStr/Comment.nvim',
         config = function()
           require('plugins.comments')
+        end,
+        event = 'BufWinEnter',
+    }
+
+    -- highlighting indent
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("plugins.blankline")
+        end,
+        opt = true,
+        event = "BufRead",
+    }
+
+    -- tools
+
+    -- startuptime
+    use {
+        "dstein64/vim-startuptime",
+        opt = true,
+        cmd = "Startuptime"
+    }
+
+    -- telescope
+    -- for fuzzy finding
+    use {
+        "nvim-telescope/telescope.nvim",
+        requires = {
+            { 'nvim-lua/plenary.nvim' },
+            { 'nvim-lua/popup.nvim' },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                run = "make",
+            },
+        },
+        config = function()
+            require('plugins.telescope.mappings').init()
+            require('plugins.telescope')
         end,
         event = 'BufWinEnter',
     }
