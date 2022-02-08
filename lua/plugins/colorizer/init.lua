@@ -1,21 +1,17 @@
-local present, colorizer = pcall(require, "colorizer")
+local present, colorizer = pcall(require, 'colorizer')
 
 if not present then
-    return
+  return
 end
 
-colorizer.setup(
-    {"*";},
-    {
-        RGB = true;
-        RRGGBB = true;
-        names = true;
-        RRGGBBAA = true;
-        rgb_fn = true;
-        hsl_fn = true;
-        css = true;
-        css_fn = true;
-        mode = 'background';
-    }
-)
-
+colorizer.setup({ '*' }, {
+  RGB = true,
+  RRGGBB = true,
+  names = true,
+  RRGGBBAA = true,
+  rgb_fn = true,
+  hsl_fn = true,
+  css = true,
+  css_fn = true,
+  mode = 'background',
+})

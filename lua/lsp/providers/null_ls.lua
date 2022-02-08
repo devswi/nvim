@@ -1,11 +1,8 @@
 local defaults = require('lsp.providers.defaults')
 local null_ls = require('null-ls')
+local utils = require('utils.init')
 
-local combine = function(...)
-  return vim.tbl_deep_extend('force', ...)
-end
-
-require('null-ls').setup(combine(defaults, {
+require('null-ls').setup(utils.merge(defaults, {
   sources = {
     null_ls.builtins.code_actions.eslint_d.with({
       prefer_local = 'node_modules/.bin',

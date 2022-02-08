@@ -47,22 +47,26 @@ function M.get_active_lsp_client_names()
   return client_names
 end
 
-local function unload(module_pattern, reload)
-  reload = reload or false
-  for module, _ in pairs(package.loaded) do
-    if module:match(module_pattern) then
-      package.loaded[module] = nil
-      if reload then
-        require(module)
-      end
+function M.define_augroups(definitions)
+  for group_name, definition in pairs(definitions) do
+    vim.cmd('augroup ' .. group_name)
+    vim.cmd('autocmd!')
+
+    for _, def in pairs(definition) do
+      local command = table.concat(vim.tbl_flatten({ 'autocmd', def }), ' ')
+      vim.cmd(command)
     end
+
+    vim.cmd('augroup END')
   end
 end
 
-local function clear_cache()
-  if 0 == vim.fn.delete(vim.fn.stdpath('config') .. '/lua/compiled.lua') then
-    vim.cmd(':LuaCacheClear')
-  end
+M.get_relative_path = function(file_path)
+  local plenary_path = require('plenary.path')
+  local parsed_path, _ = file_path:gsub('file://', '')
+  local path = plenary_path:new(parsed_path)
+  local relative_path = path:make_relative(vim.fn.getcwd())
+  return './' .. relative_path
 end
 
 return M

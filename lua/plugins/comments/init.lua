@@ -1,7 +1,7 @@
 local config = require('config')
 local utils = require('utils')
 
-require('Comment').setup {
+require('Comment').setup({
   pre_hook = function(ctx)
     local U = require('Comment.utils')
     local location = nil
@@ -16,5 +16,4 @@ require('Comment').setup {
       location = location,
     })
   end,
-}
-
+})

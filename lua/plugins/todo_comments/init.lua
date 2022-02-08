@@ -1,6 +1,6 @@
 local icons = require('theme.icons')
 
-require('todo-comments').setup {
+require('todo-comments').setup({
   keywords = {
     FIX = {
       icon = icons.debug, -- icon used for the sign, and in search results
@@ -21,4 +21,4 @@ require('todo-comments').setup {
     hint = { 'DiagnosticHint', '#10B981' },
     default = { 'Identifier', '#7C3AED' },
   },
-}
+})

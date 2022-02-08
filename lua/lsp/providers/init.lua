@@ -1,10 +1,7 @@
 local default_config = require('lsp.providers.defaults')
 local config = require('config')
 local lsp_installer = require('nvim-lsp-installer')
-
-local combine = function(...)
-  return vim.tbl_deep_extend('force', ...)
-end
+local utils = require('utils.init')
 
 lsp_installer.settings({
   ui = {
@@ -58,17 +55,17 @@ lsp_installer.on_server_ready(function(server)
 
   -- set up default options
   if server.name == 'tsserver' then
-    opts = combine(opts, require('lsp.providers.tsserver'))
+    opts = utils.merge(opts, require('lsp.providers.tsserver'))
   elseif server.name == 'jsonls' then
-    opts = combine(opts, require('lsp.providers.jsonls'))
+    opts = utils.merge(opts, require('lsp.providers.jsonls'))
   elseif server.name == 'sumneko_lua' then
-    opts = combine(opts, require('lsp.providers.sumneko_lua'))
+    opts = utils.merge(opts, require('lsp.providers.sumneko_lua'))
   end
 
   -- override options if user definds them
   if type(config.lsp.servers[server.name]) == 'table' then
     if config.lsp.servers[server.name].opts ~= nil then
-      opts = combine(opts, config.lsp.servers[server.name].opts)
+      opts = utils.merge(opts, config.lsp.servers[server.name].opts)
     end
   end
 

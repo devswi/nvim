@@ -3,10 +3,10 @@ local opt = vim.opt
 local g = vim.g
 local indent = 4
 
-cmd [[
+cmd([[
     filetype plugin indent on
     autocmd BufWritePre * :%s/\s\+$//e
-]]
+]])
 
 g.mapleader = ' '
 
@@ -41,10 +41,10 @@ opt.laststatus = 2
 opt.lazyredraw = true
 opt.list = true
 opt.listchars = {
-    tab = '❘-',
-    extends = '»',
-    precedes = '«',
-    nbsp = '×',
+  tab = '❘-',
+  extends = '»',
+  precedes = '«',
+  nbsp = '×',
 }
 opt.mouse = 'a'
 opt.number = true
