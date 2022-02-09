@@ -20,6 +20,9 @@ opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 opt.syntax = 'enable'
 
+-- remove whitespace on save
+cmd [[au BufWritePre * :%s/\s\+$//e]]
+
 -- indention
 opt.autoindent = true
 opt.expandtab = true
@@ -28,8 +31,16 @@ opt.smartindent = true
 opt.softtabstop = indent
 opt.tabstop = indent
 
+-- don't auto commenting new lines
+cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
+
+-- 2 spaces for selected filetypes
+cmd [[
+  autocmd FileType xml,lua,ruby,go setlocal shiftwidth=2 tabstop=2 softtabstop=2
+]]
+
 -- search
-opt.hlsearch = false
+opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }

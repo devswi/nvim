@@ -4,6 +4,8 @@ local lsp = vim.lsp
 local _winnr
 local _prompt_str = 'New Name❯ '
 
+local Logger = require('utils.logger')
+
 local function rename()
   local currName = vim.fn.expand('<cword>')
   local map_opts = { noremap = true, silent = true }
@@ -56,14 +58,13 @@ local function handler(...)
     result = select(3, ...)
   end
   if err then
-    vim.notify(("Error running LSP query '%s': %s"):format(method, err), vim.log.levels.WARN)
+    Logger:warn(("Error running LSP query '%s': %s"):format(method, err))
     return
   end
 
   local new_name = ''
   -- echo the resulting changes
   local utils = require('utils.init')
-  local Logger = require('utils.logger')
   if result and result.changes then
     local msg = {}
     for f, c in pairs(result.changes) do

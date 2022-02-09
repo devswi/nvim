@@ -36,9 +36,10 @@ g.nvim_tree_respect_buf_cwd = 1
 -- set up args
 require('nvim-tree').setup({
   filters = {
-    dotfiles = true,
+    dotfiles = false,
     custom = {
       '.DS_Store',
+      'node_modules/'
     },
   },
   disable_netrw = true,

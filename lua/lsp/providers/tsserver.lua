@@ -33,7 +33,7 @@ function M.on_attach(client, bufnr)
     watch_dir = nil,
 
     -- filter diagnostics
-    filter_out_diagnostics_by_severity = {},
+    filter_out_diagnostics_by_severity = { 'hint' },
     filter_out_diagnostics_by_code = {},
   })
 
