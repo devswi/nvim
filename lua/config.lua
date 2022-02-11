@@ -5,7 +5,7 @@ local servers = {
   sumneko_lua = {
     format = false, -- disable formatting all together
   },
-  html = true,
+  html = false,
   tsserver = {
     format = false, -- disable formatting all together
   },
