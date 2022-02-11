@@ -26,7 +26,7 @@ function M.on_attach(client, bufnr)
         format_filetypes = '*'
       end
       vim.cmd(([[
-          augroup Format
+          augroup LspFormat
           autocmd!
           autocmd BufWritePre %s lua vim.lsp.buf.formatting_sync(nil, 2000)
           augroup END

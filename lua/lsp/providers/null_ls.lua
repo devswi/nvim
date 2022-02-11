@@ -19,6 +19,7 @@ require('null-ls').setup(utils.merge(defaults, {
         PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
       },
     }),
+    null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.code_actions.gitsigns,
   },
