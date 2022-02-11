@@ -6,8 +6,15 @@ local servers = {
     format = false, -- disable formatting all together
   },
   html = false,
+  graphql = false,
   tsserver = {
     format = false, -- disable formatting all together
+  },
+  cssls = {
+    format = false,
+  },
+  tailwindcss = {
+    forma = false,
   },
 }
 

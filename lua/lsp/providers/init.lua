@@ -60,6 +60,8 @@ lsp_installer.on_server_ready(function(server)
     opts = utils.merge(opts, require('lsp.providers.jsonls'))
   elseif server.name == 'sumneko_lua' then
     opts = utils.merge(opts, require('lsp.providers.sumneko_lua'))
+  elseif server.name == 'tailwindcss' then
+    opts = utils.merge(opts, require('lsp.providers.tailwindcss'))
   end
 
   -- override options if user definds them

@@ -29,24 +29,7 @@ local filename = {
 local function lsp_name()
   local utils = require('utils.init')
   local clients = utils.get_active_lsp_client_names()
-  local client_str = ''
-
-  if #clients < 1 then
-    return client_str
-  end
-
-  for i, client in ipairs(clients) do
-    client_str = client_str .. client
-    if i < #clients then
-      client_str = client_str .. ', '
-    end
-  end
-
-  if client_str:len() < 1 then
-    return
-  end
-
-  return client_str
+  return string.format('%d', #clients) .. ' server(s)'
 end
 
 local lsp_tbl = {

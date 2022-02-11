@@ -44,7 +44,16 @@ M.flags = {
   debounce_text_changes = 150,
 }
 
-M.capabilities = {}
+local function make_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  if pcall(require, 'cmp_nvim_lsp') then
+    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  end
+  return capabilities
+end
+
+M.capabilities = make_capabilities()
 
 M.root_dir = function(fname)
   local util = require('lspconfig').util
