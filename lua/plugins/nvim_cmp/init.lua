@@ -65,9 +65,9 @@ local cmp_opts = {
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'nvim_lua' },
     { name = 'buffer' },
-    { name = 'luasnip' },
     { name = 'path' },
   }),
   formatting = {
