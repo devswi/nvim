@@ -63,7 +63,6 @@ return packer.startup(function()
       'NvimTreeRefresh',
       'NvimTreeToggle',
     },
-    event = { 'BufWinEnter' },
   })
 
   -- git column signs
