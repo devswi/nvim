@@ -231,6 +231,15 @@ return packer.startup(function()
     event = 'InsertEnter',
   })
 
+  -- lsp code action
+  use({
+    'tami5/lspsaga.nvim',
+    cmd = 'Lspsaga',
+    config = function()
+      require('plugins.saga')
+    end,
+  })
+
   if packer.first_install then
     packer.sync()
   end

@@ -37,7 +37,7 @@ require('nvim-treesitter.configs').setup({
     },
     move = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
+      set_jumps = true, -- whether to set jumps in the jump list
       goto_next_start = {
         [']['] = '@function.outer',
         [']m'] = '@class.outer',

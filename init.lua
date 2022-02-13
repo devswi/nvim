@@ -2,7 +2,7 @@ do
   local ok, _ = pcall(require, 'impatient')
 
   if not ok then
-    vim.notify('impatient.nvim not installed', vim.log.levels.WARN)
+    vim.notify(vim.log.levels.WARN, 'impatient.nvim not installed')
   end
 end
 
@@ -16,8 +16,8 @@ for _, mod in ipairs(mods) do
   local ok, err = pcall(require, mod)
 
   if mod == 'compiled' and not ok then
-    vim.notify('Run :PackerCompile!', 'warn')
+    vim.notify('warn', 'Run :PackerCompile!')
   elseif not ok then
-    vim.notify(('Error loading %s..\n\n%s'):format(mod, err), 'error')
+    vim.notify('error', ('Error loading %s..\n\n%s'):format(mod, err))
   end
 end

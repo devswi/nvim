@@ -2,7 +2,7 @@ local api = vim.api
 local lsp = vim.lsp
 
 local _winnr
-local _prompt_str = 'New Name❯ '
+local _prompt_str = 'New Name ❯ '
 
 local Logger = require('utils.logger')
 

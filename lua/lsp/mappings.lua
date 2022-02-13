@@ -22,15 +22,15 @@ function M.init(client, bufnr)
   buf_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
   -- code actions
-  buf_map(bufnr, 'n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  buf_map(bufnr, 'v', '<leader>ga', '<cmd>lua vim.lsp.buf.range_code_action()<CR>')
+  buf_map(bufnr, 'n', '<leader>ga', '<cmd>Lspsaga code_action<CR>')
+  buf_map(bufnr, 'v', '<leader>ga', '<cmd>Lspsaga range_code_action<CR>')
 
   -- formatting
   buf_map(bufnr, 'n', '<leader>gf', '<cmd>lua vim.lsp.buf.formatting()<cr>')
   buf_map(bufnr, 'v', '<leader>gf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
 
   -- signature help
-  buf_map(bufnr, 'n', 'gs', '<cmd>lua require("lsp_signature").signature()<cr>')
+  buf_map(bufnr, 'n', '<C-k>', '<cmd>lua require("lsp_signature").signature()<cr>')
 
   -- lsp workspace
   buf_map(bufnr, 'n', '<leader>wd', '<cmd>Telescope diagnostics<cr>')

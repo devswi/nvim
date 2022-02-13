@@ -1,19 +1,16 @@
-local config = require('config')
-local utils = require('utils')
-
 require('Comment').setup({
   padding = true,
   ignore = nil,
   mappings = {
     ---operator-pending mapping
-      ---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
-      basic = true,
-      ---extra mapping
-      ---Includes `gco`, `gcO`, `gcA`
-      extra = true,
-      ---extended mapping
-      ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-      extended = false,
+    ---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
+    basic = true,
+    ---extra mapping
+    ---Includes `gco`, `gcO`, `gcA`
+    extra = true,
+    ---extended mapping
+    ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
+    extended = false,
   },
   toggler = {
     ---line-comment keymap
@@ -24,10 +21,10 @@ require('Comment').setup({
   ---LHS of operator-pending mapping in NORMAL + VISUAL mode
   ---@type table
   opleader = {
-      ---line-comment keymap
-      line = 'gc',
-      ---block-comment keymap
-      block = 'gb',
+    ---line-comment keymap
+    line = 'gc',
+    ---block-comment keymap
+    block = 'gb',
   },
   pre_hook = function(ctx)
     local U = require('Comment.utils')
