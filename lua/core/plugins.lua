@@ -247,6 +247,16 @@ return packer.startup(function()
     end,
   })
 
+  -- term
+  use({
+    'akinsho/nvim-toggleterm.lua',
+    config = function()
+      require('plugins.term')
+    end,
+    opt = true,
+    event = 'BufWinEnter',
+  })
+
   if packer.first_install then
     packer.sync()
   end
