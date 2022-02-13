@@ -21,6 +21,13 @@ return packer.startup(function()
   require('theme.plugins').init(use)
 
   use({
+    'glepnir/dashboard-nvim',
+    config = function()
+      require('plugins.dashboard')
+    end,
+  })
+
+  use({
     'rcarriga/nvim-notify',
     config = function()
       require('plugins.notify')
