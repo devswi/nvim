@@ -6,23 +6,51 @@ require('plugins.nvimtree.mappings')
 -- bufferline key mapping
 map('n', '<TAB>', ':BufferLineCycleNext<CR>')
 map('n', '<S-TAB>', ':BufferLineCyclePrev<CR>')
-map('n', '<C-x>', ':BufferLinePickClose<CR>')
+-- close current buffer
+map('n', '<C-x>', ':bdelete!<cr>')
+-- pick buffer close
+map('n', '<leader>x', ':BufferLinePickClose<CR>')
 
--- gx mapping
-function _G.open_in_browser()
-  local Logger = require('utils.logger')
-  local url = string.match(vim.fn.expand('<cWORD>'), '[https|http]+://[^ >"\',;]*')
-  if url ~= nil then
-    if vim.fn.has('mac') == 1 then
-      vim.cmd(('!open %s'):format(url))
-    elseif vim.fn.has('unix') == 1 then
-      vim.cmd(('!xdg-open %s'):format(url))
-    else
-      Logger:error('gx is not supoorted on this OS!')
-    end
-  else
-    Logger:error('No https or http URI found in line.')
-  end
+-- Misc
+map('n', '<cr>', ':noh<cr><cr>')
+
+-- better window navigation
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
+
+-- move current line / block with alt-j/k
+map('i', '<A-j>', '<esc>:m .+1<cr>==gi')
+map('i', '<A-k>', '<esc>:m .-2<cr>==gi')
+map('n', '<A-j>', '<esc>:m .+1<cr>==')
+map('n', '<A-k>', '<esc>:m .-2<cr>==')
+
+-- save
+map('n', '<C-s>', ':w<cr>')
+map('i', '<C-s>', '<esc> :w<cr>')
+
+-- Keeping visual mode indenting
+map('v', '<', '<gv')
+map('v', '>', '>gv')
+
+local is_mac = vim.fn.has('macunix') == 1
+
+-- Open links under cursor in browser with gx
+if is_mac then
+  map('n', 'gx', "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", { silent = true })
+else
+  map('n', 'gx', "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", { silent = true })
 end
 
-map('n', 'gx', '<cmd>lua open_in_browser()<cr>')
+if is_mac then
+  map('n', '<A-Up>', ':resize -2<CR>')
+  map('n', '<A-Down>', ':resize +2<CR>')
+  map('n', '<A-Right>', ':vertical resize -2<CR>')
+  map('n', '<A-Left>', ':vertical resize +2<CR>')
+else
+  map('n', '<C-Up>', ':resize -2<CR>')
+  map('n', '<C-Down>', ':resize +2<CR>')
+  map('n', '<C-Right>', ':vertical resize -2<CR>')
+  map('n', '<C-Left>', ':vertical resize +2<CR>')
+end

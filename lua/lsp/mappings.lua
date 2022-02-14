@@ -30,7 +30,7 @@ function M.init(client, bufnr)
   buf_map(bufnr, 'v', '<leader>gf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
 
   -- signature help
-  buf_map(bufnr, 'n', '<C-k>', '<cmd>lua require("lsp_signature").signature()<cr>')
+  buf_map(bufnr, 'n', 'gs', '<cmd>lua require("lsp_signature").signature()<cr>')
 
   -- lsp workspace
   buf_map(bufnr, 'n', '<leader>wd', '<cmd>Telescope diagnostics<cr>')

@@ -4,10 +4,10 @@ local utils = require('utils.init')
 
 local default_mappings = {
   n = {
-    ['Q'] = actions.smart_add_to_qflist + actions.open_qflist,
-    ['q'] = actions.smart_send_to_qflist + actions.open_qflist,
-    ['<tab>'] = actions.toggle_selection + actions.move_selection_next,
-    ['<s-tab>'] = actions.toggle_selection + actions.move_selection_previous,
+    ['Q'] = actions.smart_add_to_qflist,
+    ['q'] = actions.smart_send_to_qflist,
+    ['<tab>'] = actions.toggle_selection,
+    ['<s-tab>'] = actions.toggle_selection,
     ['v'] = actions.file_vsplit,
     ['s'] = actions.file_split,
     ['<cr>'] = actions.file_edit,
