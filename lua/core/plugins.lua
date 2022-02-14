@@ -257,6 +257,16 @@ return packer.startup(function()
     event = 'BufWinEnter',
   })
 
+  -- UI
+  use({
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('plugins.neoscroll')
+    end,
+    opt = true,
+    event = 'BufWinEnter',
+  })
+
   if packer.first_install then
     packer.sync()
   end

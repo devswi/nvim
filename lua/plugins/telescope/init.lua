@@ -43,12 +43,12 @@ local opts_flex = {
   results_title = false,
   layout_config = {
     horizontal = {
-      preview_width = 0.55,
+      preview_width = 0.6,
     },
     vertical = {
       mirror = false,
     },
-    width = 0.5,
+    width = 0.6,
     height = 0.8,
     preview_cutoff = 120,
   },
