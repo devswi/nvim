@@ -7,7 +7,7 @@ require('toggleterm').setup({
       return vim.o.columns * 0.4
     end
   end,
-  open_mapping = [[<c-\>]],
+  open_mapping = [[<c-t>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_filetypes = {},
   shade_terminals = true,
@@ -32,4 +32,13 @@ require('toggleterm').setup({
   },
 })
 
-require('plugins.term.mappings')
+-- gitui
+local Terminal = require('toggleterm.terminal').Terminal
+local gitui = Terminal:new({ cmd = 'gitui', dir = 'git_dir', hidden = true })
+
+function _G.gitui_toggle()
+  gitui:toggle()
+end
+
+local map = require('utils').map
+map('n', '<leader>gg', '<cmd>lua gitui_toggle()<cr>')
