@@ -64,10 +64,10 @@ local cmp_opts = {
     ghost_text = true,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp', max_item_count = 12 },
     { name = 'luasnip' },
     { name = 'nvim_lua' },
-    { name = 'buffer' },
+    { name = 'buffer', max_item_count = 8 },
     { name = 'path' },
   }),
   formatting = {

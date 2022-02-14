@@ -1,6 +1,6 @@
 local modules = {
   'core.disabled',
-  'core.editor',
+  'core.options',
   'core.plugins',
   'core.commands',
   'core.mappings',

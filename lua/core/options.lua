@@ -21,7 +21,7 @@ opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 opt.syntax = 'enable'
 
 -- remove whitespace on save
-cmd [[au BufWritePre * :%s/\s\+$//e]]
+cmd([[au BufWritePre * :%s/\s\+$//e]])
 
 -- indention
 opt.autoindent = true
@@ -32,12 +32,12 @@ opt.softtabstop = indent
 opt.tabstop = indent
 
 -- don't auto commenting new lines
-cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
+cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 
 -- 2 spaces for selected filetypes
-cmd [[
+cmd([[
   autocmd FileType xml,lua,ruby,go setlocal shiftwidth=2 tabstop=2 softtabstop=2
-]]
+]])
 
 -- search
 opt.hlsearch = true
@@ -52,7 +52,7 @@ opt.laststatus = 2
 opt.lazyredraw = true
 opt.list = true
 opt.listchars = {
-  tab = '❘-',
+  tab = '»-',
   extends = '»',
   precedes = '«',
   nbsp = '×',
@@ -66,7 +66,6 @@ opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.signcolumn = 'yes'
 opt.splitbelow = true -- Open new split below
 opt.splitright = true -- Open new split to the right
-opt.wrap = false
 
 -- backups
 opt.backup = false
@@ -84,3 +83,10 @@ opt.ttimeoutlen = 10
 opt.updatetime = 100
 
 opt.cmdheight = 2
+
+-- wrap
+opt.wrap = true
+opt.wrapmargin = 8
+opt.linebreak = true
+opt.showbreak = '↪'
+opt.ttyfast = true

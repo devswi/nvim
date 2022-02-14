@@ -267,6 +267,16 @@ return packer.startup(function()
     event = 'BufWinEnter',
   })
 
+  -- markdown previewer
+  use({
+    'davidgranstrom/nvim-markdown-preview',
+    opt = true,
+    config = function()
+      require('plugins.markdown')
+    end,
+    cmd = 'MarkdownPreview',
+  })
+
   if packer.first_install then
     packer.sync()
   end
