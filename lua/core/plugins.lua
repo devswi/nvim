@@ -257,17 +257,6 @@ return packer.startup(function()
     event = 'BufWinEnter',
   })
 
-  -- UI
-  use({
-    'karb94/neoscroll.nvim',
-    config = function()
-      require('plugins.neoscroll')
-    end,
-    disable = true,
-    opt = true,
-    event = 'BufWinEnter',
-  })
-
   -- markdown previewer
   use({
     'davidgranstrom/nvim-markdown-preview',
@@ -276,6 +265,26 @@ return packer.startup(function()
       require('plugins.markdown')
     end,
     cmd = 'MarkdownPreview',
+  })
+
+  -- diff view
+  use({
+    'sindrets/diffview.nvim',
+    require = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('plugins.diffview').init()
+    end,
+    opt = true,
+    cmd = 'DiffviewFileHistory',
+  })
+
+  -- which-key
+  use({
+    'folke/which-key.nvim',
+    config = function()
+      require('plugins.which_key')
+    end,
+    event = 'BufWinEnter',
   })
 
   if packer.first_install then
