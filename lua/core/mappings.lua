@@ -37,11 +37,21 @@ map('v', '>', '>gv')
 local is_mac = vim.fn.has('macunix') == 1
 
 -- Open links under cursor in browser with gx
-if is_mac then
-  map('n', 'gx', "<cmd>silent execute '!open ' . shellescape('<cWORD>')<CR>", { silent = true })
-else
-  map('n', 'gx', "<cmd>silent execute '!xdg-open ' . shellescape('<cWORD>')<CR>", { silent = true })
+function _G.open_in_browser()
+  local Logger = require('utils.logger')
+  local url = string.match(vim.fn.expand('<cWORD>'), '[(http|ftp)s?|file]+://[^ >"\',;`]*')
+  if url ~= nil then
+    if vim.fn.has('macunix') == 1 then
+      vim.cmd(('!open %s'):format(url))
+    else
+      vim.cmd(('!xdg-open %s'):format(url))
+    end
+  else
+    Logger:error('No https or http URI found in line.')
+  end
 end
+
+map('n', 'gx', '<cmd>lua open_in_browser()<cr>')
 
 if is_mac then
   map('n', '<A-Up>', ':resize -2<CR>')
