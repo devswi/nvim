@@ -1,8 +1,8 @@
 local defaults = require('lsp.providers.defaults')
 local null_ls = require('null-ls')
-local utils = require('utils.init')
+local merge = require('utils.init').merge
 
-require('null-ls').setup(utils.merge(defaults, {
+require('null-ls').setup(merge(defaults, {
   sources = {
     null_ls.builtins.code_actions.eslint_d.with({
       prefer_local = 'node_modules/.bin',
@@ -10,7 +10,6 @@ require('null-ls').setup(utils.merge(defaults, {
     null_ls.builtins.diagnostics.eslint_d.with({
       prefer_local = 'node_modules/.bin',
     }),
-    null_ls.builtins.formatting.json_tool,
     null_ls.builtins.formatting.eslint_d.with({
       prefer_local = 'node_modules/.bin',
     }),
@@ -21,8 +20,23 @@ require('null-ls').setup(utils.merge(defaults, {
       },
     }),
     null_ls.builtins.formatting.markdownlint,
-    null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.json_tool.with({
+      condition = function(utils)
+        return not utils.root_has_file({
+          '.prettierrc',
+          '.prettierrc.json',
+          '.eslintrc',
+          '.eslintrc.js',
+          '.eslintrc.yml',
+          '.eslintrc.json',
+        })
+      end,
+    }),
+    null_ls.builtins.formatting.stylua.with({
+      condition = function(utils)
+        return utils.root_has_file({ 'stylua.toml', '.stylua.toml' })
+      end,
+    }),
     null_ls.builtins.code_actions.gitsigns,
   },
 }))
