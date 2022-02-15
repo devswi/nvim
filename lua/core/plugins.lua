@@ -267,17 +267,6 @@ return packer.startup(function()
     cmd = 'MarkdownPreview',
   })
 
-  -- diff view
-  use({
-    'sindrets/diffview.nvim',
-    require = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('plugins.diffview').init()
-    end,
-    opt = true,
-    cmd = 'DiffviewFileHistory',
-  })
-
   -- which-key
   use({
     'folke/which-key.nvim',

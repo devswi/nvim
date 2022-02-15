@@ -39,6 +39,3 @@ local gitui = Terminal:new({ cmd = 'gitui', dir = 'git_dir', hidden = true })
 function _G.gitui_toggle()
   gitui:toggle()
 end
-
-local map = require('utils').map
-map('n', '<leader>gg', '<cmd>lua gitui_toggle()<cr>')

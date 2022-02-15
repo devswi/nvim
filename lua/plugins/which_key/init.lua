@@ -80,65 +80,144 @@ local mappings = {
   ['9'] = 'which_key_ignore',
 
   -- single
-  ['+'] = { '<cmd>vertical resize +2<CR>', 'resize +2' },
-  ['-'] = { '<cmd>vertical resize -2<CR>', 'resize -2' },
-  ['='] = { '<C-w>=', 'balance windows' },
-  ['v'] = { '<C-w>v', 'split right' },
-  ['V'] = { '<C-w>s', 'split below' },
+  ['w'] = { '<cmd>w!<CR>', 'Save' },
+  ['q'] = { '<cmd>q!<CR>', 'Quit' },
+  ['c'] = { '<cmd>bdelete!<CR>', 'Close Buffer' },
+  ['f'] = { '<cmd>lua require("plugins.telescope.mappings").project_files()<CR>', 'Find File' },
+  ['h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
+  ['v'] = { '<C-w>v', 'Split Right' },
+  ['V'] = { '<C-w>s', 'Split Below' },
+  ['r'] = { ':NvimTreeRefresh<CR>', 'File Explorer Refresh' },
+  ['+'] = { '<cmd>vertical resize +2<CR>', 'Resize +2' },
+  ['-'] = { '<cmd>vertical resize -2<CR>', 'Resize -2' },
+  ['='] = { '<C-w>=', 'Balance Windows' },
 
-  -- dashboard
-  ['/'] = {
-    name = 'Dashboard',
-    ['/'] = { '<cmd>Dashboard<CR>', 'open dashboard' },
-    ['c'] = { ':e $MYVIMRC<CR>', 'open init' },
-    ['s'] = { '<cmd>PackerSync<CR>', 'packer sync' },
-    ['u'] = { '<cmd>PackerUpdate<CR>', 'packer update' },
-  },
-
-  -- actions
-  ['a'] = {
-    name = 'Actions',
-    m = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
-  },
-
-  -- buffer
   b = {
-    name = 'Buffer',
-    b = { '<cmd>BufferLineMovePrev<CR>', 'Move back' },
-    f = { '<cmd>bfirst<CR>', 'First Buffer' },
-    l = { '<cmd>BufferLineCloseLeft<CR>', 'Close Left' },
-    r = { '<cmd>BufferLineCloseRight<CR>', 'Close Right' },
-    n = { '<cmd>BufferLineMoveNext<CR>', 'Move Next' },
-    p = { '<cmd>BufferLinePick<CR>', 'Pick Buffer' },
-    x = { ':bdelete!<CR>', 'Close Buffer' },
+    name = 'Buffers',
+    j = { '<cmd>BufferLinePick<CR>', 'Jump' },
+    f = { ':Telescope buffers<CR>', 'Find' },
+    p = { '<cmd>BufferLineCyclePrev<CR>', 'Previous' },
+    e = {
+      '<cmd>BufferLinePickClose<CR>',
+      'Pick which buffer to close',
+    },
+    h = { '<cmd>BufferLineCloseLeft<CR>', 'Close all to the left' },
+    l = {
+      '<cmd>BufferLineCloseRight<CR>',
+      'Close all to the right',
+    },
+    n = { '<cmd>BufferLineCycleNext<CR>', 'Next' },
+    D = {
+      '<cmd>BufferLineSortByDirectory<CR>',
+      'Sort by directory',
+    },
+    L = {
+      '<cmd>BufferLineSortByExtension<CR>',
+      'Sort by language',
+    },
   },
 
-  -- code
-  c = {
-    name = 'LSP',
-    a = { 'code action' },
-    f = { 'format' },
-    d = { 'current buffer disgnostics' },
-    r = { 'rename' },
-    o = { 'organize imports' },
-    i = { 'import all' },
+  p = {
+    name = 'Packer',
+    c = { '<cmd>PackerCompile<CR>', 'Compile' },
+    i = { '<cmd>PackerInstall<CR>', 'Install' },
+    s = { '<cmd>PackerSync<CR>', 'Sync' },
+    S = { '<cmd>PackerStatus<CR>', 'Status' },
+    u = { '<cmd>PackerUpdate<CR>', 'Update' },
   },
 
   g = {
     name = 'Git',
-    d = { '<cmd>lua require("plugins.diffview").toggle()<CR>', 'diff file' },
-    g = {
-      'gitui',
+    g = { '<cmd>lua gitui_toggle()<cr>', 'gitui' },
+    j = { "<cmd>lua require 'gitsigns'.next_hunk()<CR>", 'Next Hunk' },
+    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<CR>", 'Prev Hunk' },
+    l = { "<cmd>lua require 'gitsigns'.blame_line()<CR>", 'Blame' },
+    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<CR>", 'Preview Hunk' },
+    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<CR>", 'Reset Hunk' },
+    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<CR>", 'Reset Buffer' },
+    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<CR>", 'Stage Hunk' },
+    u = {
+      "<cmd>lua require 'gitsigns'.undo_stage_hunk()<CR>",
+      'Undo Stage Hunk',
+    },
+    o = { '<cmd>Telescope git_status<CR>', 'Open changed file' },
+    b = { '<cmd>Telescope git_branches<CR>', 'Checkout branch' },
+    c = { '<cmd>Telescope git_commits<CR>', 'Checkout commit' },
+    C = {
+      '<cmd>Telescope git_bcommits<CR>',
+      'Checkout commit(for current file)',
+    },
+    d = {
+      '<cmd>Gitsigns diffthis HEAD<cr>',
+      'Git Diff',
     },
   },
 
-  w = {
-    name = 'WorkSpace',
-    a = { 'add wordspace folder' },
-    d = { 'workspace disgnostics' },
-    r = { 'remove wordspace folder' },
+  l = {
+    name = 'LSP',
+    a = { '<cmd>Lspsaga code_action<CR>', 'Code Action' },
+    d = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>', 'Buffer Diagnostics' },
+    w = { '<cmd>Telescope diagnostics<CR>', 'Diagnostics' },
+    f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format' },
+    i = { '<cmd>LspInfo<CR>', 'Info' },
+    I = { '<cmd>LspInstallInfo<CR>', 'Installer Info' },
+    j = {
+      '<cmd>lua vim.diagnostic.goto_next()<CR>',
+      'Next Diagnostic',
+    },
+    k = {
+      '<cmd>lua vim.diagnostic.goto_prev()<CR>',
+      'Prev Diagnostic',
+    },
+    r = { '<cmd>lua require("lsp.rename").rename()<CR>', 'Rename' },
+    s = { '<cmd>Telescope lsp_document_symbols<CR>', 'Document Symbols' },
+    S = {
+      '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
+      'Workspace Symbols',
+    },
+  },
+
+  m = {
+    name = 'Markdown',
+    p = { '<cmd>MarkdownPreview<CR>', 'Markdown Preview' },
+  },
+
+  s = {
+    name = 'Search',
+    b = { '<cmd>Telescope git_branches<CR>', 'Checkout branch' },
+    c = { '<cmd>Telescope colorscheme<CR>', 'Colorscheme' },
+    f = { '<cmd>Telescope find_files<CR>', 'Find File' },
+    h = { '<cmd>Telescope help_tags<CR>', 'Find Help' },
+    M = { '<cmd>Telescope man_pages<CR>', 'Man Pages' },
+    r = { '<cmd>Telescope oldfiles<CR>', 'Open Recent File' },
+    R = { '<cmd>Telescope registers<CR>', 'Registers' },
+    t = { '<cmd>Telescope live_grep<CR>', 'Text' },
+    k = { '<cmd>Telescope keymaps<CR>', 'Keymaps' },
+    C = { '<cmd>Telescope commands<CR>', 'Commands' },
+    p = {
+      "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<CR>",
+      'Colorscheme with Preview',
+    },
   },
 }
 
 local wk = require('which-key')
+
+-- normal mode
 wk.register(mappings, opts)
+
+-- visual mode
+wk.register({
+  l = {
+    name = 'LSP',
+    a = { '<cmd>Lspsaga range_code_action<CR>', 'Code Action' },
+    f = { '<cmd>lua vim.lsp.buf.range_formatting()<CR>', 'Format' },
+  },
+}, {
+  mode = 'v',
+  prefix = '<leader>',
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = false,
+})
