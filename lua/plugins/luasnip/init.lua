@@ -34,4 +34,5 @@ require('luasnip/loaders/from_vscode').load({
     'rails',
     -- 'flutter',
   },
+  paths = vim.fn.stdpath('config') .. '/snippets',
 })

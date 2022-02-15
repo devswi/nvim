@@ -10,6 +10,7 @@ require('null-ls').setup(utils.merge(defaults, {
     null_ls.builtins.diagnostics.eslint_d.with({
       prefer_local = 'node_modules/.bin',
     }),
+    null_ls.builtins.formatting.json_tool,
     null_ls.builtins.formatting.eslint_d.with({
       prefer_local = 'node_modules/.bin',
     }),

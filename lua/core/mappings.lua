@@ -34,6 +34,12 @@ map('i', '<C-s>', '<esc> :w<cr>')
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
+-- Movement in Insert Mode
+map('i', '<C-b>', '<Left>')
+map('i', '<C-p>', '<Up>')
+map('i', '<C-n>', '<Down>')
+map('i', '<C-f>', '<Right>')
+
 local is_mac = vim.fn.has('macunix') == 1
 
 -- Open links under cursor in browser with gx
