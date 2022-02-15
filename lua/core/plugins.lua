@@ -263,6 +263,7 @@ return packer.startup(function()
     config = function()
       require('plugins.neoscroll')
     end,
+    disable = true,
     opt = true,
     event = 'BufWinEnter',
   })
