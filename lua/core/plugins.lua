@@ -15,6 +15,7 @@ return packer.startup(function()
     'lewis6991/impatient.nvim',
     'nathom/filetype.nvim',
     'nvim-lua/plenary.nvim',
+    'tpope/vim-surround',
   })
 
   -- theme
