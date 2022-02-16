@@ -291,6 +291,15 @@ return packer.startup(function()
     end,
   })
 
+  -- neoscroll
+  use({
+    'karb94/neoscroll.nvim',
+    event = 'BufWinEnter',
+    config = function()
+      require('plugins.neoscroll')
+    end,
+  })
+
   if packer.first_install then
     packer.sync()
   end
