@@ -276,6 +276,20 @@ return packer.startup(function()
     event = 'BufWinEnter',
   })
 
+  -- Diffview
+  use({
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    opt = true,
+    cmd = {
+      'DiffviewOpen',
+      'DiffviewFileHistory',
+    },
+    config = function()
+      require('plugins.diffview')
+    end,
+  })
+
   if packer.first_install then
     packer.sync()
   end

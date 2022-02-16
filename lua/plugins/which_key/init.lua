@@ -148,7 +148,7 @@ local mappings = {
       'Checkout commit(for current file)',
     },
     d = {
-      '<cmd>Gitsigns diffthis HEAD<cr>',
+      '<cmd>lua require("plugins.diffview").toggle()<cr>',
       'Git Diff',
     },
   },
