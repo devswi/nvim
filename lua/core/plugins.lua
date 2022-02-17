@@ -17,6 +17,7 @@ return packer.startup(function()
     'nathom/filetype.nvim',
     'nvim-lua/plenary.nvim',
     'tpope/vim-surround',
+    'terryma/vim-multiple-cursors',
   })
 
   -- theme
