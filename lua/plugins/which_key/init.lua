@@ -87,6 +87,7 @@ local mappings = {
   ['h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
   ['v'] = { '<C-w>v', 'Split Right' },
   ['V'] = { '<C-w>s', 'Split Below' },
+  ['n'] = { ':NvimTreeToggle<CR>', 'File Explorer Toggle' },
   ['r'] = { ':NvimTreeRefresh<CR>', 'File Explorer Refresh' },
   ['+'] = { '<cmd>vertical resize +2<CR>', 'Resize +2' },
   ['-'] = { '<cmd>vertical resize -2<CR>', 'Resize -2' },

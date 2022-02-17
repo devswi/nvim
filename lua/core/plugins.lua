@@ -175,8 +175,7 @@ return packer.startup(function()
       },
     },
     config = function()
-      require('plugins.telescope.mappings').init()
-      require('plugins.telescope.init')
+      require('plugins.telescope')
     end,
     event = 'BufWinEnter',
   })

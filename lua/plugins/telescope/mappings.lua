@@ -8,6 +8,4 @@ M.project_files = function()
   end
 end
 
-M.init = function() end
-
 return M

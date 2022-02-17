@@ -39,7 +39,7 @@ require('nvim-tree').setup({
     dotfiles = false,
     custom = {
       '.DS_Store',
-      'node_modules/'
+      'node_modules/',
     },
   },
   disable_netrw = true,
