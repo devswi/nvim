@@ -38,12 +38,12 @@ local is_mac = vim.fn.has('macunix') == 1
 -- Open links under cursor in browser with gx
 function _G.open_in_browser()
   local Logger = require('utils.logger')
-  local url = string.match(vim.fn.expand('<cWORD>'), '[(http|ftp)s?|file]+://[^ >"\',;`]*')
+  local url = string.match(vim.fn.expand('<cWORD>'), 'https?://[%w-_%.%?%.:/%+=&]+[^ >"\',;`]*')
   if url ~= nil then
     if is_mac then
-      vim.cmd(('!open %s'):format(url))
+      vim.cmd(('!open "%s"'):format(url))
     else
-      vim.cmd(('!xdg-open %s'):format(url))
+      vim.cmd(('!xdg-open "%s"'):format(url))
     end
   else
     Logger:error('No https or http URI found in line.')

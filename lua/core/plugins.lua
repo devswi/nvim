@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 local present, custom_packer = pcall(require, 'packer_install')
 
 if not present then

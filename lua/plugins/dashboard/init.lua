@@ -27,7 +27,7 @@ g.dashboard_session_directory = vim.fn.stdpath('data') .. '/sessions'
 
 g.dashboard_custom_section = {
   find_file = {
-    description = { icons.file1 .. ' Find File           <leader>ff' },
+    description = { icons.file1 .. ' Find File           <leader>f ' },
     command = 'Telescope find_files',
   },
   file_explorer = {
@@ -35,7 +35,7 @@ g.dashboard_custom_section = {
     command = 'NvimTreeToggle',
   },
   find_string = {
-    description = { icons.word .. ' Grep String         <leader>fs' },
+    description = { icons.word .. ' Grep String         <leader>st' },
     command = 'Telescope grep_string',
   },
 }
