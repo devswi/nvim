@@ -48,7 +48,7 @@ local opts_flex = {
     vertical = {
       mirror = false,
     },
-    width = 0.6,
+    width = 0.8,
     height = 0.8,
     preview_cutoff = 120,
   },
