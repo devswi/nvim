@@ -19,7 +19,6 @@ local cmp_opts = {
   mapping = {
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-e>'] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
@@ -64,10 +63,10 @@ local cmp_opts = {
     ghost_text = true,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', max_item_count = 12 },
+    { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'nvim_lua' },
-    { name = 'buffer', max_item_count = 8 },
+    { name = 'buffer' },
     { name = 'path' },
   }),
   formatting = {

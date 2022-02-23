@@ -1,4 +1,14 @@
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.colorProvider = { dynamicRegistration = false }
+
 return {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    if client.server_capabilities.colorProvider then
+      require('lsp/documentcolors').buf_attach(bufnr)
+    end
+  end,
   settings = {
     tailwindCSS = {
       lint = {
