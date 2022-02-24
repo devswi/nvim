@@ -35,7 +35,7 @@ local is_mac = vim.fn.has('macunix') == 1
 -- Open links under cursor in browser with gx
 function _G.open_in_browser()
   local Logger = require('utils.logger')
-  local url = string.match(vim.fn.expand('<cWORD>'), 'https?://[%w-_%.%?%.:/%+=&]+[^ >"\',;`]*')
+  local url = string.match(vim.fn.expand('<cWORD>'), 'https?://[%w-_%.%?%.:/%+=&]+[^ >"\';`]*')
   if url ~= nil then
     if is_mac then
       vim.cmd(('!open "%s"'):format(url))
