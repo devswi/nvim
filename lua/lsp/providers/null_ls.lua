@@ -33,7 +33,16 @@ require('null-ls').setup(merge(defaults, {
     }),
     null_ls.builtins.formatting.markdownlint,
     null_ls.builtins.formatting.json_tool.with({
-      condition = condition,
+      condition = function(utils)
+        return not utils.root_has_file({
+          '.prettierrc',
+          '.prettierrc.json',
+          '.eslintrc',
+          '.eslintrc.js',
+          '.eslintrc.yml',
+          '.eslintrc.json',
+        })
+      end,
     }),
     null_ls.builtins.formatting.stylua.with({
       condition = function(utils)
