@@ -16,10 +16,6 @@ map('i', '<A-k>', '<esc>:m .-2<CR>==gi')
 map('n', '<A-j>', '<esc>:m .+1<CR>')
 map('n', '<A-k>', '<esc>:m .-2<CR>')
 
--- save
-map('n', '<C-w>', ':w<CR>')
-map('i', '<C-w>', '<esc>:w<CR>==gi')
-
 -- Keeping visual mode indenting
 map('v', '<', '<gv')
 map('v', '>', '>gv')
