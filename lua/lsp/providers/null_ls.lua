@@ -2,6 +2,17 @@ local defaults = require('lsp.providers.defaults')
 local null_ls = require('null-ls')
 local merge = require('utils.init').merge
 
+local function condition(utils)
+  return utils.root_has_file({
+    '.prettierrc',
+    '.prettierrc.json',
+    '.eslintrc',
+    '.eslintrc.js',
+    '.eslintrc.yml',
+    '.eslintrc.json',
+  })
+end
+
 require('null-ls').setup(merge(defaults, {
   sources = {
     null_ls.builtins.code_actions.eslint_d.with({
@@ -12,6 +23,7 @@ require('null-ls').setup(merge(defaults, {
     }),
     null_ls.builtins.formatting.eslint_d.with({
       prefer_local = 'node_modules/.bin',
+      condition = condition,
     }),
     null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.formatting.prettierd.with({
@@ -21,16 +33,7 @@ require('null-ls').setup(merge(defaults, {
     }),
     null_ls.builtins.formatting.markdownlint,
     null_ls.builtins.formatting.json_tool.with({
-      condition = function(utils)
-        return not utils.root_has_file({
-          '.prettierrc',
-          '.prettierrc.json',
-          '.eslintrc',
-          '.eslintrc.js',
-          '.eslintrc.yml',
-          '.eslintrc.json',
-        })
-      end,
+      condition = condition,
     }),
     null_ls.builtins.formatting.stylua.with({
       condition = function(utils)
