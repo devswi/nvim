@@ -32,7 +32,7 @@ local opts_vertical = {
   results_title = false,
   layout_config = {
     width = 0.3,
-    height = 0.5,
+    height = 0.7,
     prompt_position = 'top',
     mirror = true,
   },
@@ -48,7 +48,7 @@ local opts_flex = {
     vertical = {
       mirror = false,
     },
-    width = 0.8,
+    width = 0.65,
     height = 0.8,
     preview_cutoff = 120,
   },
