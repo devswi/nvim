@@ -102,7 +102,6 @@ return packer.startup(function()
 
   use({
     'nvim-treesitter/nvim-treesitter-textobjects',
-    opt = true,
     after = 'nvim-treesitter',
   })
 
