@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-![](./screenshot/dashboard.png)
+![dashboard](./screenshot/dashboard.png)
 
 ## Introduction
 
@@ -14,11 +14,11 @@ This config is tested against [Nvim 0.6.1 release](https://github.com/neovim/neo
 
 ### Editor
 
-![](./screenshot/overview.png)
+![IDE overview](./screenshot/overview.png)
 
 ### Fuzzy find
 
-![](./screenshot/telescope.png)
+![fzf](./screenshot/telescope.png)
 
 ## Plugins
 
@@ -66,7 +66,7 @@ This config is tested against [Nvim 0.6.1 release](https://github.com/neovim/neo
 Tap `<leader>` key and will get suggestions to complete a key binding with a beautiful popup window. Thanks for
 the plugin [which-key.nvim](https://github.com/folke/which-key.nvim).
 
-![](./screenshot/which-key.png)
+![which-key](./screenshot/which-key.png)
 
 ## Thanks for inspiration
 
