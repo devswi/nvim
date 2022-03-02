@@ -2,15 +2,17 @@ local defaults = require('lsp.providers.defaults')
 local null_ls = require('null-ls')
 local merge = require('utils.init').merge
 
+local file_map = {
+  '.prettierrc',
+  '.prettierrc.json',
+  '.eslintrc',
+  '.eslintrc.js',
+  '.eslintrc.yml',
+  '.eslintrc.json',
+}
+
 local function condition(utils)
-  return utils.root_has_file({
-    '.prettierrc',
-    '.prettierrc.json',
-    '.eslintrc',
-    '.eslintrc.js',
-    '.eslintrc.yml',
-    '.eslintrc.json',
-  })
+  return utils.root_has_file(file_map)
 end
 
 require('null-ls').setup(merge(defaults, {
@@ -34,14 +36,7 @@ require('null-ls').setup(merge(defaults, {
     null_ls.builtins.formatting.markdownlint,
     null_ls.builtins.formatting.json_tool.with({
       condition = function(utils)
-        return not utils.root_has_file({
-          '.prettierrc',
-          '.prettierrc.json',
-          '.eslintrc',
-          '.eslintrc.js',
-          '.eslintrc.yml',
-          '.eslintrc.json',
-        })
+        return not utils.root_has_file(file_map)
       end,
     }),
     null_ls.builtins.formatting.stylua.with({
