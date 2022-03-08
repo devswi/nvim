@@ -1,7 +1,6 @@
 {
     "Modal Component": {
         "body": [
-            "import React from 'react';",
             "import styled from 'styled-components';",
             "import ReactDOM from 'react-dom';",
             "",
@@ -30,7 +29,6 @@
     },
     "Pure react component": {
         "body": [
-            "import React from 'react';",
             "import PropTypes from 'prop-types';",
             "import styled from 'styled-components';",
             "",
