@@ -3,11 +3,6 @@ local opt = vim.opt
 local g = vim.g
 local indent = 4
 
-cmd([[
-    filetype plugin indent on
-    autocmd BufWritePre * :%s/\s\+$//e
-]])
-
 g.mapleader = ' '
 
 -- theme
@@ -89,4 +84,3 @@ opt.wrap = true
 opt.wrapmargin = 8
 opt.linebreak = true
 opt.showbreak = '↪'
-opt.ttyfast = true
