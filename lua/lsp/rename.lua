@@ -13,7 +13,7 @@ local function rename()
     style = 'minimal',
     border = 'rounded',
     relative = 'cursor',
-    width = 25,
+    width = 44,
     height = 1,
     row = 1,
     col = 1,
