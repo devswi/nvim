@@ -93,6 +93,7 @@ return packer.startup(function()
       'windwp/nvim-ts-autotag',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-refactor',
+      'nvim-treesitter/nvim-tree-docs',
     },
     run = ':TSUpdate',
     config = function()

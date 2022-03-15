@@ -25,6 +25,7 @@ require('nvim-treesitter.configs').setup({
     extended_mode = true,
     max_file_lines = nil,
   },
+  tree_docs = { enable = true },
   textobjects = {
     select = {
       enable = true,
