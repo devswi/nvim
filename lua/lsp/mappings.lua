@@ -8,9 +8,9 @@ function M.init(_, bufnr)
   buf_map(bufnr, 'n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
   -- TODO: ?
   -- buf_map(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  buf_map(bufnr, 'n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
+  -- buf_map(bufnr, 'n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
   -- definitions
-  buf_map(bufnr, 'n', 'gt', '<cmd>lua require("telescope.builtin").lsp_type_definitions()<CR>')
+  -- buf_map(bufnr, 'n', 'gt', '<cmd>lua require("telescope.builtin").lsp_type_definitions()<CR>')
   -- reference
   buf_map(bufnr, 'n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
   -- diagnostics
