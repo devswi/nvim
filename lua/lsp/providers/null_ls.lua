@@ -28,6 +28,7 @@ require('null-ls').setup(merge(defaults, {
       condition = condition,
     }),
     null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.prettierd.with({
       env = {
         PRETTIERD_LOCAL_PRETTIER_ONLY = 1,

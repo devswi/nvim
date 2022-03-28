@@ -31,7 +31,7 @@ cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 
 -- 2 spaces for selected filetypes
 cmd([[
-  autocmd FileType xml,lua,ruby,go setlocal shiftwidth=2 tabstop=2 softtabstop=2
+  autocmd FileType xml,lua,ruby,go,yaml,yml,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 ]])
 
 -- search
