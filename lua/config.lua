@@ -1,4 +1,7 @@
 local servers = {
+  bashls = {
+    format = false,
+  },
   jsonls = {
     format = false,
   },
