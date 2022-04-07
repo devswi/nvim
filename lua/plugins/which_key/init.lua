@@ -91,6 +91,7 @@ local mappings = {
   ['n'] = { 'nzz', 'Next Match' },
   ['N'] = { 'Nzz', 'Previous Match' },
   ['r'] = { ':NvimTreeRefresh<CR>', 'File Explorer Refresh' },
+  ['\\'] = { '<cmd>ToggleTermToggleAll<CR>', 'Toggle All Terminals' },
   ['+'] = { '<cmd>vertical resize +2<CR>', 'Resize +2' },
   ['-'] = { '<cmd>vertical resize -2<CR>', 'Resize -2' },
   ['='] = { '<C-w>=', 'Balance Windows' },
