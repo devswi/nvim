@@ -16,6 +16,12 @@ local cmp_opts = {
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+    documentation = {
+      border = config.border,
+      winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+    },
+  },
   mapping = {
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -54,10 +60,6 @@ local cmp_opts = {
       'i',
       's',
     }),
-  },
-  documentation = {
-    border = config.border,
-    winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
   },
   experimental = {
     ghost_text = true,
