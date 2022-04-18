@@ -1,3 +1,3 @@
 vim.cmd([[
-    command! LspFormat lua vim.lsp.buf.formatting()
+  command! LspFormat lua vim.lsp.buf.formatting()
 ]])
