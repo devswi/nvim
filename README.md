@@ -8,7 +8,7 @@ This repo hosts my Neovim configuration for macOS. `init.lua` is the entry point
 
 ## Dependent
 
-This config is tested against [Nvim 0.6.1 release](https://github.com/neovim/neovim/releases/tag/stable).
+This config is tested against [Nvim 0.7.0 release](https://github.com/neovim/neovim/releases/tag/stable).
 
 ## Screenshot
 
