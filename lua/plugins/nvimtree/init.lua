@@ -56,7 +56,6 @@ require('nvim-tree').setup({
     hide_root_folder = true,
   },
   git = {
-    enable = true,
     ignore = true,
   },
   diagnostics = {
