@@ -33,6 +33,7 @@ require('nvim-tree').setup({
     custom = {
       '.DS_Store',
       'node_modules/',
+      '.rush',
     },
   },
   disable_netrw = true,
