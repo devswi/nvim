@@ -11,24 +11,49 @@ local file_map = {
   '.eslintrc.json',
 }
 
-local function condition(utils)
-  return utils.root_has_file(file_map)
+local function rush_condition(utils)
+  return not utils.root_has_file('node_modules/')
 end
 
 require('null-ls').setup(merge(defaults, {
   sources = {
     null_ls.builtins.code_actions.eslint_d.with({
       prefer_local = 'node_modules/.bin',
+      condition = function(utils)
+        return not rush_condition(utils)
+      end,
     }),
     null_ls.builtins.diagnostics.eslint_d.with({
       prefer_local = 'node_modules/.bin',
+      condition = function(utils)
+        return not rush_condition(utils)
+      end,
     }),
-    null_ls.builtins.formatting.eslint_d.with({
-      prefer_local = 'node_modules/.bin',
-      condition = condition,
+    null_ls.builtins.code_actions.eslint_d.with({
+      prefer_local = 'common/autoinstallers/rush-lint/node_modules/.bin',
+      condition = function(utils)
+        return rush_condition(utils)
+      end,
+    }),
+    null_ls.builtins.diagnostics.eslint_d.with({
+      prefer_local = 'common/autoinstallers/rush-lint/node_modules/.bin',
+      condition = function(utils)
+        return rush_condition(utils)
+      end,
     }),
     null_ls.builtins.diagnostics.markdownlint,
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier.with({
+      prefer_local = 'node_modules/.bin',
+      condition = function(utils)
+        return not rush_condition(utils)
+      end,
+    }),
+    null_ls.builtins.formatting.prettier.with({
+      prefer_local = 'common/autoinstallers/rush-lint/node_modules/.bin',
+      condition = function(utils)
+        return rush_condition(utils)
+      end,
+    }),
     null_ls.builtins.formatting.prettierd.with({
       env = {
         PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
