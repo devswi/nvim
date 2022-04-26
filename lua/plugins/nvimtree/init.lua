@@ -56,14 +56,23 @@ require('nvim-tree').setup({
     hide_root_folder = true,
   },
   git = {
+    enable = true,
     ignore = true,
   },
   diagnostics = {
     enable = false,
   },
-  render = {
+  renderer = {
     indent_markers = {
       enable = true,
+      icons = {
+        corner = '└ ',
+        edge = '│ ',
+        none = '  ',
+      },
+    },
+    icons = {
+      webdev_colors = true,
     },
   },
   actions = {
