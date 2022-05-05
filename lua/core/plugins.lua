@@ -296,6 +296,7 @@ return packer.startup(function()
   use({
     'karb94/neoscroll.nvim',
     event = 'BufWinEnter',
+    disable = true,
     config = function()
       require('plugins.neoscroll')
     end,
