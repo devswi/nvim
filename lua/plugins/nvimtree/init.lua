@@ -39,7 +39,6 @@ require('nvim-tree').setup({
   disable_netrw = true,
   hijack_netrw = true,
   open_on_tab = false,
-  update_cmd = true,
   ignore_ft_on_setup = {
     'startify',
     'dashboard',
@@ -52,7 +51,6 @@ require('nvim-tree').setup({
   view = {
     width = 35,
     side = 'left',
-    allow_resize = false,
     hide_root_folder = true,
   },
   git = {
@@ -77,6 +75,7 @@ require('nvim-tree').setup({
   actions = {
     open_file = {
       quit_on_open = false,
+      resize_window = false,
       window_picker = {
         exclude = {
           filetype = { 'notify', 'packer', 'qf' },
