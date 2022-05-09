@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 do
   local ok, _ = pcall(require, 'impatient')
 
