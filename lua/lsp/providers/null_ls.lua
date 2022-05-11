@@ -23,6 +23,9 @@ require('null-ls').setup(merge(defaults, {
     null_ls.builtins.formatting.prettier.with({
       prefer_local = 'node_modules/.bin',
     }),
+    null_ls.builtins.formatting.eslint_d.with({
+      prefer_local = 'node_modules/.bin',
+    }),
     null_ls.builtins.formatting.prettierd.with({
       env = {
         PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
