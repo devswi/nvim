@@ -1,4 +1,6 @@
 if vim.g.vscode then
+  require('vscode.init')
+  vim.cmd('source ' .. '$HOME/.config/nvim/lua/vscode/settings.vim')
   return
 end
 
